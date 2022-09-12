@@ -20,11 +20,24 @@ export const Canvas = () => {
     const currentValue = e.target.value;
     const percentage = (currentValue / 12) * rollWidth;
 
-    const currentAreataken =
-      labelsCount * (parseFloat(rollDimmensions.width) * currentValue);
-    console.log(currentAreataken);
-    console.log("width", parseFloat(rollDimmensions.width));
-    console.log("height", parseFloat(rollDimmensions.height));
+    //get the total area of the roll
+    const rollArea = rollHeight * rollWidth;
+
+    // get the total area the label
+    const labelArea = parseFloat(rollDimmensions.width) * currentValue;
+
+    // get the total area taken by the amount of labels
+    const currentAreataken = labelsCount * labelArea;
+
+    // get the total available area
+    const availableArea = rollArea / currentAreataken;
+
+    const addLabels = Math.floor(rollArea / labelArea);
+
+    const isNumber = Number.isFinite(addLabels);
+    isNumber && setlabelsCount(addLabels);
+    // console.log("width", parseFloat(rollDimmensions.width));
+    // console.log("height", parseFloat(rollDimmensions.height));
 
     setrollDimmensions({ ...rollDimmensions, height: percentage });
   };
@@ -35,6 +48,8 @@ export const Canvas = () => {
       e.preventDefault();
     }
   };
+
+  function calculateLabelCount() {}
 
   return (
     <main>

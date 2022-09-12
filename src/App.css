@@ -109,7 +109,7 @@
 .roll_length {
   display: flex;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-wrap: wrap;
   position: absolute;
   z-index: 3;
