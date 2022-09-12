@@ -3,14 +3,16 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 500px;
+  max-width: 800px;
   margin: 5rem auto;
 }
 
-.inputs input {
+.inputs input,
+.inputs .upload-btn,
+.inputs select {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 600;
-  flex-basis: 45%;
+  flex-basis: 33%;
   background-color: #2d455b;
   outline: none;
   border: none;
@@ -20,10 +22,18 @@
   color: #e3e4e8;
 }
 
+.inputs .input-image {
+  display: none;
+}
+
 .inputs input::placeholder {
   font-family: Arial, Helvetica, sans-serif;
   color: #e3e4e8;
   opacity: 0.5;
+}
+
+.upload-btn {
+  cursor: pointer;
 }
 /* --------------- roll starts  */
 .roll {
@@ -128,8 +138,13 @@
 
 /* ------------- labels */
 .length_label {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  position: relative;
   border: 5px solid #e0e1e5;
+  background-color: #009940 !important;
   margin: 0;
   padding: 0;
-  background-color: #6ccf97;
 }

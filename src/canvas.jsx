@@ -1,56 +1,73 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import { useRef } from "react";
 
 export const Canvas = () => {
   const [labelsCount, setlabelsCount] = useState(4);
+  const [art, setArt] = useState("");
   const [rollWidth] = useState(17.5);
   const [rollHeight] = useState(20);
+  const [orientation, setorientation] = useState(0);
   const [rollDimmensions, setrollDimmensions] = useState({
     width: rollWidth / 2,
     height: rollHeight / 2,
   });
 
-  const changeWidht = (e) => {
-    const currentValue = e.target.value;
+  // ref
+  const imageInput = useRef(null);
+
+  const changeWidht = ({ target }) => {
+    const currentValue = target.value;
 
     const percentage = (currentValue / 12) * rollWidth;
-
-    calculateLabelCount();
 
     setrollDimmensions({ ...rollDimmensions, width: percentage });
+
+    calculateLabelCount(currentValue, rollDimmensions.height);
   };
 
-  const changeHeight = (e) => {
-    const currentValue = e.target.value;
+  const changeHeight = ({ target }) => {
+    const currentValue = target.value;
 
     const percentage = (currentValue / 12) * rollWidth;
 
-    calculateLabelCount();
-
     setrollDimmensions({ ...rollDimmensions, height: percentage });
+
+    calculateLabelCount(rollDimmensions.width, currentValue);
   };
 
   const validateInput = (e) => {
-    if (!(e.code.includes("Digit") || e.code.includes("Backspace"))) {
+    if (
+      !(
+        e.code.includes("Digit") ||
+        e.code.includes("Backspace") ||
+        e.code.includes("Period")
+      )
+    ) {
       console.log(!e.code.includes("Digit") || !e.code.includes("Backspace"));
       e.preventDefault();
     }
   };
 
-  function calculateLabelCount() {
+  const changeArt = ({ target }) => {
+    console.log(target.files);
+
+    const blob = URL.createObjectURL(target.files[0]);
+    setArt(blob);
+  };
+
+  const handleOrientation = ({ target }) => (
+    console.log(target.value), setorientation(parseInt(target.value))
+  );
+
+  function calculateLabelCount(width, height) {
     //get the total area of the roll
     const rollArea = rollHeight * rollWidth;
 
     // get the total area the label
-    const labelArea =
-      parseFloat(rollDimmensions.width) * parseFloat(rollDimmensions.height);
+    const labelArea = parseFloat(width) * parseFloat(height);
 
-    // get the total area taken by the amount of labels
-    const currentAreataken = labelsCount * labelArea;
-
-    // get the total available area
-    // const availableArea = rollArea / currentAreataken;
-
+    // add labels based on the available area
     const addLabels = Math.floor(rollArea / labelArea);
 
     const isNumber = Number.isFinite(addLabels);
@@ -74,6 +91,21 @@ export const Canvas = () => {
           onKeyDown={validateInput}
           inputMode='numeric'
         />
+        <input
+          className='input-image'
+          type='file'
+          id='label'
+          name='label'
+          accept='image/png, image/jpeg'
+          onChange={changeArt}
+          ref={imageInput}
+        />
+        <button
+          onClick={() => imageInput.current.click()}
+          className='upload-btn'
+        >
+          Upload Art
+        </button>
       </div>
       <div className='roll'>
         {/*left side part of the roll*/}
@@ -94,6 +126,7 @@ export const Canvas = () => {
               style={{
                 width: `${rollDimmensions.width}rem`,
                 height: `${rollDimmensions.height}rem`,
+                backgroundImage: `url(${art})`,
               }}
               key={i}
             ></div>
