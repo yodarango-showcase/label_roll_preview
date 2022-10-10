@@ -1,13 +1,23 @@
-import "./App.css";
+// default dimensions -  roll | core
+// x: 130 | 38
+// y: 32  | 12
+
+import "./roll.scss";
 import { useState, useEffect } from "react";
 import { useRef } from "react";
 
-export const Canvas = () => {
+export const Roll = () => {
   const [labelsCount, setlabelsCount] = useState(4);
   const [art, setArt] = useState("");
   const [rollWidth] = useState(17.5);
   const [rollHeight] = useState(20);
-  const [orientation, setorientation] = useState(0);
+  const [rollCore] = useState(6);
+  const [rollOD] = useState(20);
+  const [rollDimInInches, setrollDimInInches] = useState({
+    width: 12,
+    core: 3,
+  });
+  //const [orientation, setorientation] = useState(0);
   const [rollDimmensions, setrollDimmensions] = useState({
     width: rollWidth / 2,
     height: rollHeight / 2,
@@ -44,21 +54,14 @@ export const Canvas = () => {
         e.code.includes("Period")
       )
     ) {
-      console.log(!e.code.includes("Digit") || !e.code.includes("Backspace"));
       e.preventDefault();
     }
   };
 
   const changeArt = ({ target }) => {
-    console.log(target.files);
-
     const blob = URL.createObjectURL(target.files[0]);
     setArt(blob);
   };
-
-  const handleOrientation = ({ target }) => (
-    console.log(target.value), setorientation(parseInt(target.value))
-  );
 
   function calculateLabelCount(width, height) {
     //get the total area of the roll
@@ -75,7 +78,7 @@ export const Canvas = () => {
   }
 
   return (
-    <main>
+    <main className='component-wrapper'>
       <div className='inputs'>
         <input
           className='width'
@@ -107,10 +110,17 @@ export const Canvas = () => {
           Upload Art
         </button>
       </div>
-      <div className='roll'>
+
+      {/* roll starts */}
+      <div className='roll' style={{ height: `${rollOD}rem` }}>
         {/*left side part of the roll*/}
         <div className='roll_thickness'>
-          <div className='thickness_radius'></div>
+          <div
+            className='thickness_core'
+            style={{
+              height: `${rollCore}rem`,
+            }}
+          ></div>
         </div>
 
         {/*the width of the roll: the cylinder tha runs vertically*/}
@@ -131,6 +141,27 @@ export const Canvas = () => {
               key={i}
             ></div>
           ))}
+        </div>
+
+        {/* dimmensions start */}
+        <div
+          className='roll-dimmension-inches roll-dimmension-inches--core'
+          style={{
+            height: `${rollCore}rem`,
+            top: `${rollOD / 2 - rollCore / 2}rem`,
+          }}
+        >
+          <span></span>
+          <p>C: {rollDimInInches.core}"</p>
+        </div>
+        <div
+          className='roll-dimmension-inches roll-dimmension-inches--width'
+          style={{
+            width: `${rollWidth}rem`,
+          }}
+        >
+          <span></span>
+          <p>W: {rollDimInInches.width}"</p>
         </div>
       </div>
     </main>
