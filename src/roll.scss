@@ -39,120 +39,159 @@
 .upload-btn {
   cursor: pointer;
 }
+
 /* --------------- roll starts  */
 .roll {
   position: relative;
   width: 20rem;
   box-sizing: border-box;
   margin: auto;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /*left side part of the roll*/
+  .roll_thickness {
+    z-index: 2;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: #e3e4e8;
+    width: 100%;
+    height: 5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid #dfdfdf;
+
+    /* core */
+    .thickness_core {
+      position: relative;
+      z-index: 4;
+      height: 1.5rem;
+      border-radius: 50%;
+      background-color: #55462b;
+      background-image: linear-gradient(90deg, #6f6451, #352b2b);
+    }
+
+    /* lines inside the roll */
+    &::after,
+    &::before {
+      content: "";
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      position: absolute;
+      width: 80%;
+      height: 77%;
+      border-radius: 50%;
+      background-color: #dcdcdf;
+      opacity: 0.5;
+    }
+
+    &::after {
+      width: 60%;
+      height: 55%;
+      opacity: 1;
+      background-color: #e3e4e8;
+    }
+  }
+
+  .roll_width--wrapper {
+    overflow: hidden;
+
+    .roll_width {
+      z-index: 1;
+      position: absolute;
+      left: 0;
+      top: 2.5rem;
+      width: 100%;
+      height: 100%;
+      border-radius: 50% / 22%;
+      border-top-left-radius: 0%;
+      border-top-right-radius: 0%;
+      background-color: #eeeff4;
+      background-image: linear-gradient(90deg, #f0f1f5, #d1d1d4);
+      padding: 5px;
+      overflow: hidden;
+
+      .width_top-border {
+        z-index: 2;
+        top: -35%;
+        left: -12%;
+        position: absolute;
+        background-image: linear-gradient(90deg, #f0f1f5, #d1d1d4);
+        width: 110%;
+        height: 10rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .width_label-wrapper {
+        width: 9rem;
+        height: 98%;
+        overflow: hidden;
+        border-radius: 100% / 23%;
+        border-bottom-right-radius: 0%;
+        border-top-left-radius: 0%;
+        border-top-right-radius: 0%;
+
+        .label-wrapper_label {
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+          height: 100%;
+          width: 100%;
+          background-color: #009940 !important;
+        }
+      }
+    }
+  }
+
+  .roll_length {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    z-index: 3;
+    left: 10rem; /* rigth at the half of the roll */
+    top: 4.75rem;
+    height: calc(
+      100% - 2.25rem
+    ); /*total width - (the X movemnt to the left / 2)  */
+    max-height: calc(100% - 2.25rem); /* same as width*/
+    background-color: #e0e1e5;
+    border-top: 4px solid #dfdfdf;
+    width: 33rem;
+    overflow-y: hidden;
+    overflow-x: visible;
+
+    /* ------------- labels */
+    .length_label {
+      height: 100%;
+      width: 100%;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      overflow: hidden;
+      position: relative;
+      border: 10px solid #e0e1e5;
+      border-right: 8px solid #e0e1e5;
+      border-left: 8px solid #e0e1e5;
+      background-color: #009940 !important;
+      margin: 0;
+      padding: 0;
+    }
+  }
 }
 
-.roll * {
-  box-sizing: border-box;
-}
-
-.roll_thickness {
-  z-index: 2;
-  top: 0;
-  left: 0;
-  position: absolute;
-  background-color: #e3e4e8;
-  height: 100%;
-  width: 5rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 5px solid #dfdfdf;
-}
-
-/* lines inside the roll */
-.roll_thickness::after,
-.roll_thickness::before {
-  content: "";
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  margin: auto;
-  position: absolute;
-  height: 80%;
-  width: 77%;
-  border-radius: 50%;
-  background-color: #dcdcdf;
-  opacity: 0.5;
-}
-
-.roll_thickness::after {
-  height: 60%;
-  width: 55%;
-  opacity: 1;
-  background-color: #e3e4e8;
-}
-
-/* core */
-.thickness_core {
-  position: relative;
-  z-index: 4;
-  width: 1.5rem;
-  border-radius: 50%;
-  background-color: #55462b;
-  background-image: linear-gradient(90deg, #6f6451, #352b2b);
-}
-
-.roll_width--wrapper {
-  overflow: hidden;
-}
-
-.roll_width {
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  left: 2.5rem;
-  width: 100%;
-  height: 100%;
-  border-radius: 22% / 50%;
-  border-top-left-radius: 0%;
-  border-bottom-left-radius: 0%;
-  background-color: #eeeff4;
-  background-image: linear-gradient(180deg, #f0f1f5, #d1d1d4);
-}
-
-.roll_length {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  position: absolute;
-  z-index: 3;
-  top: 10rem; /* rigth at the half of the roll */
-  left: 4.75rem;
-  width: calc(
-    100% - 2.25rem
-  ); /*total width - (the X movemnt to the left / 2)  */
-  max-width: calc(100% - 2.25rem); /* same as width*/
-  background-color: #e0e1e5;
-  border-left: 4px solid #dfdfdf;
-  min-height: 20rem;
-  max-height: 30rem;
-  overflow-y: hidden;
-}
-
-/* ------------- labels */
-.length_label {
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  position: relative;
-  border: 5px solid #e0e1e5;
-  background-color: #009940 !important;
-  margin: 0;
-  padding: 0;
-}
-
-/* roll dimmensions  */
-
+/* roll dimensions  */
 .roll-dimmension-inches {
   height: 2rem;
   position: absolute;
