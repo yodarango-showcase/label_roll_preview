@@ -3,80 +3,12 @@
 // y: 32  | 12
 
 import "./roll.scss";
-import { useState, useEffect } from "react";
-import { useRef } from "react";
+import logo from "./assets/sttark_vertical.png";
 
-export const Roll = () => {
-  const [art, setArt] = useState("");
-  const [rollWidth] = useState(17.5);
-  const [rollHeight] = useState(20);
-
-  const [rollDimmensions, setrollDimmensions] = useState({
-    width: rollWidth / 2,
-    height: rollHeight / 2,
-  });
-
-  // ref
-  const imageInput = useRef(null);
-
-  const changeWidht = ({ target }) => {
-    const currentValue = target.value;
-
-    const percentage = (currentValue / 12) * rollWidth;
-
-    setrollDimmensions({ ...rollDimmensions, width: percentage });
-
-    calculateLabelCount(currentValue, rollDimmensions.height);
-  };
-
-  const changeHeight = ({ target }) => {
-    const currentValue = target.value;
-
-    const percentage = (currentValue / 12) * rollWidth;
-
-    setrollDimmensions({ ...rollDimmensions, height: percentage });
-
-    calculateLabelCount(rollDimmensions.width, currentValue);
-  };
-
-  const changeArt = ({ target }) => {
-    const blob = URL.createObjectURL(target.files[0]);
-    setArt(blob);
-  };
-
-  function calculateLabelCount(width, height) {
-    //get the total area of the roll
-    const rollArea = rollHeight * rollWidth;
-
-    // get the total area the label
-    const labelArea = parseFloat(width) * parseFloat(height);
-
-    // add labels based on the available area
-    const addLabels = Math.floor(rollArea / labelArea);
-
-    const isNumber = Number.isFinite(addLabels);
-    isNumber && setlabelsCount(addLabels);
-  }
-
+export const Roll = ({ art = logo }) => {
   return (
     <main className='component-wrapper'>
-      <div className='inputs'>
-        {/*<input
-          className='input-image'
-          type='file'
-          id='label'
-          name='label'
-          accept='image/png, image/jpeg'
-          onChange={changeArt}
-          ref={imageInput}
-        />
-        <button
-          onClick={() => imageInput.current.click()}
-          className='upload-btn'
-        >
-          Upload Art
-        </button>*/}
-      </div>
+      <div className='inputs'></div>
 
       {/* roll starts */}
       <div className='roll'>

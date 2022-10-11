@@ -1,4 +1,4 @@
-$roll-size: 350px;
+$roll-size: 150px;
 $material-color: #e0e1e5;
 $roll-border-color: #f3eada;
 $roll-thickness-color: #f7f1e7;
@@ -135,12 +135,13 @@ $label-color: #ff89ff;
         border-top-right-radius: 0%;
 
         .label-wrapper_label {
-          background-position: center;
-          background-size: contain;
+          border: 1.5px solid #d9dee2;
+          background-position: 35% 75%;
+          background-size: 27%;
+          transform: rotate3d(0, 1, 0, -30deg) skewY(15deg);
           background-repeat: no-repeat;
           height: 100%;
           width: 100%;
-          background-color: $label-color;
         }
       }
     }
@@ -164,15 +165,14 @@ $label-color: #ff89ff;
 
     // labels inside the roll length
     .length_label {
-      height: 100%;
-      flex-basis: 30.5%;
+      border: 1px solid #d9dee2;
       background-position: center;
-      background-size: contain;
+      background-size: 20%;
       background-repeat: no-repeat;
+      flex-basis: 30.5%;
       overflow: hidden;
       position: relative;
       height: 86%;
-      background-color: $label-color;
       margin: 0;
       padding: 0;
     }
