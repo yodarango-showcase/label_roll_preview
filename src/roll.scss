@@ -1,49 +1,29 @@
-.component-wrapper {
-  position: relative;
-}
+$roll-size: 350px;
+$material-color: #e0e1e5;
+$roll-border-color: #f3eada;
+$roll-thickness-color: #f7f1e7;
+$roll-core-color: #bca28b;
+$roll-core-color-shadow: #a89284;
+$roll-thickness-color-shadow: #f8eedc;
+$roll-material-color: #ffffff;
+$roll-material-color-shadow: #d1d1d4;
+$label-color: #ff89ff;
 
-.inputs {
+// wrapper
+.component-wrapper {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 800px;
-  margin: 7rem auto;
+  justify-content: center;
 }
 
-.inputs input,
-.inputs .upload-btn,
-.inputs select {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 600;
-  flex-basis: 33%;
-  background-color: #2d455b;
-  outline: none;
-  border: none;
-  padding: 1rem;
-  box-sizing: border-box;
-  border-radius: 1em;
-  color: #e3e4e8;
-}
-
-.inputs .input-image {
-  display: none;
-}
-
-.inputs input::placeholder {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #e3e4e8;
-  opacity: 0.5;
-}
-
-.upload-btn {
-  cursor: pointer;
-}
-
-/* --------------- roll starts  */
+// roll
 .roll {
   position: relative;
-  width: 20rem;
+  width: $roll-size;
+  height: $roll-size;
   box-sizing: border-box;
   margin: auto;
 
@@ -51,29 +31,33 @@
     box-sizing: border-box;
   }
 
-  /*left side part of the roll*/
+  /* left side part of the roll */
   .roll_thickness {
     z-index: 2;
     top: 0;
     left: 0;
     position: absolute;
-    background-color: #e3e4e8;
+    background-color: $roll-thickness-color;
     width: 100%;
-    height: 5rem;
+    height: 35%;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 5px solid #dfdfdf;
+    border: 5px solid $roll-border-color;
 
     /* core */
     .thickness_core {
       position: relative;
       z-index: 4;
-      height: 1.5rem;
+      height: 40%;
+      width: 40%;
       border-radius: 50%;
-      background-color: #55462b;
-      background-image: linear-gradient(90deg, #6f6451, #352b2b);
+      background-image: linear-gradient(
+        120deg,
+        $roll-core-color-shadow 50%,
+        $roll-core-color 50%
+      );
     }
 
     /* lines inside the roll */
@@ -89,7 +73,7 @@
       width: 80%;
       height: 77%;
       border-radius: 50%;
-      background-color: #dcdcdf;
+      background-color: $roll-thickness-color-shadow;
       opacity: 0.5;
     }
 
@@ -97,10 +81,11 @@
       width: 60%;
       height: 55%;
       opacity: 1;
-      background-color: #e3e4e8;
+      background-color: $roll-thickness-color;
     }
   }
 
+  // the width of the roll: the cylinder tha runs horizontally
   .roll_width--wrapper {
     overflow: hidden;
 
@@ -108,25 +93,32 @@
       z-index: 1;
       position: absolute;
       left: 0;
-      top: 2.5rem;
+      top: 18%;
       width: 100%;
       height: 100%;
       border-radius: 50% / 22%;
       border-top-left-radius: 0%;
       border-top-right-radius: 0%;
-      background-color: #eeeff4;
-      background-image: linear-gradient(90deg, #f0f1f5, #d1d1d4);
-      padding: 5px;
+      background-image: linear-gradient(
+        90deg,
+        $roll-material-color 50%,
+        $roll-material-color-shadow 50%
+      );
       overflow: hidden;
 
+      // border of the label on the roll
       .width_top-border {
         z-index: 2;
-        top: -35%;
-        left: -12%;
+        top: -27%;
+        left: -5%;
         position: absolute;
-        background-image: linear-gradient(90deg, #f0f1f5, #d1d1d4);
+        background-image: linear-gradient(
+          110deg,
+          $roll-material-color 60%,
+          $roll-material-color-shadow 40%
+        );
         width: 110%;
-        height: 10rem;
+        height: 50%;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -134,8 +126,8 @@
       }
 
       .width_label-wrapper {
-        width: 9rem;
-        height: 98%;
+        width: 45%;
+        height: 94%;
         overflow: hidden;
         border-radius: 100% / 23%;
         border-bottom-right-radius: 0%;
@@ -148,110 +140,41 @@
           background-repeat: no-repeat;
           height: 100%;
           width: 100%;
-          background-color: #009940 !important;
+          background-color: $label-color;
         }
       }
     }
   }
 
+  // the unrolled part of the roll that stick out
   .roll_length {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     position: absolute;
+    column-gap: 3%;
     z-index: 3;
-    left: 10rem; /* rigth at the half of the roll */
-    top: 4.75rem;
-    height: calc(
-      100% - 2.25rem
-    ); /*total width - (the X movemnt to the left / 2)  */
-    max-height: calc(100% - 2.25rem); /* same as width*/
-    background-color: #e0e1e5;
-    border-top: 4px solid #dfdfdf;
-    width: 33rem;
+    left: 50%; // right at the half of the roll
+    top: 35%;
+    height: 83%; // total height - (the Y movement to down of the roll_thickness / 2)
+    background-color: $roll-material-color;
+    width: 210%;
     overflow-y: hidden;
     overflow-x: visible;
 
-    /* ------------- labels */
+    // labels inside the roll length
     .length_label {
       height: 100%;
-      width: 100%;
+      flex-basis: 30.5%;
       background-position: center;
       background-size: contain;
       background-repeat: no-repeat;
       overflow: hidden;
       position: relative;
-      border: 10px solid #e0e1e5;
-      border-right: 8px solid #e0e1e5;
-      border-left: 8px solid #e0e1e5;
-      background-color: #009940 !important;
+      height: 86%;
+      background-color: $label-color;
       margin: 0;
       padding: 0;
     }
   }
-}
-
-/* roll dimensions  */
-.roll-dimmension-inches {
-  height: 2rem;
-  position: absolute;
-  background-color: #162737;
-  top: -3rem;
-  left: 2rem;
-  border-bottom: 2px solid red;
-}
-
-.roll-dimmension-inches span:after,
-.roll-dimmension-inches span:before {
-  content: "";
-  position: absolute;
-  top: 1.5rem;
-  left: 0;
-  background-color: transparent;
-  /* border-left: 2px solid red;
-  border-right: 2px solid red; */
-  background-color: red;
-  width: 0.2rem;
-  height: 1rem;
-}
-
-.roll-dimmension-inches span:after {
-  left: 100%;
-}
-
-.roll-dimmension-inches p {
-  position: relative;
-  top: -1rem;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-}
-
-.roll-dimmension-inches--core p {
-  position: relative;
-  top: -1rem;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transform: rotate(-90deg);
-}
-
-.roll-dimmension-inches--core {
-  top: 5rem;
-  left: -2rem;
-  border-bottom: none;
-  border-left: 2px solid red;
-}
-
-.roll-dimmension-inches--core span:after,
-.roll-dimmension-inches--core span:before {
-  width: 1rem;
-  height: 0.2rem;
-  top: 0;
-  left: -0.5rem;
-}
-
-.roll-dimmension-inches--core span:after {
-  top: auto;
-  bottom: 0;
 }

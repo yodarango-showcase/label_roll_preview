@@ -10,8 +10,6 @@ export const Roll = () => {
   const [art, setArt] = useState("");
   const [rollWidth] = useState(17.5);
   const [rollHeight] = useState(20);
-  const [rollCore] = useState(6);
-  const [rollOD] = useState(20);
 
   const [rollDimmensions, setrollDimmensions] = useState({
     width: rollWidth / 2,
@@ -81,18 +79,10 @@ export const Roll = () => {
       </div>
 
       {/* roll starts */}
-      <div
-        className='roll'
-        style={{ height: `${rollOD}rem`, backgroundColor: "#73bcff" }}
-      >
+      <div className='roll'>
         {/*left side part of the roll*/}
         <div className='roll_thickness'>
-          <div
-            className='thickness_core'
-            style={{
-              width: `${rollCore}rem`,
-            }}
-          ></div>
+          <div className='thickness_core'></div>
         </div>
 
         {/*the width of the roll: the cylinder tha runs horizontally*/}
