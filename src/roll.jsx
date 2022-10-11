@@ -1,7 +1,8 @@
 import "./roll.scss";
-import logo from "./assets/sttark_vertical.png";
+import artV from "./assets/sttark_vertical.png";
+import artH from "./assets/sttark_horizontal.png";
 
-export const Roll = ({ art = logo }) => {
+export const Roll = ({ artOrientation }) => {
   return (
     <main className='component-wrapper'>
       <div className='inputs'></div>
@@ -21,7 +22,7 @@ export const Roll = ({ art = logo }) => {
               <div
                 className='label-wrapper_label'
                 style={{
-                  backgroundImage: `url(${art})`,
+                  backgroundImage: `url(${artV})`,
                 }}
               ></div>
             </div>
@@ -29,12 +30,12 @@ export const Roll = ({ art = logo }) => {
         </div>
 
         {/*The length of the roll: the sheet that runs horizontally */}
-        <div className='roll_length'>
+        <div className='roll_length '>
           {[...Array(3)].map((_, i) => (
             <div
               className='length_label'
               style={{
-                backgroundImage: `url(${art})`,
+                backgroundImage: `url(${artV})`,
               }}
               key={i}
             ></div>

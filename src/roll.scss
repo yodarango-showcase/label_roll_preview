@@ -1,4 +1,4 @@
-$roll-size: 150px; // change this value to change the size fo the component
+$roll-size: 140px; // change this value to change the size fo the component
 $material-color: #e0e1e5;
 $roll-border-color: #f3eada;
 $roll-thickness-color: #f7f1e7;
@@ -21,11 +21,14 @@ $label-color: #ff89ff;
 
 // roll
 .roll {
-  position: relative;
+  position: sticky;
+  top: 0;
+  left: 0;
   width: $roll-size;
   height: $roll-size;
   box-sizing: border-box;
-  margin: auto;
+  margin: 0;
+  transform: translateY(-70px);
 
   * {
     box-sizing: border-box;
@@ -105,6 +108,7 @@ $label-color: #ff89ff;
         $roll-material-color-shadow 50%
       );
       overflow: hidden;
+      border-bottom: 2px solid $roll-thickness-color;
 
       // border of the label on the roll
       .width_top-border {
@@ -135,7 +139,7 @@ $label-color: #ff89ff;
         border-top-right-radius: 0%;
 
         .label-wrapper_label {
-          border: 1.5px solid #d9dee2;
+          border: 1px solid #d9dee2;
           background-position: 35% 75%;
           background-size: 27%;
           transform: rotate3d(0, 1, 0, -30deg) skewY(15deg);
@@ -162,6 +166,8 @@ $label-color: #ff89ff;
     width: 210%;
     overflow-y: hidden;
     overflow-x: visible;
+    border: 2px solid $roll-thickness-color;
+    border-left: none;
 
     // labels inside the roll length
     .length_label {
