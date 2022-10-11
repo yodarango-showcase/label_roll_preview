@@ -1,7 +1,3 @@
-// default dimensions -  roll | core
-// x: 130 | 38
-// y: 32  | 12
-
 import "./roll.scss";
 import logo from "./assets/sttark_vertical.png";
 
