@@ -1,4 +1,4 @@
-$roll-size: 140px; // change this value to change the size fo the component
+$roll-size: 110px; // change this value to change the size fo the component
 $material-color: #e0e1e5;
 $roll-border-color: #f3eada;
 $roll-thickness-color: #f7f1e7;
@@ -8,6 +8,7 @@ $roll-thickness-color-shadow: #f8eedc;
 $roll-material-color: #ffffff;
 $roll-material-color-shadow: #d1d1d4;
 $label-color: #ff89ff;
+$label-outline: #d9dee2;
 
 // wrapper
 .component-wrapper {
@@ -17,6 +18,19 @@ $label-color: #ff89ff;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.inputs {
+  position: fixed;
+  z-index: 3;
+  width: 60%;
+  margin: auto;
+  top: 8rem;
+  left: 0;
+  right: 0;
+  bottom: auto;
 }
 
 // roll
@@ -29,6 +43,18 @@ $label-color: #ff89ff;
   box-sizing: border-box;
   margin: 0;
   transform: translateY(-70px);
+
+  //@media(min-width: 1200px){
+  //    $roll-size: 120px;
+  //    width: $roll-size;
+  //    height: $roll-size;
+  //}
+  //
+  //@media(min-width: 1200px){
+  //    $roll-size: 155px;
+  //    width: $roll-size;
+  //    height: $roll-size;
+  //}
 
   * {
     box-sizing: border-box;
@@ -108,7 +134,7 @@ $label-color: #ff89ff;
         $roll-material-color-shadow 50%
       );
       overflow: hidden;
-      border-bottom: 2px solid $roll-thickness-color;
+      border-bottom: 2px solid $roll-border-color;
 
       // border of the label on the roll
       .width_top-border {
@@ -129,23 +155,70 @@ $label-color: #ff89ff;
         justify-content: center;
       }
 
+      .border_thin {
+        z-index: 1;
+        top: calc(-27% + 1px);
+        background-image: linear-gradient(
+          90deg,
+          $label-outline 50%,
+          $roll-material-color-shadow 50%
+        );
+      }
+
       .width_label-wrapper {
+        border: 1px solid $label-outline;
         width: 45%;
         height: 94%;
         overflow: hidden;
         border-radius: 100% / 23%;
-        border-bottom-right-radius: 0%;
-        border-top-left-radius: 0%;
-        border-top-right-radius: 0%;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
 
-        .label-wrapper_label {
-          border: 1px solid #d9dee2;
-          background-position: 35% 75%;
-          background-size: 27%;
-          transform: rotate3d(0, 1, 0, -30deg) skewY(15deg);
-          background-repeat: no-repeat;
+        .label-wrapper_label-wrapper {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           height: 100%;
-          width: 100%;
+          width: 50%;
+
+          .label-wrapper_label {
+            background-position: center; // was 35% 70%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            transform: rotate3d(0, 1, 0, -30deg) rotate3d(0, 1, 0, -30deg)
+              skewY(15deg);
+            height: 80%;
+            width: 80%;
+            margin: 0;
+          }
+
+          .label-wrapper_label.labelFlow1 {
+            height: 100%;
+            margin-bottom: -38%;
+            transform: scaleX(0.85) scaleY(1.15) rotate3d(0, 1, 0, -5deg)
+              rotateZ(90deg) skewX(-13deg);
+          }
+
+          .label-wrapper_label.labelFlow2 {
+            height: 100%;
+            margin-top: 35%;
+            transform: scaleX(0.85) scaleY(1.15) rotate3d(0, 1, 0, -5deg)
+              rotateZ(-90deg) skewX(-13deg);
+          }
+
+          .label-wrapper_label.labelFlow3 {
+            height: 50%;
+            margin-bottom: -40%;
+            transform: rotate3d(0, 1, 0, -30deg) rotateZ(0) skewY(15deg);
+          }
+
+          .label-wrapper_label.labelFlow4 {
+            height: 50%;
+            margin-bottom: -40%;
+            transform: rotate3d(0, 1, 0, -30deg) rotateZ(180deg) skewY(15deg);
+          }
         }
       }
     }
@@ -159,28 +232,58 @@ $label-color: #ff89ff;
     position: absolute;
     column-gap: 3%;
     z-index: 3;
-    left: 50%; // right at the half of the roll
-    top: 35%;
-    height: 83%; // total height - (the Y movement to down of the roll_thickness / 2)
+    left: 45%; // right at the half of the roll
+    top: 33%;
+    height: 85%; // total height - (the Y movement to down of the roll_thickness / 2)
+    // top: 34.5%;
+    // height: 83%;
     background-color: $roll-material-color;
     width: 210%;
     overflow-y: hidden;
     overflow-x: visible;
-    border: 2px solid $roll-thickness-color;
+    border: 2px solid $roll-border-color;
     border-left: none;
+    padding-left: 6%;
+    overflow-x: hidden;
 
-    // labels inside the roll length
-    .length_label {
-      border: 1px solid #d9dee2;
-      background-position: center;
-      background-size: 20%;
-      background-repeat: no-repeat;
-      flex-basis: 30.5%;
-      overflow: hidden;
-      position: relative;
+    .length_label-wrapper {
+      border: 1px solid $label-outline;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      //flex-basis: 30.5%;
       height: 86%;
-      margin: 0;
-      padding: 0;
+      position: relative;
+      flex-shrink: 0;
+
+      // labels inside the roll length
+      .length_label {
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        position: relative;
+        height: 80%;
+        width: 80%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .length_label.labelFlow1 {
+        transform: rotate(90deg);
+      }
+
+      .length_label.labelFlow2 {
+        transform: rotate(-90deg);
+      }
+
+      .length_label.labelFlow3 {
+        transform: rotate(0);
+      }
+
+      .length_label.labelFlow4 {
+        transform: rotate(180deg);
+      }
     }
   }
 }
