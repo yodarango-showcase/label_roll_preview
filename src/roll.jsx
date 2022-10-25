@@ -33,27 +33,17 @@ export const Roll = ({ width, length }) => {
     // default values
     labelCount = 3;
     labelWidth = 30;
-    skew = [
-      0,
-      `rotateX(20deg) rotateY(-20deg) scale(0.9, 1.05) skew(0deg, 10deg) translate(-4%, -4%)`,
-      `-3%`,
-    ]; // [<number of labels to affect>, <css for skewed labels>, <css for affected labels>]
+    skew = "skew1";
   } else if (length <= 4) {
     // set the max count of labels to 7 and assign the appropiate 14% width to cover area
     labelCount = 7;
     labelWidth = 14;
 
-    skew = [
-      1,
-      `rotateX(20deg) rotateY(-20deg) scale(0.9, 1.05) skew(0deg, 10deg) translate(-4%, -4%)`,
-      ``,
-    ];
+    skew = "skew2";
   } else if (length >= 12) {
     labelCount = 1;
     labelWidth = 99;
-
-    // this means there is only one label. Do not alter styles
-    skew = [0, `none`];
+    skew = "skew4";
   } else {
     // get the total length area minus the left padding on the roll length divided by the length * 10 to match pixel dimension
     let lc = (rollDimensions.length * 2 - 7) / (length * 10);
@@ -63,9 +53,9 @@ export const Roll = ({ width, length }) => {
 
     // check there are at least 3 labels otherwise the skew look odd
     if (labelCount >= 3) {
-      skew = [0, `scale(0.9, 1) skew(0deg, 5deg) translateY(-2%)`];
+      skew = "skew3";
     } else {
-      skew = [0, `none`];
+      skew = "skew4";
     }
   }
 
@@ -84,7 +74,7 @@ export const Roll = ({ width, length }) => {
             {[...Array(labelCount)].map((_, i) => (
               <div
                 key={i}
-                className={`label`}
+                className={`label ${skew}`}
                 style={{
                   width: `${labelWidth}%`,
                   transform: i <= skew[0] && skew[1],
