@@ -7,7 +7,7 @@ const rollDimensions = {
   length: 150,
 };
 
-export const Roll = ({ width, length }) => {
+export const Roll = ({ width, length, shape, orientation }) => {
   // state
   //const [skew, setSkew] = useState("");
 
@@ -59,6 +59,26 @@ export const Roll = ({ width, length }) => {
     }
   }
 
+  // label orientation
+  let labelOrientation;
+
+  switch (orientation) {
+    case 1:
+      labelOrientation = "labelFlow1";
+      break;
+    case 2:
+      labelOrientation = "labelFlow2";
+      break;
+    case 3:
+      labelOrientation = "labelFlow3";
+      break;
+    case 4:
+      labelOrientation = "labelFlow4";
+      break;
+    default:
+      labelOrientation = "labelFlow3";
+  }
+
   console.log(labelCount);
   return (
     <div className='component-wrapper'>
@@ -74,13 +94,15 @@ export const Roll = ({ width, length }) => {
             {[...Array(labelCount)].map((_, i) => (
               <div
                 key={i}
-                className={`label ${skew}`}
+                className={`label1 ${skew}`}
                 style={{
                   width: `${labelWidth}%`,
                   transform: i <= skew[0] && skew[1],
                   marginLeft: i === 1 && skew[2],
                 }}
-              ></div>
+              >
+                <div className={labelOrientation}></div>
+              </div>
             ))}
           </div>
         </div>
@@ -92,6 +114,7 @@ export const Roll = ({ width, length }) => {
 export const RollPreview = () => {
   const [width, setWidth] = useState();
   const [length, setLength] = useState();
+  const [or, setOr] = useState();
 
   return (
     <>
@@ -106,8 +129,13 @@ export const RollPreview = () => {
           placeholder='length'
           onChange={(e) => setLength(e.target.value)}
         />
+        <input
+          type='number'
+          placeholder='orientation'
+          onChange={(e) => setOr(parseInt(e.target.value))}
+        />
       </div>
-      <Roll width={width} length={length} />
+      <Roll width={width} length={length} orientation={or} />
     </>
   );
 };
