@@ -2,77 +2,94 @@ import React, { useEffect, useState, useRef } from "react";
 import "./roll.scss";
 import logo from "./assets/sttark_label_logo.png";
 
-// initial roll dimensions
 const rollDimensions = {
-    width: 110,
-    height: 110,
-    thickness: 30,
-  },
-  { width, height, thickness } = rollDimensions;
+  width: 110,
+  length: 150,
+};
 
-const styles = {
-    roll: {
-      width: `${width}px`,
-      height: `${height}px`,
+export const Roll = ({ width, length }) => {
+  // state
+  //const [skew, setSkew] = useState("");
 
-      cylinder: {
-        borderBottomLeftRadius: `${width * 0.6}px ${height * 0.3}px `,
-        backgroundImage: `linear-gradient(
-      90deg,
-      #ffffff 50%,
-      #C6C3C1 50%
-    )`,
-      },
+  let w;
+  let labelCount;
+  let labelWidth;
+  let skew;
 
-      rollThickness: {
-        height: `${thickness + width * 0.05}px`,
-        top: `-${(thickness + width * 0.05) / 2}px`,
-        boxShadow: `0px ${height * 0.02}px #c6c3c1`,
-      },
+  if (!width) {
+    w = rollDimensions.width;
+    labelCount = 5;
+  } else if (width <= 4) {
+    w = 40;
+    labelCount = 5;
+  } else if (width >= 12) {
+    w = rollDimensions.width;
+    labelCount = 5;
+  } else {
+    w = width * 10;
+  }
 
-      rollLength: {
-        top: `${(thickness + width * 0.05) / 2 + height * 0.02}px`,
-        height: `${height - (thickness + width * 0.05) / 2 - height * 0.02}px`,
-        width: `${width * 2}px`,
-        borderBottomLeftRadius: `${width * 0.6}px ${height * 0.3}px`,
-      },
+  if (!length) {
+    // default values
+    labelCount = 3;
+    labelWidth = 30;
+    skew = [
+      0,
+      `rotateX(20deg) rotateY(-20deg) scale(0.9, 1.05) skew(0deg, 10deg) translate(-4%, -4%)`,
+      `-3%`,
+    ]; // [<number of labels to affect>, <css for skewed labels>, <css for affected labels>]
+  } else if (length <= 4) {
+    // set the max count of labels to 7 and assign the appropiate 14% width to cover area
+    labelCount = 7;
+    labelWidth = 14;
 
-      label: {
-        height: "80%",
-        //width: `${width / 3.2}%`, // decimal accounts for margin
-      },
-    },
-  },
-  {
-    roll,
-    roll: { rollThickness },
-    roll: { rollLength },
-    roll: { cylinder },
-    roll: { label },
-  } = styles;
+    skew = [
+      1,
+      `rotateX(20deg) rotateY(-20deg) scale(0.9, 1.05) skew(0deg, 10deg) translate(-4%, -4%)`,
+      ``,
+    ];
+  } else if (length >= 12) {
+    labelCount = 1;
+    labelWidth = 99;
 
-export const Roll = ({ labelWidth, labelLength }) => {
-  let width = labelWidth >= 4 ? `${labelWidth * 10}px` : "110px";
-  let length =
-    labelLength <= 2
-      ? `9.5%`
-      : labelLength > 2
-      ? `${100 / Math.ceil((rollDimensions.width * 2) / (labelLength * 10))}%`
-      : "31%";
+    // this means there is only one label. Do not alter styles
+    skew = [0, `none`];
+  } else {
+    // get the total length area minus the left padding on the roll length divided by the length * 10 to match pixel dimension
+    let lc = (rollDimensions.length * 2 - 7) / (length * 10);
+    labelCount = Math.floor(lc);
 
+    labelWidth = `${(rollDimensions.length * 2 - 10) / (lc * 0.75)}`;
+
+    // check there are at least 3 labels otherwise the skew look odd
+    if (labelCount >= 3) {
+      skew = [0, `scale(0.9, 1) skew(0deg, 5deg) translateY(-2%)`];
+    } else {
+      skew = [0, `none`];
+    }
+  }
+
+  console.log(labelCount);
   return (
     <div className='component-wrapper'>
-      <div className='roll' style={{ ...roll, height: width }}>
-        <div className='roll_thickness' style={rollThickness}>
+      <div
+        className='roll'
+        style={{ height: `${w}px`, width: rollDimensions.length }}
+      >
+        <div className='roll_thickness'>
           <div className='thickness_core'></div>
         </div>
-        <div className='cylinder' style={cylinder}>
-          <div className='roll_length' style={rollLength}>
-            {[...Array(10)].map((_, i) => (
+        <div className='cylinder'>
+          <div className='roll_length'>
+            {[...Array(labelCount)].map((_, i) => (
               <div
                 key={i}
-                className='label'
-                style={{ ...label, width: length }}
+                className={`label`}
+                style={{
+                  width: `${labelWidth}%`,
+                  transform: i <= skew[0] && skew[1],
+                  marginLeft: i === 1 && skew[2],
+                }}
               ></div>
             ))}
           </div>
@@ -96,11 +113,11 @@ export const RollPreview = () => {
         />
         <input
           type='text'
-          placeholder='height'
+          placeholder='length'
           onChange={(e) => setLength(e.target.value)}
         />
       </div>
-      <Roll labelWidth={width} labelLength={length} />
+      <Roll width={width} length={length} />
     </>
   );
 };
