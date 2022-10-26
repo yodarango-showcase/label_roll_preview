@@ -112,7 +112,7 @@ $roll-material-color-shadow: #c6c3c1;
   }
 }
 
-// label wrappers
+// label wrapper
 .roll {
   .label-wrapper {
     .label {
@@ -133,6 +133,59 @@ $roll-material-color-shadow: #c6c3c1;
         background-repeat: no-repeat;
         background-size: 80%;
         background-image: url("sttark_horizontal.png");
+      }
+    }
+  }
+}
+
+// shapes
+.roll {
+  .label-wrapper {
+    .round {
+      border-radius: 50%;
+      .label-design {
+        border-radius: 50%;
+      }
+    }
+
+    .custom {
+      clip-path: polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35%
+      );
+      .label-design {
+        width: 95%;
+        height: 95%;
+        clip-path: polygon(
+          50% 0%,
+          61% 35%,
+          98% 35%,
+          68% 57%,
+          79% 91%,
+          50% 70%,
+          21% 91%,
+          32% 57%,
+          2% 35%,
+          39% 35%
+        );
+      }
+    }
+
+    .previous {
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+
+      .label-design {
+        width: 98%;
+        height: 98%;
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
       }
     }
   }
