@@ -1,5 +1,4 @@
 export const getDimensions = (width, length, dimensions) => {
-  console.log(width, length, dimensions);
   // get possible label count
   const area = dimensions * 1.5;
 

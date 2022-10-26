@@ -124,15 +124,12 @@ $roll-material-color-shadow: #c6c3c1;
       align-items: center;
       justify-content: center;
       padding: 1px;
+      overflow: hidden;
 
       .label-design {
         background-color: #f8f5f2;
         width: 100%;
         height: 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 80%;
-        background-image: url("sttark_horizontal.png");
       }
     }
   }
@@ -141,6 +138,22 @@ $roll-material-color-shadow: #c6c3c1;
 // shapes
 .roll {
   .label-wrapper {
+    .square {
+      border-radius: 0.5em;
+
+      .label-design {
+        border-radius: 0.5em;
+      }
+    }
+
+    .squared-corners {
+      border-radius: 0;
+
+      .label-design {
+        border-radius: 0;
+      }
+    }
+
     .round {
       border-radius: 50%;
       .label-design {
@@ -176,6 +189,10 @@ $roll-material-color-shadow: #c6c3c1;
           2% 35%,
           39% 35%
         );
+
+        .orientation {
+          background-size: 50%;
+        }
       }
     }
 
@@ -186,6 +203,41 @@ $roll-material-color-shadow: #c6c3c1;
         width: 98%;
         height: 98%;
         clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+
+        .orientation {
+          background-size: 70%;
+        }
+      }
+    }
+  }
+}
+
+// orientation
+// shapes
+.roll {
+  .label-wrapper {
+    .label {
+      .orientation {
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+      .one {
+        background-image: url("layouts/1.png");
+        transform: rotate(90deg);
+      }
+      .two {
+        background-image: url("layouts/2.png");
+        transform: rotate(-90deg);
+      }
+      .three {
+        background-image: url("layouts/3.png");
+      }
+      .four {
+        background-image: url("layouts/4.png");
+        transform: rotate(180deg);
       }
     }
   }

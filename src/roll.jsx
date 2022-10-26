@@ -3,6 +3,7 @@ import "./roll.scss";
 import logo from "./assets/sttark_label_logo.png";
 import { getDimensions } from "./helpers/get_dimensions";
 import { getShape } from "./helpers/get_shape";
+import { getOrientation } from "./helpers/get_orientation";
 
 const rollDimensions = {
   width: 110,
@@ -13,8 +14,8 @@ export const Roll = ({
   width = 12,
   length = 12,
   shape = 1,
-  orientation,
-  corners,
+  orientation = 3,
+  squaredCorners = false,
 }) => {
   // get dimensions
   const { labelWidth, labelLength, labelCount } = getDimensions(
@@ -27,24 +28,7 @@ export const Roll = ({
   const labelShape = getShape(shape);
 
   // label orientation
-  let labelOrientation;
-
-  switch (orientation) {
-    case 1:
-      labelOrientation = "labelFlow1";
-      break;
-    case 2:
-      labelOrientation = "labelFlow2";
-      break;
-    case 3:
-      labelOrientation = "labelFlow3";
-      break;
-    case 4:
-      labelOrientation = "labelFlow4";
-      break;
-    default:
-      labelOrientation = "labelFlow3";
-  }
+  let labelOrientation = getOrientation(orientation);
 
   return (
     <div className='component-wrapper'>
@@ -66,7 +50,9 @@ export const Roll = ({
               {[...Array(labelCount)].map((_, i) => (
                 <div
                   key={i}
-                  className={`label ${labelShape}`}
+                  className={`label ${labelShape} ${
+                    squaredCorners ? "squared-corners" : ""
+                  }`}
                   style={{
                     width: `${labelLength - labelLength * 0.15}px`,
                     height: `${labelWidth - labelWidth * 0.15}px`,
