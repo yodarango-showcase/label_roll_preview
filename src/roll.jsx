@@ -4,60 +4,90 @@ import logo from "./assets/sttark_label_logo.png";
 
 const rollDimensions = {
   width: 110,
-  length: 150,
+  //length: 150,
 };
 
-export const Roll = ({ width, length, shape, orientation }) => {
-  // state
-  //const [skew, setSkew] = useState("");
+export const Roll = ({
+  width = 12,
+  length = 12,
+  shape = 1,
+  orientation,
+  corners,
+}) => {
+  const getLabelCount = () => {
+    // get possible label count
+    const area = rollDimensions.width * 1.5;
 
-  let w;
-  let labelCount;
-  let labelWidth;
-  let skew;
+    // dimensions
+    let labelWidth;
+    let labelLength;
+    let labelCount;
 
-  if (!width) {
-    w = rollDimensions.width;
-    labelCount = 5;
-  } else if (width <= 4) {
-    w = 40;
-    labelCount = 5;
-  } else if (width >= 12) {
-    w = rollDimensions.width;
-    labelCount = 5;
-  } else {
-    w = width * 10;
-  }
-
-  if (!length) {
-    // default values
-    labelCount = 3;
-    labelWidth = 30;
-    skew = "skew1";
-  } else if (length <= 4) {
-    // set the max count of labels to 7 and assign the appropiate 14% width to cover area
-    labelCount = 7;
-    labelWidth = 14;
-
-    skew = "skew2";
-  } else if (length >= 12) {
-    labelCount = 1;
-    labelWidth = 99;
-    skew = "skew4";
-  } else {
-    // get the total length area minus the left padding on the roll length divided by the length * 10 to match pixel dimension
-    let lc = (rollDimensions.length * 2 - 7) / (length * 10);
-    labelCount = Math.floor(lc);
-
-    labelWidth = `${(rollDimensions.length * 2 - 10) / (lc * 0.75)}`;
-
-    // check there are at least 3 labels otherwise the skew look odd
-    if (labelCount >= 3) {
-      skew = "skew3";
+    // width
+    if (!width) {
+      // if there is not width but there is a length make it a square by assigning it the value of the length
+      if (labelLength && labelLength <= 12) {
+        labelWidth = labelLength;
+      } else {
+        labelWidth = 120; // else let it be the default value
+      }
+    } else if (width <= 4) {
+      // since both labels smallest size is 4, they will always be a square regardless of the dimensions. Make it a rectangle if the length is greater than the width
+      if (length > width && length <= 4) {
+        labelWidth = 30;
+      } else {
+        labelWidth = 40;
+      }
+    } else if (width >= 12) {
+      labelWidth = 120;
     } else {
-      skew = "skew4";
+      labelWidth = width * 10;
     }
-  }
+
+    // length
+    if (!length) {
+      // if there is not length but there is a width make it a square by assigning it the value of the width
+      if (labelWidth) {
+        labelLength = labelWidth;
+      } else {
+        labelLength = 170; // else let it be the default value
+      }
+    } else if (length <= 4) {
+      // since both labels smallest size is 4, they will always be a square regardless of the dimensions. Make it a rectangle if the length is greater than the width
+      if (length < width && width <= 4) {
+        labelLength = 30;
+      } else {
+        labelLength = 40;
+      }
+    } else if (length >= 17) {
+      labelLength = 170;
+    } else {
+      labelLength = length * 10;
+    }
+
+    // count
+    if (!length) {
+      if (labelLength <= 60) {
+        labelCount = 3;
+      } else {
+        labelCount = 2;
+      }
+    } else if (length > 13) {
+      labelCount = 1;
+    } else if (length < 4) {
+      labelCount = 3;
+    } else {
+      labelCount = Math.ceil(area / (length * 10));
+    }
+
+    return { count: labelCount, width: labelWidth, length: labelLength };
+  };
+
+  console.log(getLabelCount());
+
+  let labelCount = getLabelCount().count;
+  let labelWidth = getLabelCount().width;
+  let labelLength = getLabelCount().length;
 
   // label orientation
   let labelOrientation;
@@ -79,31 +109,62 @@ export const Roll = ({ width, length, shape, orientation }) => {
       labelOrientation = "labelFlow3";
   }
 
-  console.log(labelCount);
+  // label shape
+  let labelShape;
+  switch (shape) {
+    case 1:
+      labelShape = "square";
+      break;
+    case 2:
+      labelShape = "round";
+      break;
+    case 3:
+      labelShape = "custom";
+      break;
+    case 4:
+      labelShape = "previous";
+      break;
+    default:
+      labelShape = "square";
+  }
+
   return (
     <div className='component-wrapper'>
       <div
         className='roll'
-        style={{ height: `${w}px`, width: rollDimensions.length }}
+        style={{ height: `${labelWidth}px`, width: rollDimensions.width }}
       >
         <div className='roll_thickness'>
           <div className='thickness_core'></div>
         </div>
         <div className='cylinder'>
           <div className='roll_length'>
-            {[...Array(labelCount)].map((_, i) => (
-              <div
-                key={i}
-                className={`label1 ${skew}`}
-                style={{
-                  width: `${labelWidth}%`,
-                  transform: i <= skew[0] && skew[1],
-                  marginLeft: i === 1 && skew[2],
-                }}
-              >
-                <div className={labelOrientation}></div>
-              </div>
-            ))}
+            <div
+              className='label-wrapper'
+              style={{
+                width: `${rollDimensions.length * 2 * 0.9}px`,
+              }}
+            >
+              {[...Array(labelCount)].map((_, i) => (
+                <>
+                  {shape === 1 && (
+                    <div
+                      key={i}
+                      className={`label ${labelShape}`}
+                      style={{
+                        width: `${labelLength - labelLength * 0.15}px`,
+                        height: `${labelWidth - labelWidth * 0.15}px`,
+                      }}
+                    >
+                      <div className={`label-design ${labelOrientation}`}></div>
+                    </div>
+                  )}
+                  {shape === 2 && (
+                    <div className={`${labelShape}`} key={i}></div>
+                  )}
+                </>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -115,6 +176,7 @@ export const RollPreview = () => {
   const [width, setWidth] = useState();
   const [length, setLength] = useState();
   const [or, setOr] = useState();
+  const [shape, setShape] = useState();
 
   return (
     <>
@@ -122,7 +184,7 @@ export const RollPreview = () => {
         <input
           type='text'
           placeholder='width'
-          onChange={(e) => setWidth(e.target.value)}
+          onChange={(e) => setWidth(parseInt(e.target.value))}
         />
         <input
           type='text'
@@ -134,8 +196,13 @@ export const RollPreview = () => {
           placeholder='orientation'
           onChange={(e) => setOr(parseInt(e.target.value))}
         />
+        <input
+          type='number'
+          placeholder='shape'
+          onChange={(e) => setShape(parseInt(e.target.value))}
+        />
       </div>
-      <Roll width={width} length={length} orientation={or} />
+      <Roll width={width} length={length} orientation={or} shape={shape} />
     </>
   );
 };
