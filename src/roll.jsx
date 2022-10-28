@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import "./roll.scss";
-import logo from "./assets/sttark_label_logo.png";
 import { getDimensions } from "./helpers/get_dimensions";
 import { getShape } from "./helpers/get_shape";
 import { getOrientation } from "./helpers/get_orientation";
