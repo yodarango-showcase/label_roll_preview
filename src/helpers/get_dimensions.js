@@ -15,14 +15,14 @@ export const getDimensions = (width, length, dimensions) => {
     } else {
       labelWidth = 120; // else let it be the default value
     }
-  } else if (width <= 4) {
+  } /*else if (width <= 4) {
     // since both labels smallest size is 4, they will always be a square regardless of the dimensions. Make it a rectangle if the length is greater than the width
     if (length > width && length <= 4) {
       labelWidth = 30;
     } else {
       labelWidth = 40;
     }
-  } else if (width >= 12) {
+  }*/ else if (width >= 12) {
     labelWidth = 120;
   } else {
     labelWidth = width * 10;
@@ -36,14 +36,14 @@ export const getDimensions = (width, length, dimensions) => {
     } else {
       labelLength = 170; // else let it be the default value
     }
-  } else if (length <= 4) {
+  } /*else if (length <= 4) {
     // since both labels smallest size is 4, they will always be a square regardless of the dimensions. Make it a rectangle if the length is greater than the width
     if (length < width && width <= 4) {
       labelLength = 30;
     } else {
       labelLength = 40;
     }
-  } else if (length >= 17) {
+  } */ else if (length >= 17) {
     labelLength = 170;
   } else {
     labelLength = length * 10;
