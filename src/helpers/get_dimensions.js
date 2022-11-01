@@ -1,6 +1,6 @@
 export const getDimensions = (width, length, dimensions) => {
   // get possible label count
-  const area = dimensions * 1.5;
+  const area = dimensions;
 
   // dimensions
   let labelWidth;
@@ -50,23 +50,38 @@ export const getDimensions = (width, length, dimensions) => {
   }
 
   // count
-  if (!length) {
-    if (labelLength <= 60) {
-      //labelLength is set above if !length
-      labelCount = 3;
-    } else {
-      labelCount = 2;
+  // if (!length) {
+  //   if (labelLength <= 60) {
+  //     //labelLength is set above if !length
+  //     labelCount = 3;
+  //   } else {
+  //     labelCount = 2;
+  //   }
+  //   area / labelLength
+  // } else if (length > 13) {
+  //   labelCount = 1;
+  // } else if (length < 4) {
+  //   labelCount = 3;
+  // } else {
+  //   labelCount = Math.ceil(area / (length * 10));
+  // }
+
+  labelCount = Math.floor(area / (labelLength + 5)); // 5 accounts for the margin set
+  console.log(labelCount);
+
+  // label styling
+  let consideredArea = 100;
+
+  const labels = [...Array(labelCount)].map((label, index) => {
+    if (label <= consideredArea || index === 0) {
+      consideredArea = consideredArea - label;
+      return { id: index + 1, isCurved: true };
     }
-  } else if (length > 13) {
-    labelCount = 1;
-  } else if (length < 4) {
-    labelCount = 3;
-  } else {
-    labelCount = Math.ceil(area / (length * 10));
-  }
+    return { id: index + 1, isCurved: false };
+  });
 
   return {
-    labelCount: labelCount,
+    labelCount: labels,
     labelWidth: labelWidth,
     labelLength: labelLength,
   };
