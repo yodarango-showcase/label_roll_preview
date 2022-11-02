@@ -62,7 +62,7 @@ $roll-material-color-shadow: #c6c3c1;
       padding: 7px;
       padding-left: 0;
       position: absolute;
-      overflow-x: hidden;
+      //overflow-x: hidden;
       border-bottom-left-radius: 20% 30%;
       background-color: $roll-material-color;
 
@@ -73,6 +73,17 @@ $roll-material-color-shadow: #c6c3c1;
         justify-content: flex-start;
         margin: 0 auto 0 0;
       }
+
+      // .border-bottom {
+      //   top: 0;
+      //   left: 0;
+      //   position: absolute;
+      //   width: 200px;
+      //   height: 100px;
+      //   path {
+      //     fill: $roll-material-color;
+      //   }
+      // }
     }
   }
 
@@ -136,6 +147,7 @@ $roll-material-color-shadow: #c6c3c1;
     }
 
     .label-is-curved {
+      overflow: visible;
       background-color: transparent;
     }
   }
@@ -253,24 +265,48 @@ $roll-material-color-shadow: #c6c3c1;
 .roll {
   .label-wrapper {
     position: relative;
-    .design-curved {
-      position: absolute;
-      top: -10px;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      clip-path: url(#svgPath);
 
-      .design {
+    .label-is-curved {
+      perspective: 200px;
+      perspective-origin: 100% 50%;
+
+      .design-curved {
+        position: relative;
+        overflow: hidden;
+        top: -10%;
+        left: -10%;
         width: 100%;
         height: 100%;
-        background-size: cover;
-        background-position: center;
-        width: 100%;
-      }
-      .svg {
-        width: 100%;
-        height: 100%;
+        transform: rotateZ(7deg) scale(0.8, 1.2) skewX(11deg);
+        border-bottom-left-radius: 50% 20%;
+
+        &:after {
+          content: "";
+          position: absolute;
+          background-color: $roll-material-color;
+          width: 110%;
+          height: 25%;
+          top: -6%;
+          left: -5%;
+          z-index: 2;
+          border-bottom-left-radius: 80%;
+          transform: rotateZ(-8deg) skewX(8deg);
+          // border-bottom-left-radius: 100% 50%;
+          // border-bottom-right-radius: 100% 50%;
+        }
+        //clip-path: url(#svgPath);
+
+        .design {
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+          width: 100%;
+        }
+        // .svg {
+        //   width: 100%;
+        //   height: 100%;
+        // }
       }
     }
   }
