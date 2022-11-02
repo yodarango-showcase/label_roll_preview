@@ -67,7 +67,6 @@ export const getDimensions = (width, length, dimensions) => {
   // }
 
   labelCount = Math.floor(area / (labelLength + 5)); // 5 accounts for the margin set
-  console.log(labelCount);
 
   // label styling
   let consideredArea = 100;

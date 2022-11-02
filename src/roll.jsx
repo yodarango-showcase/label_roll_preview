@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./roll.scss";
 import { getDimensions } from "./helpers/get_dimensions";
 import { getOrientation, getShape } from "./helpers/get_options";
+import { getSvgMask } from "./helpers/getSvgMask";
 
 const rollDimensions = {
   width: 160,
@@ -28,17 +29,25 @@ export const Roll = ({
   // label orientation
   let labelOrientation = getOrientation(orientation);
 
+  // get the corresponding svg mask
+  const SVGMask = getSvgMask(width, length);
+
+  console.log(SVGMask);
+
   return (
     <div className='component-wrapper'>
       <div
-        className='roll'
+        className={`roll`}
         style={{ height: `${labelWidth}px`, width: rollDimensions.width }}
       >
         <div className={`roll_thickness ${labelWidth <= 40 && "min-width"}`}>
           <div className='thickness_core'></div>
         </div>
         <div className='cylinder'>
-          <div className='roll_length' style={{ width: rollDimensions.length }}>
+          <div
+            className={`roll_length ${labelWidth <= 40 && "min-width"}`}
+            style={{ width: rollDimensions.length }}
+          >
             <div className={`label-wrapper`}>
               {labelCount.map((label, i) =>
                 label.isCurved ? (
@@ -48,26 +57,25 @@ export const Roll = ({
                       squaredCorners ? "squared-corners" : ""
                     } ${label.isCurved && "label-is-curved"}`}
                     style={{
-                      width: `${labelLength}px`,
+                      ...SVGMask.addStyles,
+                      width: `${SVGMask.width}px`,
                       height: `${labelWidth}px`,
                     }}
                   >
                     <div className={`design-curved`}>
-                      {/*<svg
-                        viewBox='0 0 800 800'
-                        version='1.1'
-                        style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'
-                      >
-                        <path d='M33.21,470.785C33.21,470.785 39,505.07 65.196,521.392C91.936,538.054 124.845,548.652 176.048,554.759C216.765,559.616 300.061,554.453 300.061,554.453C300.061,554.453 308.055,596.842 292.88,602.409C267.836,611.598 194.387,622.146 149.794,609.583C105.201,597.02 44.753,550.164 25.323,527.031C13.146,512.535 33.21,470.785 33.21,470.785Z' />
-                  </svg>*/}
                       <div
                         className='design'
                         style={{
                           backgroundImage:
-                            "url(https://images.unsplash.com/photo-1667330102328-c9a08a73373a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80)",
+                            "url(https://images.unsplash.com/photo-1615457938971-3ab61c1c0d57?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8eWVsbG93fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60)",
                         }}
                       ></div>
                     </div>
+                    <svg>
+                      <clipPath id='svgPath'>
+                        <path d={SVGMask.path} stroke='#FA665D' />
+                      </clipPath>
+                    </svg>
                   </div>
                 ) : (
                   <div
@@ -112,7 +120,7 @@ export const RollPreview = () => {
         <input
           type='text'
           placeholder='length'
-          onChange={(e) => setLength(e.target.value)}
+          onChange={(e) => setLength(parseInt(e.target.value))}
         />
         <input
           type='number'
