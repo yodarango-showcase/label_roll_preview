@@ -70,7 +70,8 @@ export const getDimensions = (width, length, dimensions) => {
 
   console.log("label count", labelCount);
   // label styling
-  let consideredArea = 99;
+  let consideredArea = 80; //length >= 4 ? 80 : 60; // the first 3 labels will be curved
+  console.log(consideredArea);
 
   const labels = [...Array(labelCount)].map((label, index) => {
     if (labelLength <= consideredArea || index === 0) {

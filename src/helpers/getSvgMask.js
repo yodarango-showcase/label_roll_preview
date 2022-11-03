@@ -7,6 +7,16 @@ const coordinates = {
         ],
         addStyles: [{ transform: "translate(-2px, -65%)" }],
       };
+    else if (length <= 2)
+      return {
+        path: [],
+        addStyles: [
+          { transform: "translate(-2px, -17px)" },
+          { transform: "translate(-5px, -7px)" },
+          { transform: "translate(-6px, -2px)" },
+          { transform: "translate(-7px, -1px)" },
+        ],
+      };
     else if (length <= 5)
       return {
         path: [
@@ -26,6 +36,16 @@ const coordinates = {
           "M1 21V1.5C1 1.5 17.3272 6.73156 34 8.02564C52.5 9.46154 83 9.46154 83 9.46154V30.9537C83 30.9537 45.086 31.3379 30.0968 29.8923C10.6989 28.0216 1 21 1 21Z",
         ],
         addStyles: [{ transform: "translate(-2px, -45%)" }],
+      };
+    else if (length <= 2)
+      return {
+        path: [],
+        addStyles: [
+          { transform: "translate(-2px, -17px)" },
+          { transform: "translate(-5px, -7px)" },
+          { transform: "translate(-6px, -2px)" },
+          { transform: "translate(-7px, -1px)" },
+        ],
       };
     else if (length <= 5)
       return {
@@ -48,6 +68,16 @@ const coordinates = {
         ],
         addStyles: [{ transform: "translate(-2px, -28%)" }],
       };
+    else if (length <= 2)
+      return {
+        path: [],
+        addStyles: [
+          { transform: "translate(-2px, -17px)" },
+          { transform: "translate(-5px, -7px)" },
+          { transform: "translate(-6px, -2px)" },
+          { transform: "translate(-7px, -1px)" },
+        ],
+      };
     else if (length <= 5)
       return {
         path: [
@@ -68,6 +98,16 @@ const coordinates = {
           "M1 36.5V1C1 1 18.2473 6.04303 35 7C63.2151 8.61175 83 8 83 8V49.919C83 49.919 45.086 50.5914 30.0968 48.0616C10.6989 44.7877 1 36.5 1 36.5Z",
         ],
         addStyles: [{ transform: "translate(-2px, -15%)" }],
+      };
+    else if (length <= 2)
+      return {
+        path: [],
+        addStyles: [
+          { transform: "translate(-2px, -17px)" },
+          { transform: "translate(-5px, -7px)" },
+          { transform: "translate(-6px, -2px)" },
+          { transform: "translate(-7px, -1px)" },
+        ],
       };
     else if (length <= 5)
       return {
@@ -90,6 +130,16 @@ const coordinates = {
         ],
         addStyles: [{ transform: "translate(-2px, -15%)" }],
       };
+    else if (length <= 2)
+      return {
+        path: [],
+        addStyles: [
+          { transform: "translate(-2px, -17px)" },
+          { transform: "translate(-5px, -7px)" },
+          { transform: "translate(-6px, -2px)" },
+          { transform: "translate(-7px, -1px)" },
+        ],
+      };
     else if (length <= 5)
       return {
         path: [
@@ -110,6 +160,21 @@ const coordinates = {
           "M1 53.4226V1C1 1 15.7473 6.89421 32.5 8.27108C60.7151 10.59 83 10.4096 83 10.4096V71.8835C83 71.8835 45.086 72.8508 30.0968 69.211C10.6989 64.5007 1 53.4226 1 53.4226Z",
         ],
         addStyles: [{ transform: "translate(-2px, -15%)" }],
+      };
+    else if (length <= 2)
+      return {
+        path: [
+          "M1 53.5V1C6.07607 3.13729 11.4376 4.84633 18 6.27967V65.5352C11.1049 62.5454 5.21835 58.5093 1 53.5Z",
+          "M17.5 3.50021V65.0002C11.7128 64.2535 6.13475 62.9491 1 61.1132V1.09131C5.77576 1.99083 11.1816 2.77811 17.5 3.50021Z",
+          "M1 1.50244L1 63.5024C6.66905 64.2111 13.2308 64.4733 20 64.5001L20 2.73208C13.1981 2.58949 6.70369 2.2154 1 1.50244Z",
+          "M19.5 63.0024L20 1.50244C13.7324 1.71857 7.27789 1.84127 1 1.78979L1 63.4903C7.28305 63.4374 13.628 63.2199 19.5 63.0024Z",
+        ],
+        addStyles: [
+          { transform: "translate(-2px, -11px)" },
+          { transform: "translate(-5px, -5px)" },
+          { transform: "translate(-6px, -3px)" },
+          { transform: "translate(-7px, -2px)" },
+        ],
       };
     else if (length <= 5)
       return {
@@ -132,6 +197,21 @@ const coordinates = {
         ],
         addStyles: [{ transform: "translate(-2px, -15%)" }],
       };
+    else if (length <= 2)
+      return {
+        path: [
+          "M1 62.1992V1C6.07607 3.40445 11.4376 5.47138 18 7.18009V76.1887C11.1049 72.7821 5.21835 68.158 1 62.1992Z",
+          "M17.5 3.81783V75.5001C11.7128 74.5667 6.13475 73.0756 1 70.9853V1.14258C5.77576 2.20186 11.1816 3.09574 17.5 3.81783Z",
+          "M0.999996 0.711426L1.5 72.7114C7.04314 73.5333 13.4398 73.916 20 73.9912L20 1.85786C12.9398 1.69577 6.37336 1.32374 0.999996 0.711426Z",
+          "M19.5 72.2115L20 0.711426C13.6948 0.92163 7.21294 0.99992 1 0.926955L1 73.0003C7.34956 72.9581 13.7212 72.656 19.5 72.2115Z",
+        ],
+        addStyles: [
+          { transform: "translate(-2px, -13px)" },
+          { transform: "translate(-5px, -7px)" },
+          { transform: "translate(-6px, -3px)" },
+          { transform: "translate(-7px, -2px)" },
+        ],
+      };
     else if (length <= 5)
       return {
         path: [
@@ -152,6 +232,21 @@ const coordinates = {
           "M1 71V1C1 1 15.7473 8.17232 32.5 9.99522C60.7151 13.0654 83 12.3914 83 12.3914V94.8457C83 94.8457 45.086 96.1265 30.0968 91.3076C10.6989 85.0713 1 71 1 71Z",
         ],
         addStyles: [{ transform: "translate(-2px, -15%)" }],
+      };
+    else if (length <= 2)
+      return {
+        path: [
+          "M1 71.5V1C5.42602 3.76626 10.9233 6.07339 18 8.00606V86.4839C10.9245 82.6933 5.02582 77.6729 1 71.5Z",
+          "M17.5 4.00005V85.5001C11.6607 84.4052 6.08778 82.7109 1 80.4416V1.01904C5.80231 2.14675 11.2607 3.13348 17.5 4.00005Z",
+          "M0.999996 1L0.999996 82.4748C6.80491 83.3302 13.1948 83.7719 20 83.9302L20 2.33648C12.9398 2.0876 6.37336 1.60858 0.999996 1Z",
+          "M20 82.6281L20 1.24609C13.6948 1.54154 7.21294 1.58861 1 1.45138L1 82.9915C7.07933 83.0383 13.4504 82.8881 20 82.6281Z",
+        ],
+        addStyles: [
+          { transform: "translate(-2px, -15px)" },
+          { transform: "translate(-5px, -7px)" },
+          { transform: "translate(-6px, -3px)" },
+          { transform: "translate(-7px, -2px)" },
+        ],
       };
     else if (length <= 5)
       return {
@@ -174,6 +269,21 @@ const coordinates = {
         ],
         addStyles: [{ transform: "translate(-2px, -15%)" }],
       };
+    else if (length <= 2)
+      return {
+        path: [
+          "M1 81.5V1.5C6.56672 4.68098 11.7118 7.15929 18 9.30744V97.869C10.7712 93.6079 4.78765 87.9931 1 81.5Z",
+          "M17.5 5.49976V96.4998C11.7086 95.4139 6.11379 93.5419 1 91.0261V1.58252C5.65344 2.9672 10.9877 4.23348 17.5 5.49976Z",
+          "M0.999996 0.844727L0.999996 92.2056C6.16301 93.1782 13.0393 93.7086 20 93.9074L20 2.23101C13.8064 2.01277 7.66748 1.53447 0.999996 0.844727Z",
+          "M20 92.3447L20 0.844727C13.1565 1.28624 6.99533 1.43535 1 1.3351L1 92.9859C8.18093 93.0644 15.1175 92.8097 20 92.3447Z",
+        ],
+        addStyles: [
+          { transform: "translate(-2px, -15px)" },
+          { transform: "translate(-5px, -7px)" },
+          { transform: "translate(-6px, -2px)" },
+          { transform: "translate(-7px, -1px)" },
+        ],
+      };
     else if (length <= 5)
       return {
         path: [
@@ -194,6 +304,21 @@ const coordinates = {
           "M1 91.5967V2C1 2 13.9462 11.8666 31.5161 14.1034C61.1075 17.8707 87 17.6336 87 17.6336V118.811C87 118.811 47.2366 120.382 31.5161 114.469C11.172 106.817 1 91.5967 1 91.5967Z",
         ],
         addStyles: [{ transform: "translate(-2px, -15%)" }],
+      };
+    else if (length <= 2)
+      return {
+        path: [
+          "M1 1V90.5C4.53655 96.4849 10.5893 102.322 17.9504 106.851C17.5 107.5 17.9339 42.5642 17.9504 10.4359C11.5752 8.13234 7.14614 5.19055 1 1Z",
+          "M17.5 3.99993V103.801C11.7554 102.795 6.13968 100.797 1 98.1397V0.735352C5.3124 1.96238 10.5597 3.00846 17.5 3.99993Z",
+          "M0.999996 0.571289L0.999996 100.822C6.80491 102.031 13.1948 102.831 20 103.221L20 1.78625C13.8064 1.63361 7.66748 1.26103 0.999996 0.571289Z",
+          "M20 102.071L20 0.571289C13.1565 0.792046 6.99533 0.915336 1 0.855092L1 102.402C7.07933 102.604 13.4504 102.494 20 102.071Z",
+        ],
+        addStyles: [
+          { transform: "translate(-2px, -17px)" },
+          { transform: "translate(-5px, -7px)" },
+          { transform: "translate(-6px, -2px)" },
+          { transform: "translate(-7px, -1px)" },
+        ],
       };
     else if (length <= 5)
       return {
@@ -216,6 +341,21 @@ const coordinates = {
         ],
         addStyles: [{ transform: "translate(-2px, -15%)" }],
       };
+    else if (length <= 2)
+      return {
+        path: [
+          "M1 97.5V2C5.75611 6.05655 10.5122 9.57811 18 12.5796V115.635C12.2592 111.286 6.93543 105.375 1 97.5Z",
+          "M17 5.00013V111.5C10.9129 110.25 5.75119 108.273 1 105.368V1.04248C5.36422 2.49817 10.5734 3.8167 17 5.00013Z",
+          "M0.999996 1.5L0.999996 108.5C6.16408 110.307 12.6069 111.448 20 112.129L20 3.03022C12.7119 2.75953 5.99358 2.22937 0.999996 1.5Z",
+          "M20 111L20 0.978027C13.8744 1.2535 7.30799 1.299 1 1.15099L1 110.447C6.86599 110.846 13.2474 111 20 111Z",
+        ],
+        addStyles: [
+          { transform: "translate(-2px, -21px)" },
+          { transform: "translate(-5px, -7px)" },
+          { transform: "translate(-6px, -3px)" },
+          { transform: "translate(-7px, -2px)" },
+        ],
+      };
     else if (length <= 5)
       return {
         path: [
@@ -235,6 +375,21 @@ const coordinates = {
           "M1 108.5V1.5C1 1.5 13.9462 11.2951 31.5161 13.9664C61.1075 18.4654 87 18 87 18V141C87 141 47.2366 142.877 31.5161 135.815C11.172 126.676 1 108.5 1 108.5Z",
         ],
         addStyles: [{ transform: "translate(-2px, -15%)" }],
+      };
+    else if (length <= 2)
+      return {
+        path: [
+          "M1 107.5V2C5.50139 6.22005 10.0028 9.72758 16.82 12.7455V125.461C11.5234 121.287 6.52684 115.56 1 107.5Z",
+          "M18 6V122C11.4833 120.528 6.02722 118.527 1 115.4V1.42432C5.56382 3.08809 11.0751 4.59836 18 6Z",
+          "M1 0.848389L1 117.303C5.76106 118.8 12.3411 120.216 20 121.218L20 2.522C12.7115 2.23046 5.98575 1.65005 1 0.848389",
+          "M19.5 121.674L19.5 1.4563C13.5359 1.75155 7.1489 1.80392 1 1.65137L1 120.692C6.76464 121.305 13.0235 121.674 19.5 121.674Z",
+        ],
+        addStyles: [
+          { transform: "translate(-2px, -21px)" },
+          { transform: "translate(-5px, -7px)" },
+          { transform: "translate(-6px, -2px)" },
+          { transform: "translate(-7px, -2px)" },
+        ],
       };
     else if (length < 5)
       return {
@@ -270,7 +425,12 @@ export const getSvgMask = (width, length) => {
       (mask.addStyles[1].width = `${44}px`);
   else if (length === 3)
     (mask.addStyles[0].width = `${33}px`),
-      (mask.addStyles[1].width = `${38}px`);
+      (mask.addStyles[1].width = `${35}px`);
+  else if (length === 2)
+    (mask.addStyles[0].width = `${18}px`),
+      (mask.addStyles[1].width = `${19}px`),
+      (mask.addStyles[2].width = `${21}px`),
+      (mask.addStyles[3].width = `${20}px`);
   // console.log(mask);
   return mask;
 };

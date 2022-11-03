@@ -53,9 +53,10 @@ export const Roll = ({
                 label.isCurved ? (
                   <div
                     key={i}
-                    className={`label ${labelShape} ${
+                    data-test={i}
+                    className={`label label-is-curved ${labelShape} ${
                       squaredCorners ? "squared-corners" : ""
-                    } ${label.isCurved && "label-is-curved"}`}
+                    }`}
                     style={{
                       ...SVGMask.addStyles[i],
                       height: `${labelWidth}px`,
@@ -82,7 +83,7 @@ export const Roll = ({
                     key={i}
                     className={`label ${labelShape} ${
                       squaredCorners ? "squared-corners" : ""
-                    } ${label.isCurved && "label-is-curved"}`}
+                    }`}
                     style={{
                       width: `${labelLength}px`,
                       height: `${labelWidth}px`,
