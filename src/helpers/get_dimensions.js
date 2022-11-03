@@ -70,7 +70,7 @@ export const getDimensions = (width, length, dimensions) => {
 
   console.log("label count", labelCount);
   // label styling
-  let consideredArea = 100;
+  let consideredArea = 99;
 
   const labels = [...Array(labelCount)].map((label, index) => {
     if (labelLength <= consideredArea || index === 0) {

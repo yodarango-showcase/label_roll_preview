@@ -57,8 +57,7 @@ export const Roll = ({
                       squaredCorners ? "squared-corners" : ""
                     } ${label.isCurved && "label-is-curved"}`}
                     style={{
-                      ...SVGMask.addStyles,
-                      width: `${SVGMask.width}px`,
+                      ...SVGMask.addStyles[i],
                       height: `${labelWidth}px`,
                     }}
                   >
@@ -68,11 +67,12 @@ export const Roll = ({
                         style={{
                           backgroundImage:
                             "url(https://images.unsplash.com/photo-1615457938971-3ab61c1c0d57?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8eWVsbG93fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60)",
+                          clipPath: `url(#svgPath${i})`,
                         }}
                       ></div>
                     </div>
                     <svg>
-                      <clipPath id='svgPath'>
+                      <clipPath id={`svgPath${i}`}>
                         <path d={SVGMask.path[i]} stroke='#FA665D' />
                       </clipPath>
                     </svg>
