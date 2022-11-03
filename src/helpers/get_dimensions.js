@@ -68,17 +68,21 @@ export const getDimensions = (width, length, dimensions) => {
 
   labelCount = Math.floor(area / (labelLength + 5)); // 5 accounts for the margin set
 
+  console.log("label count", labelCount);
   // label styling
   let consideredArea = 100;
 
   const labels = [...Array(labelCount)].map((label, index) => {
-    if (label <= consideredArea || index === 0) {
-      consideredArea = consideredArea - label;
+    if (labelLength <= consideredArea || index === 0) {
+      consideredArea = consideredArea - labelLength;
+      console.log("Considered Area", consideredArea);
+
       return { id: index + 1, isCurved: true };
     }
     return { id: index + 1, isCurved: false };
   });
 
+  console.log("labels", labels);
   return {
     labelCount: labels,
     labelWidth: labelWidth,

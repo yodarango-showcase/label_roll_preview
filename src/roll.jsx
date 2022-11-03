@@ -73,7 +73,7 @@ export const Roll = ({
                     </div>
                     <svg>
                       <clipPath id='svgPath'>
-                        <path d={SVGMask.path} stroke='#FA665D' />
+                        <path d={SVGMask.path[i]} stroke='#FA665D' />
                       </clipPath>
                     </svg>
                   </div>
