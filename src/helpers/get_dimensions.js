@@ -36,13 +36,15 @@ export const getDimensions = (width, length, dimensions) => {
   }
 
   // get the area that should be curved
-  let consideredCurvedArea = length <= 1 ? 40 : 80;
+  let consideredCurvedArea = labelLength <= 10 ? 40 : 80;
 
   // get the area that should be straight
   labelCount = Math.floor((area - consideredCurvedArea) / (labelLength + 5)); // 5 accounts for the margin set
   labelCount = labelCount <= 1 ? 2 : labelCount; // makes sure there is at least one label present
   //console.log("label count", labelCount);
   //console.log("straight area", area - consideredCurvedArea);
+  // console.log("curved ares", consideredCurvedArea);
+  // console.log("label length", labelLength);
 
   // construct the labels object
   const labels = [...Array(labelCount)].map((_, index) => {
@@ -56,7 +58,7 @@ export const getDimensions = (width, length, dimensions) => {
         return {
           id: index,
           isCurved: false,
-          addStyles: { transform: `translateX(-9px)` },
+          addStyles: { transform: `translateX(-13px)` },
         };
       }
       if (labelLength <= 40) {
@@ -80,7 +82,7 @@ export const getDimensions = (width, length, dimensions) => {
           addStyles: { transform: `translateX(-7px)` },
         };
       }
-      if ((labelLength) => 40) {
+      if (labelLength >= 40) {
         return {
           id: index,
           isCurved: false,
@@ -89,6 +91,8 @@ export const getDimensions = (width, length, dimensions) => {
       }
     }
   });
+
+  console.log(labels);
 
   return {
     labels,

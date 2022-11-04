@@ -18,8 +18,8 @@ const coordinates = {
         addStyles: [
           { transform: "translate(-2px, -10px)" },
           { transform: "translate(-5px, -4px)" },
-          { transform: "translate(-8px, -2px)" },
-          { transform: "translate(-9px, -2px)" },
+          { transform: "translate(-10px, -2px)" },
+          { transform: "translate(-13px, -2px)" },
         ],
       };
     else if (length < 5)
@@ -431,50 +431,71 @@ const coordinates = {
 };
 
 export const getSvgMask = (width, length) => {
-  let trueLength;
-  let trueWidth;
+  let labelLength;
+  let labelWidth;
 
-  if (!length) {
-    if (width) trueLength = width;
-    else trueLength = 12;
-  } else {
-    trueLength = length;
-  }
+  // width
   if (!width) {
-    if (length) trueWidth = length;
-    else trueWidth = 12;
+    // if there is not width but there is a length make it a square by assigning it the value of the length
+    if (labelLength && labelLength <= 12) {
+      labelWidth = labelLength;
+    } else {
+      labelWidth = 12; // else let it be the default value
+    }
+  } else if (width >= 12) {
+    labelWidth = 12;
   } else {
-    trueWidth = width;
+    labelWidth = width;
+  }
+
+  // length
+  if (!length) {
+    // if there is not length but there is a width make it a square by assigning it the value of the width
+    if (labelWidth) {
+      labelLength = labelWidth;
+    } else {
+      labelLength = 17; // else let it be the default value
+    }
+  } else if (length >= 17) {
+    labelLength = 17;
+  } else {
+    labelLength = length;
   }
 
   //length = length > 0 && length <= 17 ? length : 12; // 12 is the default length
   //width = width > 0 && width <= 12 ? width : 12; // 12 is the default width
-  console.log(trueLength, trueWidth);
-  const index = coordinates[trueWidth](trueLength);
+  console.log(labelLength, labelWidth);
+  const index = coordinates[labelWidth](labelLength);
 
   let mask = {
     path: index.path,
     addStyles: index.addStyles,
   };
 
-  console.log("length", length);
+  //console.log("length", length);
   // add width here rather than in obj for cleaner syntax
-  if (trueLength >= 5)
+  if (labelLength >= 5)
     mask.addStyles[0].width = `${
-      trueLength === 7 ? 70 : trueLength === 6 ? 60 : trueLength === 5 ? 50 : 88
+      labelLength === 7
+        ? 70
+        : labelLength === 6
+        ? 60
+        : labelLength === 5
+        ? 50
+        : 88
     }px`;
-  else if (trueLength === 4)
+  else if (labelLength === 4)
     (mask.addStyles[0].width = `${39}px`),
       (mask.addStyles[1].width = `${44}px`);
-  else if (trueLength === 3)
+  else if (labelLength === 3)
     (mask.addStyles[0].width = `${33}px`),
       (mask.addStyles[1].width = `${35}px`);
-  else if (trueLength === 2)
+  else if (labelLength === 2)
     (mask.addStyles[0].width = `${18}px`),
       (mask.addStyles[1].width = `${19}px`),
       (mask.addStyles[2].width = `${21}px`),
       (mask.addStyles[3].width = `${20}px`);
-  else if (trueLength === 1)
+  else if (labelLength === 1)
     (mask.addStyles[0].width = `${13}px`),
       (mask.addStyles[1].width = `${13}px`),
       (mask.addStyles[2].width = `${14}px`),
