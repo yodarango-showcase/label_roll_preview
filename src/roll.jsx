@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./roll.scss";
 import { getDimensions } from "./helpers/get_dimensions";
 import { getOrientation, getShape } from "./helpers/get_options";
@@ -16,11 +16,14 @@ export const Roll = ({
   orientation = 3,
   squaredCorners = false,
 }) => {
+  const [rollLength, setRollLength] = useState(null);
+  let rollLengthDOMEL = useRef(null);
+
   // get dimensions
   const { labelWidth, labelLength, labels } = getDimensions(
     width,
     length,
-    rollDimensions.length
+    rollLength
   );
 
   // get shape
@@ -35,16 +38,10 @@ export const Roll = ({
   //console.log(SVGMask);
   //console.log(labels);
 
-  // useEffect(() => {
-  //   const straightLabel = document.querySelectorAll("#straight-label")[0];
-  //   const margin = getMarginBetween(
-  //     straightLabel.previousSibling,
-  //     straightLabel
-  //   );
-
-  //   // since gap healing is affected by length make sure it is present
-  //   length ? setAdjustGap(margin) : setAdjustGap(2);
-  // }, [width, length]);
+  useEffect(() => {
+    const rollL = rollLengthDOMEL.current.getBoundingClientRect();
+    setRollLength(rollL.width);
+  }, []);
 
   return (
     <div className='component-wrapper'>
@@ -57,6 +54,8 @@ export const Roll = ({
         </div>
         <div className='cylinder'>
           <div
+            ref={rollLengthDOMEL}
+            id='roll_length'
             className={`roll_length ${labelWidth <= 40 && "min-width"}`}
             style={{ width: rollDimensions.length }}
           >
@@ -65,7 +64,6 @@ export const Roll = ({
                 label.isCurved ? (
                   <div
                     key={i}
-                    data-test={i}
                     className={`label label-is-curved ${labelShape} ${
                       squaredCorners ? "squared-corners" : ""
                     }`}

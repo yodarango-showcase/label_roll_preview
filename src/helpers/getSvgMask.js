@@ -5,7 +5,7 @@ const coordinates = {
         path: [
           "M1 12.7414V1C1 1 11.5 6.78659 39 7.874C70 9.0998 83 7.874 83 7.874V18.8233C83 18.8233 61.0056 20.6012 39 19.7862C13 18.8233 1 12.7414 1 12.7414Z",
         ],
-        addStyles: [{ transform: "translate(-2px, -8px)" }],
+        addStyles: [{ transform: "translate(-2px, -9px)" }],
       };
     else if (length <= 2)
       return {
@@ -18,8 +18,8 @@ const coordinates = {
         addStyles: [
           { transform: "translate(-2px, -10px)" },
           { transform: "translate(-5px, -4px)" },
-          { transform: "translate(-6px, -2px)" },
-          { transform: "translate(-7px, -2px)" },
+          { transform: "translate(-8px, -2px)" },
+          { transform: "translate(-9px, -2px)" },
         ],
       };
     else if (length <= 5)
