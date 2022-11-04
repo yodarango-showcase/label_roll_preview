@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./roll.scss";
-import { getDimensions, getMarginBetween } from "./helpers/get_dimensions";
+import { getDimensions } from "./helpers/get_dimensions";
 import { getOrientation, getShape } from "./helpers/get_options";
 import { getSvgMask } from "./helpers/getSvgMask";
-import { useRef } from "react";
 
 const rollDimensions = {
   width: 160,
@@ -17,7 +16,6 @@ export const Roll = ({
   orientation = 3,
   squaredCorners = false,
 }) => {
-  const [adjustGap, setAdjustGap] = useState(0);
   // get dimensions
   const { labelWidth, labelLength, labels } = getDimensions(
     width,
@@ -94,18 +92,17 @@ export const Roll = ({
                   </div>
                 ) : (
                   <div
-                    // id='straight-label'
-                    // data-test={i}
                     key={i}
                     className={`label ${labelShape} ${
                       squaredCorners ? "squared-corners" : ""
                     }`}
                     style={{
-                      ///transform: `translateX(-${adjustGap}px)`,
+                      ...label.addStyles,
                       width: `${labelLength}px`,
                       height: `${labelWidth}px`,
                     }}
                   >
+                    {console.log(label)}
                     <div className={`label-design`}>
                       <div className={`orientation ${labelOrientation}`}></div>
                     </div>

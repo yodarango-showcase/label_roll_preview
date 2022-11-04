@@ -389,7 +389,7 @@ const coordinates = {
         ],
         addStyles: [
           { transform: "translate(-2px, -20px)" },
-          { transform: "translate(-5px, -2px)" },
+          { transform: "translate(-5px, -3px)" },
         ],
       };
   },
