@@ -431,36 +431,54 @@ const coordinates = {
 };
 
 export const getSvgMask = (width, length) => {
-  length = length > 0 && length <= 17 ? length : 12; // 12 is the default length
-  width = width > 0 && width <= 12 ? width : 12; // 12 is the default width
-  const index = coordinates[width](length);
+  let trueLength;
+  let trueWidth;
+
+  if (!length) {
+    if (width) trueLength = width;
+    else trueLength = 12;
+  } else {
+    trueLength = length;
+  }
+  if (!width) {
+    if (length) trueWidth = length;
+    else trueWidth = 12;
+  } else {
+    trueWidth = width;
+  }
+
+  //length = length > 0 && length <= 17 ? length : 12; // 12 is the default length
+  //width = width > 0 && width <= 12 ? width : 12; // 12 is the default width
+  console.log(trueLength, trueWidth);
+  const index = coordinates[trueWidth](trueLength);
 
   let mask = {
     path: index.path,
     addStyles: index.addStyles,
   };
 
+  console.log("length", length);
   // add width here rather than in obj for cleaner syntax
-  if (length >= 5)
+  if (trueLength >= 5)
     mask.addStyles[0].width = `${
-      length === 7 ? 70 : length === 6 ? 60 : length === 5 ? 50 : 88
+      trueLength === 7 ? 70 : trueLength === 6 ? 60 : trueLength === 5 ? 50 : 88
     }px`;
-  else if (length === 4)
+  else if (trueLength === 4)
     (mask.addStyles[0].width = `${39}px`),
       (mask.addStyles[1].width = `${44}px`);
-  else if (length === 3)
+  else if (trueLength === 3)
     (mask.addStyles[0].width = `${33}px`),
       (mask.addStyles[1].width = `${35}px`);
-  else if (length === 2)
+  else if (trueLength === 2)
     (mask.addStyles[0].width = `${18}px`),
       (mask.addStyles[1].width = `${19}px`),
       (mask.addStyles[2].width = `${21}px`),
       (mask.addStyles[3].width = `${20}px`);
-  else if (length === 1)
+  else if (trueLength === 1)
     (mask.addStyles[0].width = `${13}px`),
       (mask.addStyles[1].width = `${13}px`),
       (mask.addStyles[2].width = `${14}px`),
       (mask.addStyles[3].width = `${14}px`);
-  console.log("mask", mask);
+  //console.log("mask", mask);
   return mask;
 };

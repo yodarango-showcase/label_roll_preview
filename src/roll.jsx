@@ -73,6 +73,7 @@ export const Roll = ({
                     }}
                   >
                     <div className={`design-curved`}>
+                      {/*console.log("label-curved", label)*/}
                       <div
                         className='design'
                         style={{
@@ -100,7 +101,7 @@ export const Roll = ({
                       height: `${labelWidth}px`,
                     }}
                   >
-                    {console.log(label)}
+                    {/*console.log("label-straigh", label)*/}
                     <div className={`label-design`}>
                       <div className={`orientation ${labelOrientation}`}></div>
                     </div>

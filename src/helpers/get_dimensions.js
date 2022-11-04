@@ -25,6 +25,7 @@ export const getDimensions = (width, length, dimensions) => {
     // if there is not length but there is a width make it a square by assigning it the value of the width
     if (labelWidth) {
       labelLength = labelWidth;
+      console.log("label length", labelLength);
     } else {
       labelLength = 170; // else let it be the default value
     }
@@ -35,13 +36,13 @@ export const getDimensions = (width, length, dimensions) => {
   }
 
   // get the area that should be curved
-  let consideredCurvedArea = length <= 1 ? 40 : 80; //length >= 4 ? 80 : 60; // the first 3 labels will be curved
+  let consideredCurvedArea = length <= 1 ? 40 : 80;
 
   // get the area that should be straight
   labelCount = Math.floor((area - consideredCurvedArea) / (labelLength + 5)); // 5 accounts for the margin set
   labelCount = labelCount <= 1 ? 2 : labelCount; // makes sure there is at least one label present
-  console.log("label count", labelCount);
-  console.log("straight area", area - consideredCurvedArea);
+  //console.log("label count", labelCount);
+  //console.log("straight area", area - consideredCurvedArea);
 
   // construct the labels object
   const labels = [...Array(labelCount)].map((_, index) => {
@@ -58,27 +59,27 @@ export const getDimensions = (width, length, dimensions) => {
           addStyles: { transform: `translateX(-9px)` },
         };
       }
-      // if (labelLength <= 40) {
-      //   return {
-      //     id: index,
-      //     isCurved: false,
-      //     addStyles: { transform: `translateX(-5px)` },
-      //   };
-      // }
-      // if (labelLength >= 100) {
-      //   return {
-      //     id: index,
-      //     isCurved: false,
-      //     addStyles: { transform: `translateX(-3px)` },
-      //   };
-      // }
-      // if (labelLength >= 80) {
-      //   return {
-      //     id: index,
-      //     isCurved: false,
-      //     addStyles: { transform: `translateX(-7px)` },
-      //   };
-      // }
+      if (labelLength <= 40) {
+        return {
+          id: index,
+          isCurved: false,
+          addStyles: { transform: `translateX(-5px)` },
+        };
+      }
+      if (labelLength >= 100) {
+        return {
+          id: index,
+          isCurved: false,
+          addStyles: { transform: `translateX(-3px)` },
+        };
+      }
+      if (labelLength >= 80) {
+        return {
+          id: index,
+          isCurved: false,
+          addStyles: { transform: `translateX(-7px)` },
+        };
+      }
       if ((labelLength) => 40) {
         return {
           id: index,
