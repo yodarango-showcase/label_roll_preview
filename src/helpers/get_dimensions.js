@@ -66,27 +66,49 @@ export const getDimensions = (width, length, dimensions) => {
   //   labelCount = Math.ceil(area / (length * 10));
   // }
 
-  labelCount = Math.floor(area / (labelLength + 5)); // 5 accounts for the margin set
+  // get the area that should be curved
+  let consideredCurvedArea = length <= 1 ? 40 : 80; //length >= 4 ? 80 : 60; // the first 3 labels will be curved
 
+  // get the area that should be straight
+  labelCount = Math.floor((area - consideredCurvedArea) / (labelLength + 5)); // 5 accounts for the margin set
+  labelCount = labelCount <= 1 ? 2 : labelCount; // makes sure there is at least one label present
   console.log("label count", labelCount);
-  // label styling
-  let consideredArea = 80; //length >= 4 ? 80 : 60; // the first 3 labels will be curved
-  console.log(consideredArea);
+  console.log("straight area", area - consideredCurvedArea);
 
   const labels = [...Array(labelCount)].map((label, index) => {
-    if (labelLength <= consideredArea || index === 0) {
-      consideredArea = consideredArea - labelLength;
-      console.log("Considered Area", consideredArea);
+    if (labelLength <= consideredCurvedArea || index === 0) {
+      consideredCurvedArea = consideredCurvedArea - labelLength;
+      //console.log("Considered Area", consideredArea);
 
       return { id: index + 1, isCurved: true };
     }
     return { id: index + 1, isCurved: false };
   });
 
-  console.log("labels", labels);
+  //console.log("labels", labels);
   return {
-    labelCount: labels,
-    labelWidth: labelWidth,
-    labelLength: labelLength,
+    labels,
+    labelWidth,
+    labelLength,
   };
 };
+
+// responsible for adjusting any inconsistent gaps between the curved and the straight area
+// export const getMarginBetween = (firstEl, secondEl) => {
+//   const firstElCoord = firstEl.getBoundingClientRect();
+//   const secondElCoord = secondEl.getBoundingClientRect();
+
+//   console.table({
+//     curved: firstElCoord.x + firstElCoord.width,
+//     straight: secondElCoord.x,
+//   });
+
+//   // get the distance between the last curved El and the first straight El to see how many pixels of marginLeft we should subtract
+//   let assignMargin = secondElCoord.x - (firstElCoord.x + firstElCoord.width);
+
+//   if (firstEl.width < 120)
+//     assignMargin = assignMargin > 5 ? (assignMargin -= 3) : 0; //adjust gap only if it is greater than 5px
+//   if (firstEl.width >= 120)
+//     assignMargin = assignMargin > 5 ? (assignMargin -= 3) : 0;
+//   return assignMargin;
+// };

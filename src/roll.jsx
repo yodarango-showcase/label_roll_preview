@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./roll.scss";
-import { getDimensions } from "./helpers/get_dimensions";
+import { getDimensions, getMarginBetween } from "./helpers/get_dimensions";
 import { getOrientation, getShape } from "./helpers/get_options";
 import { getSvgMask } from "./helpers/getSvgMask";
+import { useRef } from "react";
 
 const rollDimensions = {
   width: 160,
@@ -16,8 +17,9 @@ export const Roll = ({
   orientation = 3,
   squaredCorners = false,
 }) => {
+  const [adjustGap, setAdjustGap] = useState(0);
   // get dimensions
-  const { labelWidth, labelLength, labelCount } = getDimensions(
+  const { labelWidth, labelLength, labels } = getDimensions(
     width,
     length,
     rollDimensions.length
@@ -32,7 +34,19 @@ export const Roll = ({
   // get the corresponding svg mask
   const SVGMask = getSvgMask(width, length);
 
-  console.log(SVGMask);
+  //console.log(SVGMask);
+  //console.log(labels);
+
+  // useEffect(() => {
+  //   const straightLabel = document.querySelectorAll("#straight-label")[0];
+  //   const margin = getMarginBetween(
+  //     straightLabel.previousSibling,
+  //     straightLabel
+  //   );
+
+  //   // since gap healing is affected by length make sure it is present
+  //   length ? setAdjustGap(margin) : setAdjustGap(2);
+  // }, [width, length]);
 
   return (
     <div className='component-wrapper'>
@@ -49,7 +63,7 @@ export const Roll = ({
             style={{ width: rollDimensions.length }}
           >
             <div className={`label-wrapper`}>
-              {labelCount.map((label, i) =>
+              {labels.map((label, i) =>
                 label.isCurved ? (
                   <div
                     key={i}
@@ -80,11 +94,14 @@ export const Roll = ({
                   </div>
                 ) : (
                   <div
+                    // id='straight-label'
+                    // data-test={i}
                     key={i}
                     className={`label ${labelShape} ${
                       squaredCorners ? "squared-corners" : ""
                     }`}
                     style={{
+                      ///transform: `translateX(-${adjustGap}px)`,
                       width: `${labelLength}px`,
                       height: `${labelWidth}px`,
                     }}
