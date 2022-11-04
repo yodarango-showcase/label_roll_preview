@@ -58,28 +58,28 @@ export const getDimensions = (width, length, dimensions) => {
           addStyles: { transform: `translateX(-9px)` },
         };
       }
-      if (labelLength <= 40) {
-        return {
-          id: index,
-          isCurved: false,
-          addStyles: { transform: `translateX(-5px)` },
-        };
-      }
-      if (labelLength >= 100) {
-        return {
-          id: index,
-          isCurved: false,
-          addStyles: { transform: `translateX(-3px)` },
-        };
-      }
-      if (labelLength >= 80) {
-        return {
-          id: index,
-          isCurved: false,
-          addStyles: { transform: `translateX(-7px)` },
-        };
-      }
-      if (labelLength > 40) {
+      // if (labelLength <= 40) {
+      //   return {
+      //     id: index,
+      //     isCurved: false,
+      //     addStyles: { transform: `translateX(-5px)` },
+      //   };
+      // }
+      // if (labelLength >= 100) {
+      //   return {
+      //     id: index,
+      //     isCurved: false,
+      //     addStyles: { transform: `translateX(-3px)` },
+      //   };
+      // }
+      // if (labelLength >= 80) {
+      //   return {
+      //     id: index,
+      //     isCurved: false,
+      //     addStyles: { transform: `translateX(-7px)` },
+      //   };
+      // }
+      if ((labelLength) => 40) {
         return {
           id: index,
           isCurved: false,

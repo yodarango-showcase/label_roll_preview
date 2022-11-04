@@ -22,7 +22,7 @@ const coordinates = {
           { transform: "translate(-9px, -2px)" },
         ],
       };
-    else if (length <= 5)
+    else if (length < 5)
       return {
         path: [
           "M1 12.5V1.5C8.5 4.5 23 7.96667 39 8.5V21C20 19.5 8 15.5 1 12.5Z",
@@ -57,7 +57,7 @@ const coordinates = {
           { transform: "translate(-7px, -1px)" },
         ],
       };
-    else if (length <= 5)
+    else if (length < 5)
       return {
         path: [
           "M1 21V1.5C11 5 23 8 39 9V31.5C21.5 31 9.5 25.5 1 21Z",
@@ -93,7 +93,7 @@ const coordinates = {
           { transform: "translate(-7px, -2px)" },
         ],
       };
-    else if (length <= 5)
+    else if (length < 5)
       return {
         path: [
           "M1 30V1.5C11 4.5 23.5 7.63354 39 8.7884V40C22.5 38 10 35 1 30Z",
@@ -129,7 +129,7 @@ const coordinates = {
           { transform: "translate(-7px, -1px)" },
         ],
       };
-    else if (length <= 5)
+    else if (length < 5)
       return {
         path: [
           "M1 36.5V1C11.1333 3.82353 23.2933 6.43698 39 7.64706V50C22.5 48.5 9.61333 43.7605 1 36.5Z",
@@ -165,7 +165,7 @@ const coordinates = {
           { transform: "translate(-7px, -2px)" },
         ],
       };
-    else if (length <= 5)
+    else if (length < 5)
       return {
         path: [
           "M1 45V1C11 4.5 23 6.5 38.5 8V60.5C23 58.5 9.5 54 1 45Z",
@@ -201,7 +201,7 @@ const coordinates = {
           { transform: "translate(-7px, -2px)" },
         ],
       };
-    else if (length <= 5)
+    else if (length < 5)
       return {
         path: [
           "M1 53.5V1C10.5 5 21 7.5 38.5 9.5V71C23 69 9 63 1 53.5Z",
@@ -237,7 +237,7 @@ const coordinates = {
           { transform: "translate(-7px, -2px)" },
         ],
       };
-    else if (length <= 5)
+    else if (length < 5)
       return {
         path: [
           "M1 62.1992V1C10.5 5.5 21 8.81776 38.5 10.8178V82.5C23 80 9 73.5 1 62.1992Z",
@@ -273,7 +273,7 @@ const coordinates = {
           { transform: "translate(-7px, -2px)" },
         ],
       };
-    else if (length <= 5)
+    else if (length < 5)
       return {
         path: [
           "M1 72V1.5C9 6.5 20.5 10 38.5 12.5V94C22.5 91 8.5 83.5 1 72Z",
@@ -309,7 +309,7 @@ const coordinates = {
           { transform: "translate(-7px, -1px)" },
         ],
       };
-    else if (length <= 5)
+    else if (length < 5)
       return {
         path: [
           "M1 81.5V1.5C11.5 7.5 20.5 11 38.5 14.5V105.5C22.5 102.5 8 93.5 1 81.5Z",
@@ -330,7 +330,7 @@ const coordinates = {
         ],
         addStyles: [{ transform: "translate(-2px, -18px)" }],
       };
-    else if (length <= 2)
+    else if (length < 2)
       return {
         path: [
           "M1 1V90.5C4.53655 96.4849 10.5893 102.322 17.9504 106.851C17.5 107.5 17.9339 42.5642 17.9504 10.4359C11.5752 8.13234 7.14614 5.19055 1 1Z",
@@ -345,7 +345,7 @@ const coordinates = {
           { transform: "translate(-11px, -1px)" },
         ],
       };
-    else if (length <= 5)
+    else if (length < 5)
       return {
         path: [
           "M1 90.5V1C12 8.5 17.5 12 38.5 15V114.801C22.5 112 7.5 101.5 1 90.5Z",
@@ -381,7 +381,7 @@ const coordinates = {
           { transform: "translate(-10px, -2px)" },
         ],
       };
-    else if (length <= 5)
+    else if (length < 5)
       return {
         path: [
           "M1 97.5V2C9 8.82331 17 14.133 38 18V124.5C22.5 121.316 13 113.421 1 97.5Z",
@@ -461,6 +461,6 @@ export const getSvgMask = (width, length) => {
       (mask.addStyles[1].width = `${13}px`),
       (mask.addStyles[2].width = `${14}px`),
       (mask.addStyles[3].width = `${14}px`);
-  // console.log(mask);
+  console.log("mask", mask);
   return mask;
 };
