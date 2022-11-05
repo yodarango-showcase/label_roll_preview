@@ -58,13 +58,9 @@ $label-color: #d9d9d9;
 
     .roll_length {
       top: calc(17.5% + 2px);
-      //height: 100%;
-      //width: 200%;
-      //min-width: 150%;
       padding: 4px;
       padding-left: 0;
       position: absolute;
-      //overflow-x: hidden;
       border-bottom-left-radius: 20% 30%;
       background-color: $roll-material-color;
 
@@ -75,17 +71,6 @@ $label-color: #d9d9d9;
         justify-content: flex-start;
         margin: 0 auto 0 0;
       }
-
-      // .border-bottom {
-      //   top: 0;
-      //   left: 0;
-      //   position: absolute;
-      //   width: 200px;
-      //   height: 100px;
-      //   path {
-      //     fill: $roll-material-color;
-      //   }
-      // }
     }
 
     .roll_length.min-width {
@@ -275,44 +260,11 @@ $label-color: #d9d9d9;
 // check if the label should be curved to go around the roll
 .roll {
   .label-wrapper {
-    /************** 3D HTML **************/
-    // position: relative;
-    /************** 3D HTML **************/
-
     .label-is-curved {
-      /************** 3D HTML **************/
-      // perspective: 200px;
-      // perspective-origin: 100% 50%;
-      /************** 3D HTML **************/
-
       .design-curved {
         position: relative;
         width: 100%;
         height: 200%;
-        //clip-path: url(#svgPath);
-        /************** 3D HTML **************
-        transform: rotateZ(7deg) scale(0.8, 1.2) skewX(11deg);
-        border-bottom-left-radius: 50% 20%;
-                top: -10%;
-        left: -10%;
-        overflow: hidden;
-
-        &:after {
-          content: "";
-          position: absolute;
-          background-color: $roll-material-color;
-          width: 110%;
-          height: 25%;
-          top: -6%;
-          left: -5%;
-          z-index: 2;
-          border-bottom-left-radius: 80%;
-          transform: rotateZ(-8deg) skewX(8deg);
-          // border-bottom-left-radius: 100% 50%;
-          // border-bottom-right-radius: 100% 50%;
-        }
-
-        ******************* END 3D HTML **************/
 
         .design {
           width: 100%;
@@ -324,15 +276,22 @@ $label-color: #d9d9d9;
           div {
             width: 100%;
             height: 60%;
-            background-size: 60%;
             background-position: center;
             background-repeat: no-repeat;
           }
         }
 
-        .horizontal {
+        .horizontal.logo-1 {
           div {
-            background-image: url("/layouts/logo_h.png");
+            background-size: 82%;
+            background-image: url("/layouts/logo_h_c.png");
+          }
+        }
+        .horizontal.logo-2,
+        .horizontal.logo-4 {
+          div {
+            background-size: 82%;
+            background-image: url("/layouts/logo_h_c_2.png");
           }
         }
         .vertical {

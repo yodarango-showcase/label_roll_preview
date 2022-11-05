@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import "./roll.scss";
 import { getDimensions } from "./helpers/get_dimensions";
 import { getOrientation, getShape } from "./helpers/get_options";
-import { getSvgMask, getSVGRotation } from "./helpers/getSvgMask";
+import { getSvgMask, transformMask } from "./helpers/getSvgMask";
 
 const rollDimensions = {
   width: 160,
@@ -35,8 +35,6 @@ export const Roll = ({
   // get the corresponding svg mask
   const SVGMask = getSvgMask(width, length);
 
-  // get the svg rotation
-  const SVGMaskTransfrom = getSVGRotation(orientation);
   //console.log(SVGMask);
   //console.log(labels);
   let orientationSVG =
@@ -48,14 +46,9 @@ export const Roll = ({
       ? 0
       : 270;
 
-  let skewSVG =
-    orientation === 1
-      ? 20
-      : orientation === 2
-      ? 180
-      : orientation === 3
-      ? 20
-      : 270;
+  let SVGMaskTransform = transformMask(width, length, orientation);
+  console.log(SVGMaskTransform);
+
   useEffect(() => {
     const rollL = rollLengthDOMEL.current.getBoundingClientRect();
     setRollLength(rollL.width);
@@ -96,19 +89,12 @@ export const Roll = ({
                           orientation === 1 || orientation === 2
                             ? "vertical"
                             : "horizontal"
-                        }`}
+                        } ${SVGMask.image}`}
                         style={{
                           clipPath: `url(#svgPath${i})`,
                         }}
                       >
-                        <div
-                          style={{
-                            transform: `
-                            rotateZ(${orientationSVG}deg) skewY(${
-                              skewSVG - i * 5
-                            }deg)`,
-                          }}
-                        ></div>
+                        <div style={SVGMaskTransform[i]}></div>
                       </div>
                     </div>
                     <svg>

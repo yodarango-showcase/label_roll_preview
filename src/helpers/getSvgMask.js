@@ -468,6 +468,7 @@ export const getSvgMask = (width, length) => {
   const index = coordinates[labelWidth](labelLength);
 
   let mask = {
+    image: labelLength >= 5 ? "logo-1" : labelLength >= 3 ? "logo-2" : "logo-4",
     path: index.path,
     addStyles: index.addStyles,
   };
@@ -504,51 +505,148 @@ export const getSvgMask = (width, length) => {
   return mask;
 };
 
-export const getSVGRotation = (orientation, length, width) => {
-  switch (orientation) {
-    case 3:
-      return length >= 5
-        ? [
-            {
-              transform: "rotateZ(0) skewY(20deg)",
-              width: "100%",
-              height: "70%",
-            },
-          ]
-        : length >= 3
-        ? [
-            {
-              transform: "rotateZ(0) skewY(20deg)",
-              width: "100%",
-              height: "70%",
-            },
-            {
-              transform: "rotateZ(0) skewY(20deg)",
-              width: "100%",
-              height: "70%",
-            },
-          ]
-        : [
-            {
-              transform: "rotateZ(0) skewY(20deg)",
-              width: "100%",
-              height: "70%",
-            },
-            {
-              transform: "rotateZ(0) skewY(20deg)",
-              width: "100%",
-              height: "70%",
-            },
-            {
-              transform: "rotateZ(0) skewY(20deg)",
-              width: "100%",
-              height: "70%",
-            },
-            {
-              transform: "rotateZ(0) skewY(20deg)",
-              width: "100%",
-              height: "70%",
-            },
-          ];
-  }
+const transformation = {
+  1: (length, orientation) => {
+    if (length >= 5) {
+      if (orientation === 1 || orientation === 2) {
+        return {
+          transform: "skewX(15deg)",
+        };
+      }
+    }
+  },
+  2: (length, orientation) => {
+    if (length >= 5) {
+      if (orientation === 1 || orientation === 2) {
+        return {
+          transform: "skewX(15deg)",
+        };
+      }
+    }
+  },
+  3: (length, orientation) => {
+    if (length >= 5) {
+      if (orientation === 1 || orientation === 2) {
+        return {
+          transform: "skewX(15deg)",
+        };
+      }
+    }
+  },
+  4: (length, orientation) => {
+    if (length >= 5) {
+      if (orientation === 1 || orientation === 2) {
+        return {
+          transform: "skewX(15deg)",
+        };
+      }
+    }
+  },
+  5: (length, orientation) => {
+    if (length >= 5) {
+      if (orientation === 1 || orientation === 2) {
+        return {
+          transform: "skewX(15deg)",
+        };
+      }
+    }
+  },
+  6: (length, orientation) => {
+    if (length >= 5) {
+      if (orientation === 1 || orientation === 2) {
+        return {
+          transform: "skewX(15deg)",
+        };
+      }
+    }
+  },
+  7: (length, orientation) => {
+    if (length >= 5) {
+      if (orientation === 1 || orientation === 2) {
+        return {
+          transform: "skewX(15deg)",
+        };
+      }
+    }
+  },
+  8: (length, orientation) => {
+    if (length >= 5) {
+      if (orientation === 1 || orientation === 2) {
+        return {
+          transform: "skewX(15deg)",
+        };
+      }
+    }
+  },
+  9: (length, orientation) => {
+    if (length >= 5) {
+      if (orientation === 1 || orientation === 2) {
+        return {
+          transform: "skewX(15deg)",
+        };
+      }
+    }
+  },
+  10: (length, orientation) => {
+    if (length >= 5) {
+      if (orientation === 1 || orientation === 2) {
+        return {
+          transform: "skewX(15deg)",
+        };
+      }
+    }
+  },
+  11: (length, orientation) => {
+    if (length >= 5) {
+      return orientation === 1 || orientation === 2
+        ? {
+            transform: "skewX(15deg)",
+          }
+        : {
+            transform: "skewX(17deg)",
+          };
+    }
+  },
+  12: (length, orientation) => {
+    if (length >= 7) {
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [{ transform: `rotateZ(10deg) skewX(5deg) translateX(-3px)` }];
+    }
+    if (length >= 5) {
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [
+          { transform: `rotateZ(14deg) skewX(5deg) translate(-1px, 2px)` },
+        ];
+    }
+    if (length >= 3) {
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [
+          { transform: `rotateZ(20deg) skewX(10deg) translate(-1px, -2px)` },
+          { transform: `rotateZ(8deg) skewX(5deg) translate(0px, -10px)` },
+        ];
+    }
+    if (length < 3) {
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [
+          { transform: `rotateZ(25deg) skewX(5deg) translate(-3px, -7px)` },
+          { transform: `rotateZ(20deg) skewX(7deg) translate(-2px, -10px)` },
+          { transform: `rotateZ(10deg) skewX(7deg) translate(-1px, -11px)` },
+          { transform: `rotateZ(5deg) skewX(5deg) translate(0px, -10px)` },
+        ];
+    }
+  },
+};
+
+export const transformMask = (width, length, orientation) => {
+  console.log("lenght");
+  console.log("width", transformation[width](width));
+  return transformation[width](length, orientation);
 };
