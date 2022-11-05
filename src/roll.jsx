@@ -57,7 +57,7 @@ export const Roll = ({
             ref={rollLengthDOMEL}
             id='roll_length'
             className={`roll_length ${labelWidth <= 40 && "min-width"}`}
-            style={{ width: rollDimensions.length }}
+            style={{ minWidth: rollDimensions.length }}
           >
             <div className={`label-wrapper`}>
               {labels.map((label, i) =>

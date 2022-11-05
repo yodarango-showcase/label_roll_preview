@@ -7,6 +7,5 @@ import { Roll2 } from "./roll_2";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RollPreview />
-    {/*<Roll2 />*/}
   </React.StrictMode>
 );

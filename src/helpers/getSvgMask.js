@@ -52,9 +52,9 @@ const coordinates = {
         ],
         addStyles: [
           { transform: "translate(-2px, -9px)" },
-          { transform: "translate(-5px, -4px)" },
-          { transform: "translate(-6px, -2px)" },
-          { transform: "translate(-7px, -1px)" },
+          { transform: "translate(-6px, -4px)" },
+          { transform: "translate(-9px, -2px)" },
+          { transform: "translate(-12px, -1px)" },
         ],
       };
     else if (length < 5)
@@ -76,7 +76,7 @@ const coordinates = {
         path: [
           "M1 30.2551V1.5C1 1.5 17.8272 6.69753 34.5 8.5C53 10.5 83 9.5 83 9.5V40.9355C83 40.9355 45.086 41.4707 30.0968 39.4572C10.6989 36.8514 1 30.2551 1 30.2551Z",
         ],
-        addStyles: [{ transform: "translate(-2px, -9px)" }],
+        addStyles: [{ transform: "translate(-2px, -10px)" }],
       };
     else if (length <= 2)
       return {
@@ -89,8 +89,8 @@ const coordinates = {
         addStyles: [
           { transform: "translate(-2px, -9px)" },
           { transform: "translate(-5px, -4px)" },
-          { transform: "translate(-6px, -2px)" },
-          { transform: "translate(-7px, -2px)" },
+          { transform: "translate(-9px, -2px)" },
+          { transform: "translate(-13px, -2px)" },
         ],
       };
     else if (length < 5)
@@ -125,8 +125,8 @@ const coordinates = {
         addStyles: [
           { transform: "translate(-2px, -9px)" },
           { transform: "translate(-5px, -4px)" },
-          { transform: "translate(-6px, -2px)" },
-          { transform: "translate(-7px, -1px)" },
+          { transform: "translate(-9px, -2px)" },
+          { transform: "translate(-12px, -1px)" },
         ],
       };
     else if (length < 5)
@@ -161,8 +161,8 @@ const coordinates = {
         addStyles: [
           { transform: "translate(-2px, -10px)" },
           { transform: "translate(-5px, -5px)" },
-          { transform: "translate(-6px, -3px)" },
-          { transform: "translate(-7px, -2px)" },
+          { transform: "translate(-9px, -3px)" },
+          { transform: "translate(-12px, -2px)" },
         ],
       };
     else if (length < 5)
@@ -173,7 +173,7 @@ const coordinates = {
         ],
         addStyles: [
           { transform: "translate(-2px, -10px)" },
-          { transform: "translate(-5px, -2px)" },
+          { transform: "translate(-5px, -3px)" },
         ],
       };
   },
@@ -196,9 +196,9 @@ const coordinates = {
         ],
         addStyles: [
           { transform: "translate(-2px, -11px)" },
-          { transform: "translate(-5px, -5px)" },
-          { transform: "translate(-6px, -3px)" },
-          { transform: "translate(-7px, -2px)" },
+          { transform: "translate(-5px, -6px)" },
+          { transform: "translate(-9px, -4px)" },
+          { transform: "translate(-12px, -3px)" },
         ],
       };
     else if (length < 5)
@@ -208,8 +208,8 @@ const coordinates = {
           "M42.5 64L43 2.5C28.5 3 13 3 1 1.5V63.5C13 65 29 64.5 42.5 64Z",
         ],
         addStyles: [
-          { transform: "translate(-2px, -10px)" },
-          { transform: "translate(-5px, -2px)" },
+          { transform: "translate(-2px, -11px)" },
+          { transform: "translate(-5px, -4px)" },
         ],
       };
   },
@@ -233,8 +233,8 @@ const coordinates = {
         addStyles: [
           { transform: "translate(-2px, -13px)" },
           { transform: "translate(-5px, -7px)" },
-          { transform: "translate(-6px, -3px)" },
-          { transform: "translate(-7px, -2px)" },
+          { transform: "translate(-9px, -3px)" },
+          { transform: "translate(-12px, -2px)" },
         ],
       };
     else if (length < 5)
@@ -245,7 +245,7 @@ const coordinates = {
         ],
         addStyles: [
           { transform: "translate(-2px, -13px)" },
-          { transform: "translate(-5px, -2px)" },
+          { transform: "translate(-5px, -3px)" },
         ],
       };
   },
@@ -269,8 +269,8 @@ const coordinates = {
         addStyles: [
           { transform: "translate(-2px, -15px)" },
           { transform: "translate(-5px, -7px)" },
-          { transform: "translate(-6px, -3px)" },
-          { transform: "translate(-7px, -2px)" },
+          { transform: "translate(-9px, -4px)" },
+          { transform: "translate(-12px, -3px)" },
         ],
       };
     else if (length < 5)
@@ -281,7 +281,7 @@ const coordinates = {
         ],
         addStyles: [
           { transform: "translate(-2px, -15px)" },
-          { transform: "translate(-5px, -2px)" },
+          { transform: "translate(-5px, -3px)" },
         ],
       };
   },
@@ -304,9 +304,9 @@ const coordinates = {
         ],
         addStyles: [
           { transform: "translate(-2px, -15px)" },
-          { transform: "translate(-5px, -7px)" },
-          { transform: "translate(-6px, -2px)" },
-          { transform: "translate(-7px, -1px)" },
+          { transform: "translate(-5px, -8px)" },
+          { transform: "translate(-9px, -4px)" },
+          { transform: "translate(-12px, -3px)" },
         ],
       };
     else if (length < 5)
@@ -316,8 +316,8 @@ const coordinates = {
           "M43 93.5V2C27.5 3 15.5 2.5 0.999996 1V92.3609C12.5 94.5271 32.5 94.5 43 93.5Z",
         ],
         addStyles: [
-          { transform: "translate(-2px, -16px)" },
-          { transform: "translate(-5px, -2px)" },
+          { transform: "translate(-2px, -17px)" },
+          { transform: "translate(-5px, -4px)" },
         ],
       };
   },
@@ -330,7 +330,7 @@ const coordinates = {
         ],
         addStyles: [{ transform: "translate(-2px, -18px)" }],
       };
-    else if (length < 2)
+    else if (length <= 2)
       return {
         path: [
           "M1 1V90.5C4.53655 96.4849 10.5893 102.322 17.9504 106.851C17.5 107.5 17.9339 42.5642 17.9504 10.4359C11.5752 8.13234 7.14614 5.19055 1 1Z",
@@ -341,8 +341,8 @@ const coordinates = {
         addStyles: [
           { transform: "translate(-2px, -17px)" },
           { transform: "translate(-5px, -7px)" },
-          { transform: "translate(-8px, -2px)" },
-          { transform: "translate(-11px, -1px)" },
+          { transform: "translate(-9px, -4px)" },
+          { transform: "translate(-12px, -3px)" },
         ],
       };
     else if (length < 5)
@@ -353,7 +353,7 @@ const coordinates = {
         ],
         addStyles: [
           { transform: "translate(-2px, -17px)" },
-          { transform: "translate(-5px, -2px)" },
+          { transform: "translate(-5px, -3px)" },
         ],
       };
   },
@@ -377,8 +377,8 @@ const coordinates = {
         addStyles: [
           { transform: "translate(-2px, -19px)" },
           { transform: "translate(-5px, -7px)" },
-          { transform: "translate(-8px, -3px)" },
-          { transform: "translate(-10px, -2px)" },
+          { transform: "translate(-9px, -3px)" },
+          { transform: "translate(-12px, -2px)" },
         ],
       };
     else if (length < 5)
@@ -411,9 +411,9 @@ const coordinates = {
         ],
         addStyles: [
           { transform: "translate(-2px, -21px)" },
-          { transform: "translate(-6px, -8px)" },
-          { transform: "scaleY(1.02) translate(-8px, -2px)" },
-          { transform: "scaleY(1.02) translate(-10px, -1px)" },
+          { transform: "translate(-6px, -9px)" },
+          { transform: "scaleY(1.02) translate(-9px, -3px)" },
+          { transform: "scaleY(1.02) translate(-12px, -2px)" },
         ],
       };
     else if (length < 5)
