@@ -35,17 +35,6 @@ export const Roll = ({
   // get the corresponding svg mask
   const SVGMask = getSvgMask(width, length);
 
-  //console.log(SVGMask);
-  //console.log(labels);
-  let orientationSVG =
-    orientation === 1
-      ? 90
-      : orientation === 2
-      ? 180
-      : orientation === 3
-      ? 0
-      : 270;
-
   let SVGMaskTransform = transformMask(width, length, orientation);
   console.log(SVGMaskTransform);
 
@@ -85,11 +74,7 @@ export const Roll = ({
                   >
                     <div className={`design-curved`}>
                       <div
-                        className={`design ${
-                          orientation === 1 || orientation === 2
-                            ? "vertical"
-                            : "horizontal"
-                        } ${SVGMask.image}`}
+                        className={`design orientation-${labelOrientation} ${SVGMask.image}`}
                         style={{
                           clipPath: `url(#svgPath${i})`,
                         }}

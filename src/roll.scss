@@ -121,7 +121,7 @@ $label-color: #d9d9d9;
       flex-shrink: 0;
       flex-grow: 0;
       margin-right: 5px;
-      background-color: #a3abb2;
+      //background-color: #a3abb2;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -281,26 +281,45 @@ $label-color: #d9d9d9;
           }
         }
 
-        .horizontal.logo-1 {
+        .design.orientation-three.logo-1 {
           div {
             background-size: 82%;
             background-image: url("/layouts/logo_h_c.png");
           }
         }
-        .horizontal.logo-2,
-        .horizontal.logo-4 {
+        .design.orientation-three.logo-2,
+        .design.orientation-three.logo-4 {
           div {
             background-size: 82%;
             background-image: url("/layouts/logo_h_c_2.png");
           }
         }
-        .horizontal.logo-3 {
+        .design.orientation-three.logo-3 {
           div {
             background-size: 90%;
             background-image: url("/layouts/logo_h_c_3.png");
           }
         }
-        .vertical {
+        .design.orientation-four.logo-1 {
+          div {
+            background-size: 82%;
+            background-image: url("/layouts/logo_h_c_flip.png");
+          }
+        }
+        .design.orientation-four.logo-3 {
+          div {
+            background-size: 90%;
+            background-image: url("/layouts/logo_h_c_3_flip.png");
+          }
+        }
+        .design.orientation-four.logo-2,
+        .design.orientation-four.logo-4 {
+          div {
+            background-size: 82%;
+            background-image: url("/layouts/logo_h_c_2_flip.png");
+          }
+        }
+        .design.vertical {
           div {
             background-image: url("/layouts/logo_v.png");
           }

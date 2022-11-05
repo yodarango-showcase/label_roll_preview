@@ -1,3 +1,5 @@
+import { validateDimensions } from "./validate";
+
 const coordinates = {
   1: (length) => {
     if (length >= 5)
@@ -431,40 +433,7 @@ const coordinates = {
 };
 
 export const getSvgMask = (width, length) => {
-  let labelLength;
-  let labelWidth;
-
-  // width
-  if (!width) {
-    // if there is not width but there is a length make it a square by assigning it the value of the length
-    if (labelLength && labelLength <= 12) {
-      labelWidth = labelLength;
-    } else {
-      labelWidth = 12; // else let it be the default value
-    }
-  } else if (width >= 12) {
-    labelWidth = 12;
-  } else {
-    labelWidth = width;
-  }
-
-  // length
-  if (!length) {
-    // if there is not length but there is a width make it a square by assigning it the value of the width
-    if (labelWidth) {
-      labelLength = labelWidth;
-    } else {
-      labelLength = 17; // else let it be the default value
-    }
-  } else if (length >= 17) {
-    labelLength = 17;
-  } else {
-    labelLength = length;
-  }
-
-  //length = length > 0 && length <= 17 ? length : 12; // 12 is the default length
-  //width = width > 0 && width <= 12 ? width : 12; // 12 is the default width
-  console.log(labelLength, labelWidth);
+  const { labelWidth, labelLength } = validateDimensions(width, length);
   const index = coordinates[labelWidth](labelLength);
 
   let mask = {
@@ -514,30 +483,162 @@ export const getSvgMask = (width, length) => {
 
 const transformation = {
   1: (length, orientation) => {
+    if (length >= 15) {
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [
+          {
+            transform: `rotateZ(10deg) skewX(8deg) translate(-8px, 8px)`,
+            backgroundSize: "45%",
+            backgroundPosition: "-0px 0px",
+          },
+        ];
+    }
+    if (length >= 7) {
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [
+          {
+            transform: `rotateZ(4deg) skewX(8deg) translate(-3px, 7px)`,
+            backgroundSize: "45%",
+          },
+        ];
+    }
     if (length >= 5) {
-      if (orientation === 1 || orientation === 2) {
-        return {
-          transform: "skewX(15deg)",
-        };
-      }
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [
+          {
+            transform: `rotateZ(6deg) skewX(6deg) translate(-1px, 6px)`,
+            backgroundSize: "65%",
+          },
+        ];
+    }
+    if (length >= 3) {
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [
+          { transform: `rotateZ(12deg) skewX(10deg) translate(-1px, 5px)` },
+          { transform: `rotateZ(3deg) skewX(8deg) translate(0px, 1px)` },
+        ];
+    }
+    if (length < 3) {
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [
+          { transform: `rotateZ(18deg) skewX(5deg) translate(1px, 3px)` },
+          { transform: `rotateZ(7deg) skewX(7deg) translate(0px, 1.5px)` },
+          { transform: `rotateZ(2deg) skewX(7deg) translate(0px, 1.5px)` },
+          { transform: `rotateZ(0deg) skewX(5deg) translate(0px, 2px)` },
+        ];
     }
   },
   2: (length, orientation) => {
+    if (length >= 15) {
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [
+          {
+            transform: `rotateZ(14deg) skewX(8deg) translate(-8px, 7px)`,
+            backgroundSize: "90%",
+            backgroundPosition: "-25px 0px",
+          },
+        ];
+    }
+    if (length >= 7) {
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [
+          {
+            transform: `rotateZ(5deg) skewX(8deg) translate(-3px, 5px)`,
+            backgroundSize: "80%",
+          },
+        ];
+    }
     if (length >= 5) {
-      if (orientation === 1 || orientation === 2) {
-        return {
-          transform: "skewX(15deg)",
-        };
-      }
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [
+          { transform: `rotateZ(9deg) skewX(6deg) translate(-1px, 3px)` },
+        ];
+    }
+    if (length >= 3) {
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [
+          { transform: `rotateZ(14deg) skewX(10deg) translate(-1px, 3px)` },
+          { transform: `rotateZ(3deg) skewX(8deg) translate(0px, 1px)` },
+        ];
+    }
+    if (length < 3) {
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [
+          { transform: `rotateZ(13deg) skewX(9deg) translate(0px, 0px)` },
+          { transform: `rotateZ(7deg) skewX(7deg) translate(0px, 1px)` },
+          { transform: `rotateZ(5deg) skewX(7deg) translate(0px, 1px)` },
+          { transform: `rotateZ(3deg) skewX(5deg) translate(0px, 0px)` },
+        ];
     }
   },
   3: (length, orientation) => {
+    if (length >= 15) {
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [
+          {
+            transform: `rotateZ(11deg) skewX(8deg) translate(-8px, 2px)`,
+            backgroundSize: "110%",
+            backgroundPosition: "-25px center",
+          },
+        ];
+    }
+    if (length >= 7) {
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [
+          { transform: `rotateZ(7deg) skewX(8deg) translate(-3px, 3px)` },
+        ];
+    }
     if (length >= 5) {
-      if (orientation === 1 || orientation === 2) {
-        return {
-          transform: "skewX(15deg)",
-        };
-      }
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [
+          { transform: `rotateZ(9deg) skewX(6deg) translate(-1px, 3px)` },
+        ];
+    }
+    if (length >= 3) {
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [
+          { transform: `rotateZ(11deg) skewX(10deg) translate(-1px, 2px)` },
+          { transform: `rotateZ(4deg) skewX(8deg) translate(0px, -1px)` },
+        ];
+    }
+    if (length < 3) {
+      if (orientation === 1 || orientation === 2)
+        return [{ transform: "skewX(0deg)" }];
+      else
+        return [
+          { transform: `rotateZ(12deg) skewX(9deg) translate(0px, -1px)` },
+          { transform: `rotateZ(9deg) skewX(7deg) translate(0px, -1px)` },
+          { transform: `rotateZ(5deg) skewX(7deg) translate(0px, -1px)` },
+          { transform: `rotateZ(3deg) skewX(5deg) translate(0px, -1px)` },
+        ];
     }
   },
   4: (length, orientation) => {
@@ -547,7 +648,7 @@ const transformation = {
       else
         return [
           {
-            transform: `rotateZ(10deg) skewX(8deg) translate(-8px, -1px)`,
+            transform: `rotateZ(8deg) skewX(8deg) translate(-8px, -1px)`,
             backgroundSize: "130%",
             backgroundPosition: "-25px center",
           },
@@ -566,7 +667,7 @@ const transformation = {
         return [{ transform: "skewX(0deg)" }];
       else
         return [
-          { transform: `rotateZ(10deg) skewX(6deg) translate(-1px, 1px)` },
+          { transform: `rotateZ(9deg) skewX(6deg) translate(-1px, 1px)` },
         ];
     }
     if (length >= 3) {
@@ -574,8 +675,8 @@ const transformation = {
         return [{ transform: "skewX(0deg)" }];
       else
         return [
-          { transform: `rotateZ(11deg) skewX(10deg) translate(-1px, -2px)` },
-          { transform: `rotateZ(5deg) skewX(8deg) translate(0px, -3px)` },
+          { transform: `rotateZ(10deg) skewX(10deg) translate(-1px, -1px)` },
+          { transform: `rotateZ(4deg) skewX(8deg) translate(0px, -3px)` },
         ];
     }
     if (length < 3) {
@@ -583,10 +684,10 @@ const transformation = {
         return [{ transform: "skewX(0deg)" }];
       else
         return [
-          { transform: `rotateZ(16deg) skewX(11deg) translate(0px, -5px)` },
-          { transform: `rotateZ(13deg) skewX(9deg) translate(0px, -5px)` },
-          { transform: `rotateZ(7deg) skewX(7deg) translate(0px, -4px)` },
-          { transform: `rotateZ(4deg) skewX(5deg) translate(0px, -4px)` },
+          { transform: `rotateZ(14deg) skewX(11deg) translate(0px, -2px)` },
+          { transform: `rotateZ(11deg) skewX(9deg) translate(0px, -2px)` },
+          { transform: `rotateZ(5deg) skewX(7deg) translate(0px, -2px)` },
+          { transform: `rotateZ(3deg) skewX(5deg) translate(0px, -3px)` },
         ];
     }
   },
@@ -987,7 +1088,6 @@ const transformation = {
 };
 
 export const transformMask = (width, length, orientation) => {
-  console.log("lenght");
-  console.log("width", transformation[width](width));
-  return transformation[width](length, orientation);
+  const { labelWidth, labelLength } = validateDimensions(width, length);
+  return transformation[labelWidth](labelLength, orientation);
 };
