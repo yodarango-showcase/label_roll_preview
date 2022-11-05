@@ -4,6 +4,7 @@ $roll-core-color: #bca28b;
 $roll-core-color-shadow: #a89284;
 $roll-material-color: #ffffff;
 $roll-material-color-shadow: #c6c3c1;
+$label-color: #d9d9d9;
 
 // wrapper
 .component-wrapper {
@@ -145,7 +146,7 @@ $roll-material-color-shadow: #c6c3c1;
 
       .label-design {
         overflow: hidden;
-        background-color: #f8f5f2;
+        background-color: $label-color;
         width: 100%;
         height: 100%;
       }
@@ -250,19 +251,22 @@ $roll-material-color-shadow: #c6c3c1;
         background-size: contain;
       }
       .one {
-        background-image: url("layouts/1.png");
-        transform: rotate(90deg);
+        background-image: url("layouts/logo_v.svg");
+        transform: rotate(180deg);
       }
       .two {
-        background-image: url("layouts/2.png");
-        transform: rotate(-90deg);
+        background-image: url("layouts/logo_v.svg");
       }
       .three {
-        background-image: url("layouts/3.png");
+        background-image: url("layouts/logo_h.svg");
       }
       .four {
-        background-image: url("layouts/4.png");
-        transform: rotate(180deg);
+        background-image: url("layouts/logo_h.svg");
+        transform: rotate(-180deg);
+      }
+      .orientation-custom.one,
+      .orientation-custom.two {
+        background-size: 17%;
       }
     }
   }
@@ -313,10 +317,28 @@ $roll-material-color-shadow: #c6c3c1;
         .design {
           width: 100%;
           height: 100%;
-          background-size: cover;
-          background-position: center;
           width: 100%;
+          background-color: $label-color;
           // transform: rotate(145deg); // tranform the
+
+          div {
+            width: 100%;
+            height: 60%;
+            background-size: 60%;
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+        }
+
+        .horizontal {
+          div {
+            background-image: url("/layouts/logo_h.png");
+          }
+        }
+        .vertical {
+          div {
+            background-image: url("/layouts/logo_v.png");
+          }
         }
       }
     }

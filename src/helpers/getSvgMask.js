@@ -503,3 +503,52 @@ export const getSvgMask = (width, length) => {
   //console.log("mask", mask);
   return mask;
 };
+
+export const getSVGRotation = (orientation, length, width) => {
+  switch (orientation) {
+    case 3:
+      return length >= 5
+        ? [
+            {
+              transform: "rotateZ(0) skewY(20deg)",
+              width: "100%",
+              height: "70%",
+            },
+          ]
+        : length >= 3
+        ? [
+            {
+              transform: "rotateZ(0) skewY(20deg)",
+              width: "100%",
+              height: "70%",
+            },
+            {
+              transform: "rotateZ(0) skewY(20deg)",
+              width: "100%",
+              height: "70%",
+            },
+          ]
+        : [
+            {
+              transform: "rotateZ(0) skewY(20deg)",
+              width: "100%",
+              height: "70%",
+            },
+            {
+              transform: "rotateZ(0) skewY(20deg)",
+              width: "100%",
+              height: "70%",
+            },
+            {
+              transform: "rotateZ(0) skewY(20deg)",
+              width: "100%",
+              height: "70%",
+            },
+            {
+              transform: "rotateZ(0) skewY(20deg)",
+              width: "100%",
+              height: "70%",
+            },
+          ];
+  }
+};

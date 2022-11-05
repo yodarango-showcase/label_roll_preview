@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import "./roll.scss";
 import { getDimensions } from "./helpers/get_dimensions";
 import { getOrientation, getShape } from "./helpers/get_options";
-import { getSvgMask } from "./helpers/getSvgMask";
+import { getSvgMask, getSVGRotation } from "./helpers/getSvgMask";
 
 const rollDimensions = {
   width: 160,
@@ -35,9 +35,27 @@ export const Roll = ({
   // get the corresponding svg mask
   const SVGMask = getSvgMask(width, length);
 
+  // get the svg rotation
+  const SVGMaskTransfrom = getSVGRotation(orientation);
   //console.log(SVGMask);
   //console.log(labels);
+  let orientationSVG =
+    orientation === 1
+      ? 90
+      : orientation === 2
+      ? 180
+      : orientation === 3
+      ? 0
+      : 270;
 
+  let skewSVG =
+    orientation === 1
+      ? 20
+      : orientation === 2
+      ? 180
+      : orientation === 3
+      ? 20
+      : 270;
   useEffect(() => {
     const rollL = rollLengthDOMEL.current.getBoundingClientRect();
     setRollLength(rollL.width);
@@ -73,15 +91,25 @@ export const Roll = ({
                     }}
                   >
                     <div className={`design-curved`}>
-                      {/*console.log("label-curved", label)*/}
                       <div
-                        className='design'
+                        className={`design ${
+                          orientation === 1 || orientation === 2
+                            ? "vertical"
+                            : "horizontal"
+                        }`}
                         style={{
-                          backgroundImage:
-                            "url(https://images.unsplash.com/photo-1615457938971-3ab61c1c0d57?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8eWVsbG93fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60)",
                           clipPath: `url(#svgPath${i})`,
                         }}
-                      ></div>
+                      >
+                        <div
+                          style={{
+                            transform: `
+                            rotateZ(${orientationSVG}deg) skewY(${
+                              skewSVG - i * 5
+                            }deg)`,
+                          }}
+                        ></div>
+                      </div>
                     </div>
                     <svg>
                       <clipPath id={`svgPath${i}`}>
@@ -101,9 +129,10 @@ export const Roll = ({
                       height: `${labelWidth}px`,
                     }}
                   >
-                    {/*console.log("label-straigh", label)*/}
                     <div className={`label-design`}>
-                      <div className={`orientation ${labelOrientation}`}></div>
+                      <div
+                        className={`orientation ${labelOrientation} orientation-${labelShape}`}
+                      ></div>
                     </div>
                   </div>
                 )
