@@ -604,7 +604,7 @@ const transformation = {
   3: (length, orientation) => {
     if (length >= 15) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: `scale(.9) skewY(10deg) translate(-4px, 8px)` }];
       else
         return [
           {
@@ -616,7 +616,7 @@ const transformation = {
     }
     if (length >= 7) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: `scale(.87) skewY(10deg) translate(-6px, 8px)` }];
       else
         return [
           { transform: `rotateZ(7deg) skewX(8deg) translate(-3px, 3px)` },
@@ -624,7 +624,7 @@ const transformation = {
     }
     if (length >= 5) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: `scale(.92) skewY(12deg) translate(0px, 5px)` }];
       else
         return [
           { transform: `rotateZ(9deg) skewX(6deg) translate(-1px, 3px)` },
@@ -632,7 +632,14 @@ const transformation = {
     }
     if (length >= 3) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [
+          {
+            transform: `scale(.9) skewY(15deg) translate(0px, 3px)`,
+          },
+          {
+            transform: `scale(.9) skewY(5deg) translate(0px, -1px)`,
+          },
+        ];
       else
         return [
           { transform: `rotateZ(11deg) skewX(10deg) translate(-1px, 2px)` },
@@ -640,8 +647,20 @@ const transformation = {
         ];
     }
     if (length < 3) {
+      const scale = length === 2 ? 0.9 : 0.9;
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [
+          {
+            transform: `scale(${scale}) skewY(30deg) translate(0px, -1px)`,
+          },
+          { transform: `scale(${scale}) skewY(12deg) translate(0px, -1px)` },
+          {
+            transform: `scale(${scale}) skewY(12deg) translate(0px, -1px)`,
+          },
+          {
+            transform: `scale(${scale}) skewY(0deg) translate(0px, -1px)`,
+          },
+        ];
       else
         return [
           { transform: `rotateZ(12deg) skewX(9deg) translate(0px, -1px)` },
@@ -654,7 +673,7 @@ const transformation = {
   4: (length, orientation) => {
     if (length >= 15) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: `scale(.95) skewY(10deg) translate(-4px, 4px)` }];
       else
         return [
           {
@@ -666,7 +685,7 @@ const transformation = {
     }
     if (length >= 7) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: `scale(.95) skewY(10deg) translate(-4px, 4px)` }];
       else
         return [
           { transform: `rotateZ(7deg) skewX(8deg) translate(-3px, 1px)` },
@@ -674,15 +693,23 @@ const transformation = {
     }
     if (length >= 5) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: `scale(.92) skewY(12deg) translate(0px, 1px)` }];
       else
         return [
           { transform: `rotateZ(9deg) skewX(6deg) translate(-1px, 1px)` },
         ];
     }
     if (length >= 3) {
+      const scale = length === 4 ? 0.95 : 0.95;
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [
+          {
+            transform: `scale(${scale}) skewY(15deg) translate(0px, -1px)`,
+          },
+          {
+            transform: `scale(${scale}) skewY(5deg) translate(0px, -2px)`,
+          },
+        ];
       else
         return [
           { transform: `rotateZ(10deg) skewX(10deg) translate(-1px, -1px)` },
@@ -690,8 +717,20 @@ const transformation = {
         ];
     }
     if (length < 3) {
+      const scale = length === 2 ? 0.95 : 0.9;
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [
+          {
+            transform: `scale(${scale}) skewY(30deg) translate(0px, -2px)`,
+          },
+          { transform: `scale(${scale}) skewY(12deg) translate(0px, -2px)` },
+          {
+            transform: `scale(${scale}) skewY(12deg) translate(0px, -2px)`,
+          },
+          {
+            transform: `scale(${scale}) skewY(0deg) translate(0px, -2px)`,
+          },
+        ];
       else
         return [
           { transform: `rotateZ(14deg) skewX(11deg) translate(0px, -2px)` },
@@ -704,7 +743,7 @@ const transformation = {
   5: (length, orientation) => {
     if (length >= 15) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: `skewY(10deg) translate(-4px, 4px)` }];
       else
         return [
           {
@@ -716,7 +755,7 @@ const transformation = {
     }
     if (length >= 7) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: `scale(.95) skewY(10deg) translate(-4px, 2px)` }];
       else
         return [
           { transform: `rotateZ(7deg) skewX(8deg) translate(-3px, 1px)` },
@@ -724,15 +763,23 @@ const transformation = {
     }
     if (length >= 5) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: `scale(.92) skewY(12deg) translate(0px, 1px)` }];
       else
         return [
           { transform: `rotateZ(10deg) skewX(6deg) translate(-1px, 1px)` },
         ];
     }
     if (length >= 3) {
+      const scale = length === 4 ? 0.95 : 0.95;
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [
+          {
+            transform: `scale(${scale}) skewY(15deg) translate(0px, -1px)`,
+          },
+          {
+            transform: `scale(${scale}) skewY(5deg) translate(0px, -2px)`,
+          },
+        ];
       else
         return [
           { transform: `rotateZ(11deg) skewX(10deg) translate(-1px, -2px)` },
@@ -740,8 +787,20 @@ const transformation = {
         ];
     }
     if (length < 3) {
+      const scale = length === 2 ? 0.95 : 0.8;
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [
+          {
+            transform: `scale(${scale}) skewY(30deg) translate(0px, -5px)`,
+          },
+          { transform: `scale(${scale}) skewY(12deg) translate(0px, -5px)` },
+          {
+            transform: `scale(${scale}) skewY(12deg) translate(0px, -4px)`,
+          },
+          {
+            transform: `scale(${scale}) skewY(0deg) translate(0px, -4px)`,
+          },
+        ];
       else
         return [
           { transform: `rotateZ(16deg) skewX(11deg) translate(0px, -5px)` },
@@ -754,7 +813,7 @@ const transformation = {
   6: (length, orientation) => {
     if (length >= 15) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: `skewY(10deg) translate(-4px, 4px)` }];
       else
         return [
           {
@@ -766,7 +825,7 @@ const transformation = {
     }
     if (length >= 7) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: `scale(.95) skewY(10deg) translate(-4px, 2px)` }];
       else
         return [
           { transform: `rotateZ(8deg) skewX(8deg) translate(-3px, 1px)` },
@@ -774,15 +833,23 @@ const transformation = {
     }
     if (length >= 5) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: `scale(.92) skewY(12deg) translate(0px, -1px)` }];
       else
         return [
           { transform: `rotateZ(10deg) skewX(6deg) translate(-1px, 1px)` },
         ];
     }
     if (length >= 3) {
+      const scale = length === 4 ? 0.95 : 0.95;
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [
+          {
+            transform: `scale(${scale}) skewY(15deg) translate(0px, -1px)`,
+          },
+          {
+            transform: `scale(${scale}) skewY(5deg) translate(0px, -4px)`,
+          },
+        ];
       else
         return [
           { transform: `rotateZ(13deg) skewX(10deg) translate(-1px, -2px)` },
@@ -790,8 +857,20 @@ const transformation = {
         ];
     }
     if (length < 3) {
+      const scale = length === 2 ? 0.95 : 0.8;
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [
+          {
+            transform: `scale(${scale}) skewY(30deg) translate(0px, -5px)`,
+          },
+          { transform: `scale(${scale}) skewY(12deg) translate(0px, -5px)` },
+          {
+            transform: `scale(${scale}) skewY(12deg) translate(0px, -4px)`,
+          },
+          {
+            transform: `scale(${scale}) skewY(0deg) translate(0px, -4px)`,
+          },
+        ];
       else
         return [
           { transform: `rotateZ(16deg) skewX(11deg) translate(0px, -5px)` },
@@ -804,7 +883,7 @@ const transformation = {
   7: (length, orientation) => {
     if (length >= 15) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: `skewY(10deg) translate(-4px, 3px)` }];
       else
         return [
           {
@@ -816,7 +895,7 @@ const transformation = {
     }
     if (length >= 7) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: ` skewY(13deg) translate(-4px, 4px)` }];
       else
         return [
           { transform: `rotateZ(10deg) skewX(8deg) translate(-3px, 1px)` },
@@ -824,15 +903,23 @@ const transformation = {
     }
     if (length >= 5) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: ` skewY(15deg) translate(0px, 1px)` }];
       else
         return [
           { transform: `rotateZ(12deg) skewX(6deg) translate(-1px, 1px)` },
         ];
     }
     if (length >= 3) {
+      const scale = length === 4 ? 0.95 : 0.95;
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [
+          {
+            transform: `scale(${scale}) skewY(20deg) translate(0px, -1px)`,
+          },
+          {
+            transform: `scale(${scale}) skewY(8deg) translate(0px, -4px)`,
+          },
+        ];
       else
         return [
           { transform: `rotateZ(14deg) skewX(10deg) translate(-1px, -2px)` },
@@ -840,8 +927,22 @@ const transformation = {
         ];
     }
     if (length < 3) {
+      const scale = length === 2 ? 1.2 : 0.8;
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [
+          {
+            transform: `scale(${scale}) skewY(30deg) translate(0px, -7px)`,
+          },
+          { transform: `scale(${scale}) skewY(20deg) translate(0px, -7px)` },
+          {
+            transform: `scale(${
+              scale * 0.9
+            }) skewY(15deg) translate(0px, -6px)`,
+          },
+          {
+            transform: `scale(${scale * 0.9}) skewY(0deg) translate(0px, -6px)`,
+          },
+        ];
       else
         return [
           { transform: `rotateZ(18deg) skewX(11deg) translate(-1px, -6px)` },
@@ -854,7 +955,7 @@ const transformation = {
   8: (length, orientation) => {
     if (length >= 15) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: `skewY(10deg) translate(-4px, 3px)` }];
       else
         return [
           {
@@ -866,7 +967,7 @@ const transformation = {
     }
     if (length >= 7) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: ` skewY(15deg) translate(0px, 2px)` }];
       else
         return [
           { transform: `rotateZ(10deg) skewX(8deg) translate(-3px, 1px)` },
@@ -874,15 +975,23 @@ const transformation = {
     }
     if (length >= 5) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: ` skewY(15deg) translate(0px, 1px)` }];
       else
         return [
           { transform: `rotateZ(13deg) skewX(6deg) translate(-1px, 0px)` },
         ];
     }
     if (length >= 3) {
+      const scale = length === 4 ? 0.95 : 0.95;
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [
+          {
+            transform: `scale(${scale}) skewY(30deg) translate(0px, -1px)`,
+          },
+          {
+            transform: `scale(${scale}) skewY(8deg) translate(0px, -8px)`,
+          },
+        ];
       else
         return [
           { transform: `rotateZ(16deg) skewX(10deg) translate(-1px, -2px)` },
@@ -890,8 +999,16 @@ const transformation = {
         ];
     }
     if (length < 3) {
+      const scale = length === 2 ? 1.2 : 0.8;
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [
+          {
+            transform: `scale(${scale}) skewY(30deg) translate(0px, -7px)`,
+          },
+          { transform: `scale(${scale}) skewY(20deg) translate(0px, -7px)` },
+          { transform: `scale(${scale}) skewY(15deg) translate(0px, -6px)` },
+          { transform: `scale(${scale}) skewY(0deg) translate(0px, -6px)` },
+        ];
       else
         return [
           { transform: `rotateZ(22deg) skewX(11deg) translate(-1px, -5px)` },
@@ -904,7 +1021,7 @@ const transformation = {
   9: (length, orientation) => {
     if (length >= 15) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: `skewY(10deg) translate(-4px, 4px)` }];
       else
         return [
           {
@@ -916,7 +1033,7 @@ const transformation = {
     }
     if (length >= 7) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: ` skewY(15deg) translate(0px, 3px)` }];
       else
         return [
           { transform: `rotateZ(10deg) skewX(8deg) translate(-3px, 1px)` },
@@ -924,15 +1041,23 @@ const transformation = {
     }
     if (length >= 5) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: ` skewY(20deg) translate(0px, -1px)` }];
       else
         return [
           { transform: `rotateZ(13deg) skewX(6deg) translate(-1px, 0px)` },
         ];
     }
     if (length >= 3) {
+      const scale = length === 4 ? 0.95 : 0.95;
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [
+          {
+            transform: `scale(${scale}) skewY(30deg) translate(0px, 2px)`,
+          },
+          {
+            transform: `scale(${scale}) skewY(8deg) translate(0px, -3px)`,
+          },
+        ];
       else
         return [
           { transform: `rotateZ(18deg) skewX(10deg) translate(-1px, -3px)` },
@@ -940,8 +1065,16 @@ const transformation = {
         ];
     }
     if (length < 3) {
+      const scale = length === 2 ? 1.2 : 0.8;
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [
+          {
+            transform: `scale(${scale}) skewY(30deg) translate(0px, -7px)`,
+          },
+          { transform: `scale(${scale}) skewY(20deg) translate(0px, -7px)` },
+          { transform: `scale(${scale}) skewY(15deg) translate(0px, -6px)` },
+          { transform: `scale(${scale}) skewY(0deg) translate(0px, -6px)` },
+        ];
       else
         return [
           { transform: `rotateZ(24deg) skewX(9deg) translate(-2px, -8px)` },
@@ -954,7 +1087,7 @@ const transformation = {
   10: (length, orientation) => {
     if (length >= 15) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: `skewY(10deg) translate(-4px, 8px)` }];
       else
         return [
           {
@@ -966,21 +1099,29 @@ const transformation = {
     }
     if (length >= 7) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: ` skewY(15deg) translate(0px, 3px)` }];
       else
         return [{ transform: `rotateZ(10deg) skewX(5deg) translateX(-3px)` }];
     }
     if (length >= 5) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: ` skewY(20deg) translate(0px, 0px)` }];
       else
         return [
           { transform: `rotateZ(14deg) skewX(6deg) translate(-1px, 0px)` },
         ];
     }
     if (length >= 3) {
+      const scale = length === 4 ? 0.95 : 1;
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [
+          {
+            transform: `scale(${scale}) skewY(30deg) translate(0px, -3px)`,
+          },
+          {
+            transform: `scale(${scale}) skewY(8deg) translate(0px, -11px)`,
+          },
+        ];
       else
         return [
           { transform: `rotateZ(18deg) skewX(10deg) translate(-1px, -3px)` },
@@ -988,8 +1129,16 @@ const transformation = {
         ];
     }
     if (length < 3) {
+      const scale = length === 2 ? 1.2 : 0.8;
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [
+          {
+            transform: `scale(${scale}) skewY(30deg) translate(0px, -7px)`,
+          },
+          { transform: `scale(${scale}) skewY(20deg) translate(0px, -7px)` },
+          { transform: `scale(${scale}) skewY(15deg) translate(0px, -6px)` },
+          { transform: `scale(${scale}) skewY(0deg) translate(0px, -6px)` },
+        ];
       else
         return [
           { transform: `rotateZ(27deg) skewX(5deg) translate(-3px, -7px)` },
@@ -1002,7 +1151,7 @@ const transformation = {
   11: (length, orientation) => {
     if (length >= 15) {
       if (orientation === 1 || orientation === 2)
-        return [{ transform: "skewX(0deg)" }];
+        return [{ transform: `skewY(10deg) translate(0px, 0px)` }];
       else
         return [
           {
