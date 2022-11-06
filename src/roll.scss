@@ -281,6 +281,20 @@ $label-color: #d9d9d9;
           }
         }
 
+        .design.orientation-one {
+          div {
+            background-size: contain;
+            background-image: url("/layouts/logo_v2_1.png");
+          }
+        }
+
+        .design.orientation-two {
+          div {
+            background-size: contain;
+            background-image: url("/layouts/logo_v2_2.png");
+          }
+        }
+
         .design.orientation-three.logo-1 {
           div {
             background-size: 82%;
@@ -317,11 +331,6 @@ $label-color: #d9d9d9;
           div {
             background-size: 82%;
             background-image: url("/layouts/logo_h_c_2_flip.png");
-          }
-        }
-        .design.vertical {
-          div {
-            background-image: url("/layouts/logo_v.png");
           }
         }
       }
