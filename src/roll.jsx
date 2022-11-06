@@ -33,7 +33,7 @@ export const Roll = ({
   let labelOrientation = getOrientation(orientation);
 
   // get the corresponding svg mask
-  const SVGMask = getSvgMask(width, length);
+  const SVGMask = getSvgMask(width, length, squaredCorners);
 
   let SVGMaskTransform = transformMask(width, length, orientation);
   console.log(SVGMaskTransform);
