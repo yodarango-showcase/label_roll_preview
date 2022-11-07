@@ -157,6 +157,13 @@ $label-color: #d9d9d9;
       }
     }
 
+    .small-square {
+      border-radius: 3px;
+      .label-design {
+        border-radius: 3px;
+      }
+    }
+
     .squared-corners {
       border-radius: 0;
 

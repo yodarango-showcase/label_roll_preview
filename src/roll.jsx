@@ -92,8 +92,10 @@ export const Roll = ({
                   <div
                     key={i}
                     className={`label ${labelShape} ${
-                      squaredCorners ? "squared-corners" : ""
-                    }`}
+                      labelWidth < 30 || labelLength < 30
+                        ? "small-" + labelShape
+                        : ""
+                    } ${squaredCorners ? "squared-corners" : ""}`}
                     style={{
                       ...label.addStyles,
                       width: `${labelLength}px`,
