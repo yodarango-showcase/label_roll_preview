@@ -2,7 +2,11 @@ import { useState, useRef, useEffect } from "react";
 import "./roll.scss";
 import { getDimensions } from "./helpers/get_dimensions";
 import { getOrientation, getShape } from "./helpers/get_options";
-import { getSvgMask, transformMask } from "./helpers/getSvgMask";
+import {
+  getSvgMask,
+  transformMask,
+  transformRoundShape,
+} from "./helpers/get_coordinates";
 
 const rollDimensions = {
   width: 160,
@@ -35,8 +39,12 @@ export const Roll = ({
   // get the corresponding svg mask
   const SVGMask = getSvgMask(width, length, squaredCorners);
 
-  let SVGMaskTransform = transformMask(width, length, orientation);
-  console.log(SVGMaskTransform);
+  // transform the square mask on size adjustment
+  const SVGMaskTransform = transformMask(width, length, orientation);
+
+  // transform the circular shape on size adjustment
+  const roundTransform = transformRoundShape(width, length, orientation);
+  console.log(roundTransform);
 
   useEffect(() => {
     const rollL = rollLengthDOMEL.current.getBoundingClientRect();
@@ -61,7 +69,7 @@ export const Roll = ({
           >
             <div className={`label-wrapper`}>
               {labels.map((label, i) =>
-                label.isCurved ? (
+                label.isCurved && shape === 1 ? ( // squared shape
                   <div
                     key={i}
                     className={`label label-is-curved ${labelShape} ${
@@ -88,7 +96,35 @@ export const Roll = ({
                       </clipPath>
                     </svg>
                   </div>
-                ) : (
+                ) : label.isCurved && shape === 2 ? ( // round shape
+                  <div
+                    key={i}
+                    className={`label label-is-curved ${labelShape}`}
+                    style={{
+                      width: `${labelLength}px`,
+                      height: `${labelWidth}px`,
+                      ...roundTransform.label[i],
+                    }}
+                  >
+                    <div
+                      className='design design-curved'
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        ...roundTransform.design[i],
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          ...roundTransform.orientation[i],
+                        }}
+                        className={`orientation ${labelOrientation} orientation-${labelShape} orientation-${roundTransform.image}`}
+                      ></div>
+                    </div>
+                  </div>
+                ) : shape === 1 ? (
                   <div
                     key={i}
                     className={`label ${labelShape} ${
@@ -98,6 +134,26 @@ export const Roll = ({
                     } ${squaredCorners ? "squared-corners" : ""}`}
                     style={{
                       ...label.addStyles,
+                      width: `${labelLength}px`,
+                      height: `${labelWidth}px`,
+                    }}
+                  >
+                    <div className={`label-design`}>
+                      <div
+                        className={`orientation ${labelOrientation} orientation-${labelShape}`}
+                      ></div>
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    key={i}
+                    className={`label ${labelShape} ${
+                      labelWidth < 30 || labelLength < 30
+                        ? "small-" + labelShape
+                        : ""
+                    } ${squaredCorners ? "squared-corners" : ""}`}
+                    style={{
+                      ...roundTransform.straightLabelStyles,
                       width: `${labelLength}px`,
                       height: `${labelWidth}px`,
                     }}

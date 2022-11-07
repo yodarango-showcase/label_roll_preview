@@ -1785,3 +1785,1344 @@ export const transformMask = (width, length, orientation) => {
 
   return transform;
 };
+
+const roundCoor = {
+  1: (length, orientation) => {},
+  2: (length, orientation) => {
+    if (length > 12)
+      return {
+        label:
+          length >= 13 && length <= 15
+            ? [{ transform: "translate(-2px, -3px) skewY(5deg)" }]
+            : [{ transform: "translate(-2px, -3px) skewY(5deg)" }],
+        design: [
+          {
+            height: "95%",
+            width: "90%",
+            transform: "rotate(2deg) translate(-50%, 5px)",
+          },
+        ],
+        orientation: [
+          {
+            width: length >= 13 && length <= 15 ? "83%" : "70%",
+            rotate: "4deg",
+            transform: "skew(5deg)",
+            translate: length >= 13 && length <= 15 ? `-1px -3px` : `-1px -5px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-55% 0px" },
+      };
+    if (length >= 8)
+      return {
+        label: [{ transform: "translateY(-1%) skewY(3deg)" }],
+        design: [{ height: "96%", width: "80%" }],
+        orientation: [
+          {
+            width: "90%",
+            rotate: "2deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-20% 0px" },
+      };
+    else if (length >= 5)
+      return {
+        label: [{ transform: "translateY(-3%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "95%" }],
+        orientation: [
+          {
+            rotate: "2deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-3px 0px" },
+      };
+    else if (length >= 3)
+      return {
+        label: [
+          { transform: "translateY(-7%) skewY(7deg)" },
+          { translate: "-3px 14%" },
+        ],
+        design: [{ height: "95%" }, {}],
+        orientation: [
+          {
+            rotate: "0deg",
+            transform: "skew(0deg)",
+            translate: `-1px 0px`,
+          },
+          { rotate: "3deg", transform: "skew(5deg)" },
+        ],
+        straightLabelStyles: { translate: "-18% 0px" },
+      };
+    else if (length <= 2)
+      return length === 2
+        ? {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 15%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "100%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "10deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "5deg", transform: "skew(15deg)" },
+              { rotate: "2deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-50% 0px" },
+          }
+        : {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 12%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "95%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "20deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "10deg", transform: "skew(15deg)" },
+              { rotate: "5deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-90% 0px" },
+          };
+  },
+  3: (length, orientation) => {
+    if (length > 12)
+      return {
+        label:
+          length >= 13 && length <= 15
+            ? [{ transform: "translate(-2px, -3px) skewY(5deg)" }]
+            : [{ transform: "translate(-2px, -3px) skewY(5deg)" }],
+        design: [
+          {
+            height: "95%",
+            width: "90%",
+            transform: "rotate(2deg) translate(-50%, 5px)",
+          },
+        ],
+        orientation: [
+          {
+            width: length >= 13 && length <= 15 ? "83%" : "70%",
+            rotate: "4deg",
+            transform: "skew(5deg)",
+            translate: length >= 13 && length <= 15 ? `-1px -3px` : `-1px -5px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-55% 0px" },
+      };
+    if (length >= 8)
+      return {
+        label: [{ transform: "translateY(-1%) skewY(3deg)" }],
+        design: [{ height: "96%", width: "80%" }],
+        orientation: [
+          {
+            width: "90%",
+            rotate: "2deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-20% 0px" },
+      };
+    else if (length >= 5)
+      return {
+        label: [{ transform: "translateY(-3%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "95%" }],
+        orientation: [
+          {
+            rotate: "2deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-3px 0px" },
+      };
+    else if (length >= 3)
+      return {
+        label: [
+          { transform: "translateY(-7%) skewY(7deg)" },
+          { translate: "-3px 14%" },
+        ],
+        design: [{ height: "95%" }, {}],
+        orientation: [
+          {
+            rotate: "0deg",
+            transform: "skew(0deg)",
+            translate: `-1px 0px`,
+          },
+          { rotate: "3deg", transform: "skew(5deg)" },
+        ],
+        straightLabelStyles: { translate: "-18% 0px" },
+      };
+    else if (length <= 2)
+      return length === 2
+        ? {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 15%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "100%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "10deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "5deg", transform: "skew(15deg)" },
+              { rotate: "2deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-50% 0px" },
+          }
+        : {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 12%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "95%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "20deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "10deg", transform: "skew(15deg)" },
+              { rotate: "5deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-90% 0px" },
+          };
+  },
+  4: (length, orientation) => {
+    if (length > 12)
+      return {
+        label:
+          length >= 13 && length <= 15
+            ? [{ transform: "translate(-2px, -3px) skewY(5deg)" }]
+            : [{ transform: "translate(-2px, -3px) skewY(5deg)" }],
+        design: [
+          {
+            height: "95%",
+            width: "90%",
+            transform: "rotate(2deg) translate(-50%, 5px)",
+          },
+        ],
+        orientation: [
+          {
+            width: length >= 13 && length <= 15 ? "83%" : "75%",
+            rotate: "2deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-55% 0px" },
+      };
+    if (length >= 8)
+      return {
+        label: [{ transform: "translateY(-1%) skewY(3deg)" }],
+        design: [{ height: "96%", width: "80%" }],
+        orientation: [
+          {
+            width: "90%",
+            rotate: "2deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-20% 0px" },
+      };
+    else if (length >= 5)
+      return {
+        label: [{ transform: "translateY(-3%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "95%" }],
+        orientation: [
+          {
+            rotate: "2deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-3px 0px" },
+      };
+    else if (length >= 3)
+      return {
+        label: [
+          { transform: "translateY(-7%) skewY(7deg)" },
+          { translate: "-3px 14%" },
+        ],
+        design: [{ height: "95%" }, {}],
+        orientation: [
+          {
+            rotate: "0deg",
+            transform: "skew(0deg)",
+            translate: `-1px 0px`,
+          },
+          { rotate: "3deg", transform: "skew(5deg)" },
+        ],
+        straightLabelStyles: { translate: "-18% 0px" },
+      };
+    else if (length <= 2)
+      return length === 2
+        ? {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 15%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "100%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "10deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "5deg", transform: "skew(15deg)" },
+              { rotate: "2deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-50% 0px" },
+          }
+        : {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 12%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "95%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "20deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "10deg", transform: "skew(15deg)" },
+              { rotate: "5deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-90% 0px" },
+          };
+  },
+  5: (length, orientation) => {
+    if (length > 12)
+      return {
+        label:
+          length >= 13 && length <= 15
+            ? [{ transform: "translate(-2px, -5px) skewY(5deg)" }]
+            : [{ transform: "translate(-2px, -3px) skewY(5deg)" }],
+        design: [
+          {
+            height: "95%",
+            width: "90%",
+            transform: "rotate(2deg) translate(-50%, 5px)",
+          },
+        ],
+        orientation: [
+          {
+            width: "90%",
+            rotate: "2deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-55% 0px" },
+      };
+    if (length >= 8)
+      return {
+        label: [{ transform: "translateY(-1%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "80%" }],
+        orientation: [
+          {
+            rotate: "2deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-20% 0px" },
+      };
+    else if (length >= 5)
+      return {
+        label: [{ transform: "translateY(-3%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "95%" }],
+        orientation: [
+          {
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-3px 0px" },
+      };
+    else if (length >= 3)
+      return {
+        label: [
+          { transform: "translateY(-7%) skewY(7deg)" },
+          { translate: "-3px 14%" },
+        ],
+        design: [{ height: "95%" }, {}],
+        orientation: [
+          {
+            rotate: "0deg",
+            transform: "skew(0deg)",
+            translate: `-1px 0px`,
+          },
+          { rotate: "3deg", transform: "skew(5deg)" },
+        ],
+        straightLabelStyles: { translate: "-18% 0px" },
+      };
+    else if (length <= 2)
+      return length === 2
+        ? {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 15%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "100%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "15deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "10deg", transform: "skew(15deg)" },
+              { rotate: "5deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-50% 0px" },
+          }
+        : {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 12%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "95%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "20deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "15deg", transform: "skew(15deg)" },
+              { rotate: "10deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-90% 0px" },
+          };
+  },
+  6: (length, orientation) => {
+    if (length > 12)
+      return {
+        label:
+          length >= 13 && length <= 15
+            ? [{ transform: "translate(-2px, -13px) skewY(5deg)" }]
+            : [{ transform: "translate(-2px, -10px) skewY(5deg)" }],
+        design: [
+          {
+            height: "85%",
+            width: "90%",
+            transform: "rotate(3deg) translate(-50%, 15px)",
+          },
+        ],
+        orientation: [
+          {
+            width: "90%",
+            rotate: "2deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-55% 0px" },
+      };
+    if (length >= 8)
+      return {
+        label: [{ transform: "translateY(-1%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "80%" }],
+        orientation: [
+          {
+            rotate: "2deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-20% 0px" },
+      };
+    else if (length >= 5)
+      return {
+        label: [{ transform: "translateY(-3%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "95%" }],
+        orientation: [
+          {
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-3px 0px" },
+      };
+    else if (length >= 3)
+      return {
+        label: [
+          { transform: "translateY(-7%) skewY(15deg)" },
+          { translate: "-3px 14%" },
+        ],
+        design: [{ height: "95%" }, {}],
+        orientation: [
+          {
+            rotate: "0deg",
+            transform: "skew(0deg)",
+            translate: `-1px 0px`,
+          },
+          { rotate: "3deg", transform: "skew(5deg)" },
+        ],
+        straightLabelStyles: { translate: "-10% 0px" },
+      };
+    else if (length <= 2)
+      return length === 2
+        ? {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 15%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "100%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "15deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "10deg", transform: "skew(15deg)" },
+              { rotate: "5deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-50% 0px" },
+          }
+        : {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 12%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "95%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "20deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "15deg", transform: "skew(15deg)" },
+              { rotate: "10deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-90% 0px" },
+          };
+  },
+  7: (length, orientation) => {
+    if (length > 12)
+      return {
+        label:
+          length >= 13 && length <= 15
+            ? [{ transform: "translate(-2px, -13px) skewY(5deg)" }]
+            : [{ transform: "translate(-2px, -10px) skewY(5deg)" }],
+        design: [
+          {
+            height: "85%",
+            width: "90%",
+            transform: "rotate(3deg) translate(-50%, 15px)",
+          },
+        ],
+        orientation: [
+          {
+            width: "90%",
+            rotate: "2deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-55% 0px" },
+      };
+    if (length >= 8)
+      return {
+        label: [{ transform: "translateY(-1%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "80%" }],
+        orientation: [
+          {
+            rotate: "2deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-20% 0px" },
+      };
+    else if (length >= 5)
+      return {
+        label: [{ transform: "translateY(-3%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "95%" }],
+        orientation: [
+          {
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-3px 0px" },
+      };
+    else if (length >= 3)
+      return {
+        label: [
+          { transform: "translateY(-7%) skewY(15deg)" },
+          { translate: "-3px 14%" },
+        ],
+        design: [{ height: "95%" }, {}],
+        orientation: [
+          {
+            rotate: "0deg",
+            transform: "skew(0deg)",
+            translate: `-1px 0px`,
+          },
+          { rotate: "3deg", transform: "skew(5deg)" },
+        ],
+        straightLabelStyles: { translate: "-10% 0px" },
+      };
+    else if (length <= 2)
+      return length === 2
+        ? {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 15%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "100%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "15deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "10deg", transform: "skew(15deg)" },
+              { rotate: "5deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-50% 0px" },
+          }
+        : {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 12%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "95%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "20deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "15deg", transform: "skew(15deg)" },
+              { rotate: "10deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-90% 0px" },
+          };
+  },
+  8: (length, orientation) => {
+    if (length > 12)
+      return {
+        label:
+          length >= 13 && length <= 15
+            ? [{ transform: "translate(-2px, -10px) skewY(5deg)" }]
+            : [{ transform: "translate(-2px, -7px) skewY(5deg)" }],
+        design: [
+          {
+            height: "85%",
+            width: "90%",
+            transform: "rotate(5deg) translate(-50%, 15px)",
+          },
+        ],
+        orientation: [
+          {
+            width: "90%",
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-55% 0px" },
+      };
+    if (length >= 8)
+      return {
+        label: [{ transform: "translateY(-1%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "80%" }],
+        orientation: [
+          {
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-20% 0px" },
+      };
+    else if (length >= 5)
+      return {
+        label: [{ transform: "translateY(-3%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "95%" }],
+        orientation: [
+          {
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-3px 0px" },
+      };
+    else if (length >= 3)
+      return {
+        label: [
+          { transform: "translateY(-7%) skewY(20deg)" },
+          { translate: "-3px 14%" },
+        ],
+        design: [{ height: "95%" }, {}],
+        orientation: [
+          {
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+          { rotate: "5deg", transform: "skew(5deg)" },
+        ],
+        straightLabelStyles: { translate: "-10% 0px" },
+      };
+    else if (length <= 2)
+      return length === 2
+        ? {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 15%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "100%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "20deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "15deg", transform: "skew(15deg)" },
+              { rotate: "10deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-50% 0px" },
+          }
+        : {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 12%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "95%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "20deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "15deg", transform: "skew(15deg)" },
+              { rotate: "10deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-90% 0px" },
+          };
+  },
+  9: (length, orientation) => {
+    if (length > 12)
+      return {
+        label:
+          length >= 13 && length <= 15
+            ? [{ transform: "translate(-2px, -10px) skewY(5deg)" }]
+            : [{ transform: "translate(-2px, -7px) skewY(5deg)" }],
+        design: [
+          {
+            height: "85%",
+            width: "90%",
+            transform: "rotate(7deg) translate(-50%, 15px)",
+          },
+        ],
+        orientation: [
+          {
+            width: "100%",
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-55% 0px" },
+      };
+    if (length >= 8)
+      return {
+        label: [{ transform: "translateY(-1%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "80%" }],
+        orientation: [
+          {
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-20% 0px" },
+      };
+    else if (length >= 5)
+      return {
+        label: [{ transform: "translateY(-3%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "95%" }],
+        orientation: [
+          {
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-3px 0px" },
+      };
+    else if (length >= 3)
+      return {
+        label: [
+          { transform: "translateY(-7%) skewY(20deg)" },
+          { translate: "-3px 14%" },
+        ],
+        design: [{ height: "95%" }, {}],
+        orientation: [
+          {
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+          { rotate: "5deg", transform: "skew(5deg)" },
+        ],
+        straightLabelStyles: { translate: "-10% 0px" },
+      };
+    else if (length <= 2)
+      return length === 2
+        ? {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 15%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "100%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "20deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "15deg", transform: "skew(15deg)" },
+              { rotate: "10deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-50% 0px" },
+          }
+        : {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 12%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "95%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "20deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "15deg", transform: "skew(15deg)" },
+              { rotate: "10deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-90% 0px" },
+          };
+  },
+  10: (length, orientation) => {
+    if (length > 12)
+      return {
+        label:
+          length >= 13 && length <= 15
+            ? [{ transform: "translate(-2px, -10px) skewY(5deg)" }]
+            : [{ transform: "translate(-2px, -7px) skewY(5deg)" }],
+        design: [
+          {
+            height: "85%",
+            width: "90%",
+            transform: "rotate(7deg) translate(-50%, 15px)",
+          },
+        ],
+        orientation: [
+          {
+            width: "100%",
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-55% 0px" },
+      };
+    if (length >= 8)
+      return {
+        label: [{ transform: "translateY(-1%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "80%" }],
+        orientation: [
+          {
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-20% 0px" },
+      };
+    else if (length >= 5)
+      return {
+        label: [{ transform: "translateY(-3%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "95%" }],
+        orientation: [
+          {
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-3px 0px" },
+      };
+    else if (length >= 3)
+      return {
+        label: [
+          { transform: "translateY(-7%) skewY(20deg)" },
+          { translate: "-3px 14%" },
+        ],
+        design: [{ height: "95%" }, {}],
+        orientation: [
+          {
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+          { rotate: "5deg", transform: "skew(5deg)" },
+        ],
+        straightLabelStyles: { translate: "-10% 0px" },
+      };
+    else if (length <= 2)
+      return length === 2
+        ? {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 15%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "100%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "20deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "15deg", transform: "skew(15deg)" },
+              { rotate: "10deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-50% 0px" },
+          }
+        : {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 12%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "95%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "20deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "15deg", transform: "skew(15deg)" },
+              { rotate: "10deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-90% 0px" },
+          };
+  },
+  11: (length, orientation) => {
+    if (length > 12)
+      return {
+        label:
+          length >= 13 && length <= 15
+            ? [{ transform: "translate(-2px, -10px) skewY(5deg)" }]
+            : [{ transform: "translate(-2px, -7px) skewY(5deg)" }],
+        design: [
+          {
+            height: "85%",
+            width: "90%",
+            transform: "rotate(7deg) translate(-50%, 15px)",
+          },
+        ],
+        orientation: [
+          {
+            width: "100%",
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-55% 0px" },
+      };
+    if (length >= 8)
+      return {
+        label: [{ transform: "translateY(-1%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "80%" }],
+        orientation: [
+          {
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-20% 0px" },
+      };
+    else if (length >= 5)
+      return {
+        label: [{ transform: "translateY(-3%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "95%" }],
+        orientation: [
+          {
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-3px 0px" },
+      };
+    else if (length >= 3)
+      return {
+        label: [
+          { transform: "translateY(-7%) skewY(20deg)" },
+          { translate: "-3px 14%" },
+        ],
+        design: [{ height: "95%" }, {}],
+        orientation: [
+          {
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+          { rotate: "5deg", transform: "skew(5deg)" },
+        ],
+        straightLabelStyles: { translate: "-10% 0px" },
+      };
+    else if (length <= 2)
+      return length === 2
+        ? {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 15%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "100%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "20deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "15deg", transform: "skew(15deg)" },
+              { rotate: "10deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-50% 0px" },
+          }
+        : {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 12%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "95%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "20deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "15deg", transform: "skew(15deg)" },
+              { rotate: "10deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-90% 0px" },
+          };
+  },
+  12: (length, orientation) => {
+    if (length > 12)
+      return {
+        label:
+          length >= 13 && length <= 15
+            ? [{ transform: "translate(-2px, -14px) skewY(5deg)" }]
+            : [{ transform: "translate(-2px, -7px) skewY(5deg)" }],
+        design: [
+          {
+            height: "85%",
+            width: "90%",
+            transform: "rotate(7deg) translate(-50%, 15px)",
+          },
+        ],
+        orientation: [
+          {
+            width: "100%",
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-55% 0px" },
+      };
+    if (length >= 8)
+      return {
+        label: [{ transform: "translateY(-1%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "80%" }],
+        orientation: [
+          {
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-20% 0px" },
+      };
+    else if (length >= 5)
+      return {
+        label: [{ transform: "translateY(-3%) skewY(5deg)" }],
+        design: [{ height: "96%", width: "95%" }],
+        orientation: [
+          {
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+        ],
+        straightLabelStyles: { translate: "-3px 0px" },
+      };
+    else if (length >= 3)
+      return {
+        label: [
+          { transform: "translateY(-7%) skewY(20deg)" },
+          { translate: "-3px 14%" },
+        ],
+        design: [{ height: "95%" }, {}],
+        orientation: [
+          {
+            rotate: "5deg",
+            transform: "skew(5deg)",
+            translate: `-1px 0px`,
+          },
+          { rotate: "5deg", transform: "skew(5deg)" },
+        ],
+        straightLabelStyles: { translate: "-10% 0px" },
+      };
+    else if (length <= 2)
+      return length === 2
+        ? {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 15%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "100%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "20deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "15deg", transform: "skew(15deg)" },
+              { rotate: "10deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-50% 0px" },
+          }
+        : {
+            label: [
+              { translate: "0px 5%" },
+              { translate: "-4px 10%" },
+              { translate: "-7px 12%" },
+              { translate: "-10px 15%" },
+            ],
+            design: [
+              { height: "90%" },
+              { height: "95%" },
+              { height: "100%" },
+              { height: "100%" },
+            ],
+            orientation: [
+              {
+                rotate: "20deg",
+                transform: "skew(15deg)",
+                translate: `-1px 0px`,
+              },
+              { rotate: "15deg", transform: "skew(15deg)" },
+              { rotate: "10deg" },
+              {},
+            ],
+            straightLabelStyles: { translate: "-90% 0px" },
+          };
+  },
+};
+
+export const transformRoundShape = (width, length, orientation) => {
+  const { labelWidth, labelLength } = validateDimensions(width, length);
+  const transform = roundCoor[labelWidth](labelLength, orientation);
+  transform.image =
+    labelLength >= 12
+      ? "logo-3"
+      : labelLength >= 5
+      ? "logo-1"
+      : labelLength >= 3
+      ? "logo-2"
+      : "logo-4";
+  return transform;
+};

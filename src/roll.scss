@@ -173,7 +173,8 @@ $label-color: #d9d9d9;
     }
 
     .round {
-      border-radius: 50%;
+      overflow: hidden;
+
       .label-design {
         border-radius: 50%;
       }
@@ -264,7 +265,7 @@ $label-color: #d9d9d9;
   }
 }
 
-// check if the label should be curved to go around the roll
+// check if the label should be curved to go around the roll: SQUARED LABELS
 .roll {
   .label-wrapper {
     .label-is-curved {
@@ -278,7 +279,7 @@ $label-color: #d9d9d9;
           height: 100%;
           width: 100%;
           background-color: $label-color;
-          // transform: rotate(145deg); // tranform the
+          // transform: rotate(145deg); // transform the
 
           div {
             width: 100%;
@@ -339,6 +340,49 @@ $label-color: #d9d9d9;
             background-size: 82%;
             background-image: url("/layouts/logo_h_c_2_flip.png");
           }
+        }
+      }
+    }
+  }
+}
+
+// check if the label should be curved to go around the roll: SQUARED LABELS
+.roll {
+  .label-wrapper {
+    .label-is-curved.round {
+      position: relative;
+      margin-left: 2px;
+
+      .design-curved {
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // translate: -50% 5%;
+        background-color: $label-color;
+        // rotate: 20deg;
+        // transform: skew(10deg);
+
+        .orientation.three {
+          display: inline-block;
+          background-size: 85%;
+          background-position: center;
+        }
+
+        .orientation.three.orientation-logo-4 {
+          background-image: url("/layouts/logo_h_c_2.png");
+        }
+
+        .orientation.three.orientation-logo-3 {
+          background-image: url("/layouts/logo_h_c_3.png");
+        }
+
+        .orientation.three.orientation-logo-2 {
+          background-image: url("/layouts/logo_h_c_2.png");
+        }
+
+        .orientation.three.orientation-logo-1 {
+          background-image: url("/layouts/logo_h_c.png");
         }
       }
     }
