@@ -3312,6 +3312,7 @@ const roundCoor = {
         orientation: [
           {
             width: orientation === 4 ? "85%" : "100%",
+            height: isVertical ? "115%" : "100%",
             rotate: isVertical ? "-7deg" : "5deg",
             transform: isVertical ? "skew(0deg)" : "skew(5deg)",
             translate: `-1px 0px`,
@@ -3326,6 +3327,7 @@ const roundCoor = {
         orientation: [
           {
             width: orientation === 4 ? "95%" : "100%",
+            height: isVertical ? "115%" : "100%",
             rotate: "5deg",
             transform: "skew(5deg)",
             translate: `-1px 0px`,
@@ -3340,6 +3342,7 @@ const roundCoor = {
         orientation: [
           {
             width: orientation === 4 ? "95%" : "100%",
+            height: isVertical ? "115%" : "100%",
             rotate: "5deg",
             transform: "skew(5deg)",
             translate: `-1px 0px`,

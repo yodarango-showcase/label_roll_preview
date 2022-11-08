@@ -124,7 +124,7 @@ export const Roll = ({
                       ></div>
                     </div>
                   </div>
-                ) : shape === 1 ? (
+                ) : shape === 1 ? ( // squared
                   <div
                     key={i}
                     className={`label ${labelShape} ${
@@ -145,6 +145,7 @@ export const Roll = ({
                     </div>
                   </div>
                 ) : (
+                  // round
                   <div
                     key={i}
                     className={`label ${labelShape} ${
