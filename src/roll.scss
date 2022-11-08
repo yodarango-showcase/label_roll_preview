@@ -358,11 +358,20 @@ $label-color: #d9d9d9;
         display: flex;
         align-items: center;
         justify-content: center;
-        // translate: -50% 5%;
         background-color: $label-color;
         overflow: hidden;
-        // rotate: 20deg;
-        // transform: skew(10deg);
+
+        .orientation.one {
+          transform: none;
+          background-size: contain;
+          background-image: url("/layouts/logo_v2_1.png");
+        }
+
+        .orientation.two {
+          transform: none;
+          background-size: contain;
+          background-image: url("/layouts/logo_v2_2.png");
+        }
 
         .orientation.three {
           display: inline-block;

@@ -1788,23 +1788,35 @@ export const transformMask = (width, length, orientation) => {
 
 const roundCoor = {
   1: (length, orientation) => {
+    const isVertical = orientation === 1 || orientation === 2;
     if (length > 12)
       return {
         label:
           length >= 13 && length <= 15
-            ? [{ transform: "translate(-2px, -3px) skewY(3deg)" }]
-            : [{ transform: "translate(-2px, -3px) skewY(3deg)" }],
+            ? [
+                {
+                  transform: `translate(-2px, -3px) skewY(3deg)`,
+                },
+              ]
+            : [
+                {
+                  transform: `translate(-2px, -3px) skewY(3deg)`,
+                },
+              ],
         design: [
           {
             height: "105%",
             width: "90%",
-            transform: "rotate(0deg) translate(-50%, 3px)",
+            transform: " translate(-50%, 3px)",
           },
         ],
         orientation: [
           {
             width: length >= 13 && length <= 15 ? "25%" : "20%",
-            rotate: length >= 13 && length <= 15 ? "5deg" : "5deg",
+            rotate:
+              length >= 13 && length <= 15
+                ? `${isVertical ? 0 : 5}deg`
+                : "5deg",
             transform: "skew(0deg)",
             translate: length >= 13 && length <= 15 ? `-1px -3px` : `-1px -3px`,
           },
@@ -1818,8 +1830,8 @@ const roundCoor = {
         orientation: [
           {
             width: length <= 10 ? "55%" : "35%",
-            rotate: "0deg",
-            transform: "skew(5deg)",
+            rotate: isVertical ? "5deg" : "0deg",
+            transform: isVertical ? "0deg" : "skew(5deg)",
             translate: `-1px 0px`,
           },
         ],
@@ -1875,10 +1887,10 @@ const roundCoor = {
             orientation: [
               {
                 rotate: "10deg",
-                transform: "skew(15deg)",
+                transform: "skew(5deg)",
                 translate: `-1px 0px`,
               },
-              { rotate: "5deg", transform: "skew(15deg)" },
+              { rotate: "5deg", transform: "skew(5deg)" },
               { rotate: "2deg" },
               {},
             ],
@@ -1903,14 +1915,18 @@ const roundCoor = {
                 transform: "skew(5deg)",
                 translate: `-1px 0px`,
               },
-              { rotate: "5deg", transform: "skew(15deg)" },
-              { rotate: "5deg" },
+              {
+                rotate: isVertical ? "13deg" : "5deg",
+                transform: "skew(15deg)",
+              },
+              { rotate: isVertical ? "0deg" : "5deg" },
               {},
             ],
             straightLabelStyles: { translate: "-90% 0px" },
           };
   },
   2: (length, orientation) => {
+    const isVertical = orientation === 1 || orientation === 2;
     if (length > 12)
       return {
         label:
@@ -1955,7 +1971,7 @@ const roundCoor = {
         orientation: [
           {
             width: length <= 10 ? "80%" : "65%",
-            rotate: "2deg",
+            rotate: isVertical ? "6deg" : "2deg",
             transform: "skew(5deg)",
             translate: `-1px 0px`,
           },
@@ -1969,8 +1985,8 @@ const roundCoor = {
         orientation: [
           {
             width: "85%",
-            rotate: "2deg",
-            transform: "skew(5deg)",
+            rotate: isVertical ? "5deg" : "2deg",
+            transform: isVertical ? "0deg" : "skew(5deg)",
             translate: `-1px 0px`,
           },
         ],
@@ -2010,11 +2026,14 @@ const roundCoor = {
             ],
             orientation: [
               {
-                rotate: "10deg",
-                transform: "skew(15deg)",
+                rotate: isVertical ? "5deg" : "10deg",
+                transform: isVertical ? "0deg" : "skew(15deg)",
                 translate: `-1px 0px`,
               },
-              { rotate: "5deg", transform: "skew(15deg)" },
+              {
+                rotate: isVertical ? "5deg" : "5deg",
+                transform: isVertical ? "0deg" : "skew(15deg)",
+              },
               { rotate: "2deg" },
               {},
             ],
@@ -2035,18 +2054,22 @@ const roundCoor = {
             ],
             orientation: [
               {
-                rotate: "10deg",
+                rotate: isVertical ? "5deg" : "10deg",
                 transform: "skew(5deg)",
                 translate: `-1px 0px`,
               },
-              { rotate: "5deg", transform: "skew(15deg)" },
-              { rotate: "5deg" },
+              {
+                rotate: isVertical ? "3deg" : "5deg",
+                transform: isVertical ? "0deg" : "skew(15deg)",
+              },
+              { rotate: isVertical ? "0deg" : "5deg" },
               {},
             ],
             straightLabelStyles: { translate: "-90% 0px" },
           };
   },
   3: (length, orientation) => {
+    const isVertical = orientation === 1 || orientation === 2;
     if (length > 12)
       return {
         label:
@@ -2072,7 +2095,11 @@ const roundCoor = {
                 : "70%",
             rotate: "4deg",
             transform: "skew(5deg)",
-            translate: length >= 13 && length <= 15 ? `-1px -3px` : `-1px -5px`,
+            translate: isVertical
+              ? "0px"
+              : length >= 13 && length <= 15
+              ? `-1px -3px`
+              : `-1px -5px`,
           },
         ],
         straightLabelStyles: { translate: "-55% 0px" },
@@ -2084,7 +2111,7 @@ const roundCoor = {
         orientation: [
           {
             width: "90%",
-            rotate: "2deg",
+            rotate: isVertical ? "5deg" : "2deg",
             transform: "skew(5deg)",
             translate: `-1px 0px`,
           },
@@ -2097,7 +2124,7 @@ const roundCoor = {
         design: [{ height: "96%", width: "95%" }],
         orientation: [
           {
-            rotate: "2deg",
+            rotate: isVertical ? "5deg" : "2deg",
             transform: "skew(5deg)",
             translate: `-1px 0px`,
           },
@@ -2138,12 +2165,15 @@ const roundCoor = {
             ],
             orientation: [
               {
-                rotate: "10deg",
-                transform: "skew(15deg)",
+                rotate: isVertical ? "0deg" : "10deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
                 translate: `-1px 0px`,
               },
-              { rotate: "5deg", transform: "skew(15deg)" },
-              { rotate: "2deg" },
+              {
+                rotate: isVertical ? "0deg" : "5deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
+              },
+              { rotate: isVertical ? "0deg" : "2deg" },
               {},
             ],
             straightLabelStyles: { translate: "-50% 0px" },
@@ -2163,18 +2193,22 @@ const roundCoor = {
             ],
             orientation: [
               {
-                rotate: "20deg",
-                transform: "skew(15deg)",
+                rotate: isVertical ? "0deg" : "20deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
                 translate: `-1px 0px`,
               },
-              { rotate: "10deg", transform: "skew(15deg)" },
-              { rotate: "5deg" },
+              {
+                rotate: isVertical ? "0deg" : "10deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
+              },
+              { rotate: isVertical ? "0deg" : "5deg" },
               {},
             ],
             straightLabelStyles: { translate: "-90% 0px" },
           };
   },
   4: (length, orientation) => {
+    const isVertical = orientation === 1 || orientation === 2;
     if (length > 12)
       return {
         label:
@@ -2191,7 +2225,7 @@ const roundCoor = {
         orientation: [
           {
             width: length >= 13 && length <= 15 ? "83%" : "75%",
-            rotate: "2deg",
+            rotate: isVertical ? "-1deg" : "2deg",
             transform: "skew(0deg)",
             translate: `-1px 0px`,
           },
@@ -2205,8 +2239,8 @@ const roundCoor = {
         orientation: [
           {
             width: "90%",
-            rotate: "2deg",
-            transform: "skew(5deg)",
+            rotate: isVertical ? "0deg" : "2deg",
+            transform: isVertical ? "skew(0deg)" : "skew(5deg)",
             translate: `-1px 0px`,
           },
         ],
@@ -2218,8 +2252,8 @@ const roundCoor = {
         design: [{ height: "96%", width: "95%" }],
         orientation: [
           {
-            rotate: "2deg",
-            transform: "skew(5deg)",
+            rotate: isVertical ? "0deg" : "2deg",
+            transform: isVertical ? "skew(0deg)" : "skew(5deg)",
             translate: `-1px 0px`,
           },
         ],
@@ -2234,11 +2268,14 @@ const roundCoor = {
         design: [{ height: "95%" }, {}],
         orientation: [
           {
-            rotate: "5deg",
+            rotate: isVertical ? "0deg" : "5deg",
             transform: "skew(0deg)",
             translate: `-1px 0px`,
           },
-          { rotate: "3deg", transform: "skew(5deg)" },
+          {
+            rotate: isVertical ? "0deg" : "3deg",
+            transform: isVertical ? "skew(0deg)" : "skew(5deg)",
+          },
         ],
         straightLabelStyles: { translate: "-18% 0px" },
       };
@@ -2259,12 +2296,15 @@ const roundCoor = {
             ],
             orientation: [
               {
-                rotate: "15deg",
-                transform: "skew(15deg)",
+                rotate: isVertical ? "0deg" : "15deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
                 translate: `-1px 0px`,
               },
-              { rotate: "5deg", transform: "skew(15deg)" },
-              { rotate: "2deg" },
+              {
+                rotate: isVertical ? "0deg" : "5deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
+              },
+              { rotate: isVertical ? "0deg" : "2deg" },
               {},
             ],
             straightLabelStyles: { translate: "-50% 0px" },
@@ -2284,18 +2324,22 @@ const roundCoor = {
             ],
             orientation: [
               {
-                rotate: "20deg",
-                transform: "skew(15deg)",
+                rotate: isVertical ? "0deg" : "20deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
                 translate: `-1px 0px`,
               },
-              { rotate: "10deg", transform: "skew(15deg)" },
-              { rotate: "5deg" },
+              {
+                rotate: isVertical ? "0deg" : "10deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
+              },
+              { rotate: isVertical ? "0deg" : "5deg" },
               {},
             ],
             straightLabelStyles: { translate: "-90% 0px" },
           };
   },
   5: (length, orientation) => {
+    const isVertical = orientation === 1 || orientation === 2;
     if (length > 12)
       return {
         label:
@@ -2312,8 +2356,8 @@ const roundCoor = {
         orientation: [
           {
             width: orientation === 4 ? "85%" : "90%",
-            rotate: "2deg",
-            transform: "skew(2deg)",
+            rotate: isVertical ? "-2deg" : "2deg",
+            transform: isVertical ? "skew(0deg)" : "skew(2deg)",
             translate: `-1px 0px`,
           },
         ],
@@ -2325,8 +2369,8 @@ const roundCoor = {
         design: [{ height: "96%", width: "80%" }],
         orientation: [
           {
-            rotate: "2deg",
-            transform: "skew(5deg)",
+            rotate: isVertical ? "0deg" : "2deg",
+            transform: isVertical ? "skew(0deg)" : "skew(5deg)",
             translate: `-1px 0px`,
           },
         ],
@@ -2355,11 +2399,14 @@ const roundCoor = {
         design: [{ height: "95%" }, {}],
         orientation: [
           {
-            rotate: "5deg",
+            rotate: isVertical ? "0deg" : "5deg",
             transform: "skew(0deg)",
             translate: `-1px 0px`,
           },
-          { rotate: "3deg", transform: "skew(5deg)" },
+          {
+            rotate: isVertical ? "0deg" : "3deg",
+            transform: isVertical ? "skew(0deg)" : "skew(5deg)",
+          },
         ],
         straightLabelStyles: { translate: "-18% 0px" },
       };
@@ -2380,12 +2427,15 @@ const roundCoor = {
             ],
             orientation: [
               {
-                rotate: "15deg",
-                transform: "skew(15deg)",
+                rotate: isVertical ? "0deg" : "15deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
                 translate: `-1px 0px`,
               },
-              { rotate: "10deg", transform: "skew(15deg)" },
-              { rotate: "5deg" },
+              {
+                rotate: isVertical ? "0deg" : "10deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
+              },
+              { rotate: isVertical ? "0deg" : "5deg" },
               {},
             ],
             straightLabelStyles: { translate: "-50% 0px" },
@@ -2405,18 +2455,22 @@ const roundCoor = {
             ],
             orientation: [
               {
-                rotate: "20deg",
-                transform: "skew(15deg)",
+                rotate: isVertical ? "0deg" : "20deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
                 translate: `-1px 0px`,
               },
-              { rotate: "15deg", transform: "skew(15deg)" },
-              { rotate: "10deg" },
+              {
+                rotate: isVertical ? "0deg" : "15deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
+              },
+              { rotate: isVertical ? "0deg" : "10deg" },
               {},
             ],
             straightLabelStyles: { translate: "-90% 0px" },
           };
   },
   6: (length, orientation) => {
+    const isVertical = orientation === 1 || orientation === 2;
     if (length > 12)
       return {
         label:
@@ -2433,8 +2487,8 @@ const roundCoor = {
         orientation: [
           {
             width: orientation === 4 ? "85%" : "90%",
-            rotate: "2deg",
-            transform: "skew(0deg)",
+            rotate: isVertical ? "-2deg" : "2deg",
+            transform: isVertical ? "skew(0deg)" : "skew(0deg)",
             translate: `-1px 0px`,
           },
         ],
@@ -2447,8 +2501,8 @@ const roundCoor = {
         orientation: [
           {
             width: orientation === 4 ? "95%" : "100%",
-            rotate: "2deg",
-            transform: "skew(5deg)",
+            rotate: isVertical ? "0deg" : "2deg",
+            transform: isVertical ? "skew(0deg)" : "skew(5deg)",
             translate: `-1px 0px`,
           },
         ],
@@ -2476,11 +2530,14 @@ const roundCoor = {
         design: [{ height: "95%" }, {}],
         orientation: [
           {
-            rotate: "5deg",
-            transform: "skew(0deg)",
+            rotate: isVertical ? "0deg" : "5deg",
+            transform: isVertical ? "skew(0deg)" : "skew(0deg)",
             translate: `-1px 0px`,
           },
-          { rotate: "3deg", transform: "skew(5deg)" },
+          {
+            rotate: isVertical ? "0deg" : "3deg",
+            transform: isVertical ? "skew(0deg)" : "skew(5deg)",
+          },
         ],
         straightLabelStyles: { translate: "-10% 0px" },
       };
@@ -2501,12 +2558,15 @@ const roundCoor = {
             ],
             orientation: [
               {
-                rotate: "15deg",
-                transform: "skew(15deg)",
+                rotate: isVertical ? "0deg" : "15deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
                 translate: `-1px 0px`,
               },
-              { rotate: "10deg", transform: "skew(15deg)" },
-              { rotate: "5deg" },
+              {
+                rotate: isVertical ? "0deg" : "10deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
+              },
+              { rotate: isVertical ? "0deg" : "5deg" },
               {},
             ],
             straightLabelStyles: { translate: "-50% 0px" },
@@ -2526,18 +2586,22 @@ const roundCoor = {
             ],
             orientation: [
               {
-                rotate: "20deg",
-                transform: "skew(15deg)",
+                rotate: isVertical ? "0deg" : "20deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
                 translate: `-1px 0px`,
               },
-              { rotate: "15deg", transform: "skew(15deg)" },
-              { rotate: "10deg" },
+              {
+                rotate: isVertical ? "0deg" : "15deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
+              },
+              { rotate: isVertical ? "0deg" : "10deg" },
               {},
             ],
             straightLabelStyles: { translate: "-90% 0px" },
           };
   },
   7: (length, orientation) => {
+    const isVertical = orientation === 1 || orientation === 2;
     if (length > 12)
       return {
         label:
@@ -2554,8 +2618,8 @@ const roundCoor = {
         orientation: [
           {
             width: orientation === 4 ? "88%" : "95%",
-            rotate: "2deg",
-            transform: "skew(2deg)",
+            rotate: isVertical ? "-3deg" : "2deg",
+            transform: isVertical ? "skew(0deg)" : "skew(2deg)",
             translate: `-1px 0px`,
           },
         ],
@@ -2567,9 +2631,10 @@ const roundCoor = {
         design: [{ height: "96%", width: "80%" }],
         orientation: [
           {
+            height: isVertical ? "120%" : "100%",
             width: orientation === 4 ? "95%" : "100%",
-            rotate: "2deg",
-            transform: "skew(5deg)",
+            rotate: isVertical ? "0deg" : "2deg",
+            transform: isVertical ? "skew(0deg)" : "skew(5deg)",
             translate: `-1px 0px`,
           },
         ],
@@ -2597,12 +2662,17 @@ const roundCoor = {
         design: [{ width: "85%", height: "95%" }, {}],
         orientation: [
           {
+            height: isVertical ? "120%" : "100%",
             width: orientation === 4 ? "95%" : "100%",
-            rotate: "3deg",
+            rotate: isVertical ? "0deg" : "3deg",
             transform: "skew(0deg)",
             translate: `-1px 0px`,
           },
-          { rotate: "3deg", transform: "skew(5deg)" },
+          {
+            height: isVertical ? "120%" : "100%",
+            rotate: isVertical ? "0deg" : "3deg",
+            transform: isVertical ? "skew(0deg)" : "skew(5deg)",
+          },
         ],
         straightLabelStyles: { translate: "-12% 0px" },
       };
@@ -2623,13 +2693,21 @@ const roundCoor = {
             ],
             orientation: [
               {
-                rotate: "15deg",
-                transform: "skew(15deg)",
+                height: isVertical ? "150%" : "100%",
+                rotate: isVertical ? "0deg" : "15deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
                 translate: `-1px 0px`,
               },
-              { rotate: "10deg", transform: "skew(15deg)" },
-              { rotate: "5deg" },
-              {},
+              {
+                height: isVertical ? "150%" : "100%",
+                rotate: isVertical ? "0deg" : "10deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
+              },
+              {
+                height: isVertical ? "150%" : "100%",
+                rotate: isVertical ? "0deg" : "5deg",
+              },
+              { height: isVertical ? "150%" : "100%" },
             ],
             straightLabelStyles: { translate: "-50% 0px" },
           }
@@ -2648,12 +2726,15 @@ const roundCoor = {
             ],
             orientation: [
               {
-                rotate: "20deg",
-                transform: "skew(15deg)",
+                rotate: isVertical ? "0deg" : "20deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
                 translate: `-1px 0px`,
               },
-              { rotate: "15deg", transform: "skew(15deg)" },
-              { rotate: "10deg" },
+              {
+                rotate: isVertical ? "0deg" : "15deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
+              },
+              { rotate: isVertical ? "0deg" : "10deg" },
               {},
             ],
             straightLabelStyles: { translate: "-90% 0px" },
@@ -2769,12 +2850,15 @@ const roundCoor = {
             ],
             orientation: [
               {
-                rotate: "20deg",
-                transform: "skew(15deg)",
+                rotate: isVertical ? "0deg" : "20deg",
+                transform: isVertical ? "(0deg)" : "skew(15deg)",
                 translate: `-1px 0px`,
               },
-              { rotate: "15deg", transform: "skew(15deg)" },
-              { rotate: "10deg" },
+              {
+                rotate: isVertical ? "0deg" : "15deg",
+                transform: isVertical ? "skew(0deg)" : "skew(15deg)",
+              },
+              { rotate: isVertical ? "0deg" : "10deg" },
               {},
             ],
             straightLabelStyles: { translate: "-90% 0px" },
