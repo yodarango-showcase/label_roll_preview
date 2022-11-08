@@ -76,8 +76,8 @@ export const Roll = ({
                   <div
                     key={i}
                     className={`label label-is-curved ${labelShape} ${
-                      squaredCorners ? "squared-corners" : ""
-                    }`}
+                      labelShape === 3 ? "round" : ""
+                    } ${squaredCorners ? "squared-corners" : ""}`}
                     style={{
                       ...SVGMask.addStyles[i],
                       height: `${labelWidth}px`,
@@ -99,10 +99,10 @@ export const Roll = ({
                       </clipPath>
                     </svg>
                   </div>
-                ) : label.isCurved && shape === 2 ? ( // round shape
+                ) : label.isCurved && (shape === 2 || shape === 3) ? ( // round shape
                   <div
                     key={i}
-                    className={`label label-is-curved ${labelShape}`}
+                    className={`label label-is-curved round`}
                     style={{
                       width: `${labelLength}px`,
                       height: `${labelWidth}px`,
@@ -110,7 +110,9 @@ export const Roll = ({
                     }}
                   >
                     <div
-                      className='design design-curved'
+                      className={`design design-curved ${
+                        shape === 3 ? "custom" : ""
+                      }`}
                       style={{
                         width: "100%",
                         height: "100%",
@@ -123,38 +125,9 @@ export const Roll = ({
                           height: "100%",
                           ...roundTransform.orientation[i],
                         }}
-                        className={`orientation ${labelOrientation} orientation-${labelShape} orientation-${roundTransform.image}`}
+                        className={`orientation ${labelOrientation} orientation-round orientation-${roundTransform.image}`}
                       ></div>
                     </div>
-                  </div>
-                ) : // custom shape
-                label.isCurved && shape === 3 ? (
-                  <div
-                    key={i}
-                    className={`label label-is-curved ${labelShape}`}
-                    style={{
-                      ...transformCustomShape.addStyles[i],
-                      height: `${labelWidth}px`,
-                    }}
-                  >
-                    <div className={`design-curved`}>
-                      <div
-                        className={`design orientation-${labelOrientation} ${transformCustomShape.image}`}
-                        style={{
-                          clipPath: `url(#svgPath${i})`,
-                        }}
-                      >
-                        <div style={SVGMaskTransform[i]}></div>
-                      </div>
-                    </div>
-                    <svg>
-                      <clipPath id={`svgPath${i}`}>
-                        <path
-                          d={transformCustomShape.path[i]}
-                          stroke='#FA665D'
-                        />
-                      </clipPath>
-                    </svg>
                   </div>
                 ) : // straight labels
                 shape === 1 ? ( // squared
@@ -177,7 +150,7 @@ export const Roll = ({
                       ></div>
                     </div>
                   </div>
-                ) : shape === 2 ? (
+                ) : (
                   // round
                   <div
                     key={i}
@@ -192,28 +165,7 @@ export const Roll = ({
                       height: `${labelWidth}px`,
                     }}
                   >
-                    <div className={`label-design`}>
-                      <div
-                        className={`orientation ${labelOrientation} orientation-${labelShape}`}
-                      ></div>
-                    </div>
-                  </div>
-                ) : (
-                  // custom
-                  <div
-                    key={i}
-                    className={`label ${labelShape} ${
-                      labelWidth < 30 || labelLength < 30
-                        ? "small-" + labelShape
-                        : ""
-                    }`}
-                    style={{
-                      ...transformCustomShape.straightLabelStyles,
-                      width: `${labelLength}px`,
-                      height: `${labelWidth}px`,
-                    }}
-                  >
-                    <div className={`label-design`}>
+                    <div className={`label-design ${labelShape}`}>
                       <div
                         className={`orientation ${labelOrientation} orientation-${labelShape}`}
                       ></div>
