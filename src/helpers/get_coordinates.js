@@ -1827,7 +1827,7 @@ const roundCoor = {
       };
     else if (length >= 5)
       return {
-        label: [{ transform: "translateY(-2px) skewY(5deg)" }],
+        label: [{ transform: "translateY(-2px) skewY(2deg)" }],
         design: [{ height: "96%", width: "95%" }],
         orientation: [
           {
@@ -1926,8 +1926,22 @@ const roundCoor = {
         ],
         orientation: [
           {
-            width: length >= 13 && length <= 15 ? "60%" : "40%",
-            rotate: length >= 13 && length <= 15 ? "2deg" : "5deg",
+            width:
+              orientation === 4
+                ? length >= 13 && length <= 15
+                  ? "50%"
+                  : "35%"
+                : length >= 13 && length <= 15
+                ? "60%"
+                : "40%",
+            rotate:
+              orientation === 4
+                ? length >= 13 && length <= 15
+                  ? "4deg"
+                  : "7deg"
+                : length >= 13 && length <= 15
+                ? "2deg"
+                : "5deg",
             transform: "skew(1deg)",
             translate: length >= 13 && length <= 15 ? `-1px -3px` : `-1px -3px`,
           },
@@ -2048,7 +2062,14 @@ const roundCoor = {
         ],
         orientation: [
           {
-            width: length >= 13 && length <= 15 ? "83%" : "70%",
+            width:
+              orientation === 4
+                ? length >= 13 && length <= 15
+                  ? "80%"
+                  : "65%"
+                : length >= 13 && length <= 15
+                ? "83%"
+                : "70%",
             rotate: "4deg",
             transform: "skew(5deg)",
             translate: length >= 13 && length <= 15 ? `-1px -3px` : `-1px -5px`,
@@ -2171,7 +2192,7 @@ const roundCoor = {
           {
             width: length >= 13 && length <= 15 ? "83%" : "75%",
             rotate: "2deg",
-            transform: "skew(5deg)",
+            transform: "skew(0deg)",
             translate: `-1px 0px`,
           },
         ],
@@ -2207,13 +2228,13 @@ const roundCoor = {
     else if (length >= 3)
       return {
         label: [
-          { transform: "translateY(-7%) skewY(7deg)" },
+          { transform: "translateY(-7%) skewY(5deg)" },
           { translate: "-3px 14%" },
         ],
         design: [{ height: "95%" }, {}],
         orientation: [
           {
-            rotate: "0deg",
+            rotate: "5deg",
             transform: "skew(0deg)",
             translate: `-1px 0px`,
           },
@@ -2238,7 +2259,7 @@ const roundCoor = {
             ],
             orientation: [
               {
-                rotate: "10deg",
+                rotate: "15deg",
                 transform: "skew(15deg)",
                 translate: `-1px 0px`,
               },
@@ -2290,9 +2311,9 @@ const roundCoor = {
         ],
         orientation: [
           {
-            width: "90%",
+            width: orientation === 4 ? "85%" : "90%",
             rotate: "2deg",
-            transform: "skew(5deg)",
+            transform: "skew(2deg)",
             translate: `-1px 0px`,
           },
         ],
@@ -2317,6 +2338,7 @@ const roundCoor = {
         design: [{ height: "96%", width: "95%" }],
         orientation: [
           {
+            width: orientation === 4 ? "95%" : "100%",
             rotate: "5deg",
             transform: "skew(5deg)",
             translate: `-1px 0px`,
@@ -2327,13 +2349,13 @@ const roundCoor = {
     else if (length >= 3)
       return {
         label: [
-          { transform: "translateY(-7%) skewY(7deg)" },
+          { transform: "translateY(-7%) skewY(5deg)" },
           { translate: "-3px 14%" },
         ],
         design: [{ height: "95%" }, {}],
         orientation: [
           {
-            rotate: "0deg",
+            rotate: "5deg",
             transform: "skew(0deg)",
             translate: `-1px 0px`,
           },
@@ -2399,7 +2421,7 @@ const roundCoor = {
       return {
         label:
           length >= 13 && length <= 15
-            ? [{ transform: "translate(-2px, -13px) skewY(5deg)" }]
+            ? [{ transform: "translate(-2px, -13px) skewY(3deg)" }]
             : [{ transform: "translate(-2px, -10px) skewY(5deg)" }],
         design: [
           {
@@ -2410,9 +2432,9 @@ const roundCoor = {
         ],
         orientation: [
           {
-            width: "90%",
+            width: orientation === 4 ? "85%" : "90%",
             rotate: "2deg",
-            transform: "skew(5deg)",
+            transform: "skew(0deg)",
             translate: `-1px 0px`,
           },
         ],
@@ -2424,6 +2446,7 @@ const roundCoor = {
         design: [{ height: "96%", width: "80%" }],
         orientation: [
           {
+            width: orientation === 4 ? "95%" : "100%",
             rotate: "2deg",
             transform: "skew(5deg)",
             translate: `-1px 0px`,
@@ -2447,13 +2470,13 @@ const roundCoor = {
     else if (length >= 3)
       return {
         label: [
-          { transform: "translateY(-7%) skewY(15deg)" },
+          { transform: "translateY(-7%) skewY(5deg)" },
           { translate: "-3px 14%" },
         ],
         design: [{ height: "95%" }, {}],
         orientation: [
           {
-            rotate: "0deg",
+            rotate: "5deg",
             transform: "skew(0deg)",
             translate: `-1px 0px`,
           },
@@ -2530,9 +2553,9 @@ const roundCoor = {
         ],
         orientation: [
           {
-            width: "90%",
+            width: orientation === 4 ? "88%" : "95%",
             rotate: "2deg",
-            transform: "skew(5deg)",
+            transform: "skew(2deg)",
             translate: `-1px 0px`,
           },
         ],
@@ -2544,6 +2567,7 @@ const roundCoor = {
         design: [{ height: "96%", width: "80%" }],
         orientation: [
           {
+            width: orientation === 4 ? "95%" : "100%",
             rotate: "2deg",
             transform: "skew(5deg)",
             translate: `-1px 0px`,
@@ -2567,19 +2591,20 @@ const roundCoor = {
     else if (length >= 3)
       return {
         label: [
-          { transform: "translateY(-7%) skewY(15deg)" },
-          { translate: "-3px 14%" },
+          { transform: "translateY(-7%) skewY(8deg)" },
+          { translate: "-6px 14%" },
         ],
-        design: [{ height: "95%" }, {}],
+        design: [{ width: "85%", height: "95%" }, {}],
         orientation: [
           {
-            rotate: "0deg",
+            width: orientation === 4 ? "95%" : "100%",
+            rotate: "3deg",
             transform: "skew(0deg)",
             translate: `-1px 0px`,
           },
           { rotate: "3deg", transform: "skew(5deg)" },
         ],
-        straightLabelStyles: { translate: "-10% 0px" },
+        straightLabelStyles: { translate: "-12% 0px" },
       };
     else if (length <= 2)
       return length === 2
@@ -2650,7 +2675,7 @@ const roundCoor = {
         ],
         orientation: [
           {
-            width: "90%",
+            width: orientation === 4 ? "83%" : "90%",
             rotate: "5deg",
             transform: "skew(5deg)",
             translate: `-1px 0px`,
@@ -2664,7 +2689,8 @@ const roundCoor = {
         design: [{ height: "96%", width: "80%" }],
         orientation: [
           {
-            rotate: "5deg",
+            width: orientation === 4 ? "90%" : "100%",
+            rotate: "3deg",
             transform: "skew(5deg)",
             translate: `-1px 0px`,
           },
@@ -2687,7 +2713,7 @@ const roundCoor = {
     else if (length >= 3)
       return {
         label: [
-          { transform: "translateY(-7%) skewY(20deg)" },
+          { transform: "translateY(-7%) skewY(10deg)" },
           { translate: "-3px 14%" },
         ],
         design: [{ height: "95%" }, {}],
@@ -2770,7 +2796,7 @@ const roundCoor = {
         ],
         orientation: [
           {
-            width: "100%",
+            width: orientation === 4 ? "90%" : "100%",
             rotate: "5deg",
             transform: "skew(5deg)",
             translate: `-1px 0px`,
@@ -2807,7 +2833,7 @@ const roundCoor = {
     else if (length >= 3)
       return {
         label: [
-          { transform: "translateY(-7%) skewY(20deg)" },
+          { transform: "translateY(-7%) skewY(10deg)" },
           { translate: "-3px 14%" },
         ],
         design: [{ height: "95%" }, {}],
@@ -2890,7 +2916,7 @@ const roundCoor = {
         ],
         orientation: [
           {
-            width: "100%",
+            width: orientation === 4 ? "90%" : "100%",
             rotate: "5deg",
             transform: "skew(5deg)",
             translate: `-1px 0px`,
@@ -2927,7 +2953,7 @@ const roundCoor = {
     else if (length >= 3)
       return {
         label: [
-          { transform: "translateY(-7%) skewY(20deg)" },
+          { transform: "translateY(-7%) skewY(10deg)" },
           { translate: "-3px 14%" },
         ],
         design: [{ height: "95%" }, {}],
@@ -2999,8 +3025,8 @@ const roundCoor = {
       return {
         label:
           length >= 13 && length <= 15
-            ? [{ transform: "translate(-2px, -10px) skewY(5deg)" }]
-            : [{ transform: "translate(-2px, -7px) skewY(5deg)" }],
+            ? [{ transform: "translate(-2px, -14px) skewY(5deg)" }]
+            : [{ transform: "translate(-2px, -10px) skewY(5deg)" }],
         design: [
           {
             height: "85%",
@@ -3010,7 +3036,7 @@ const roundCoor = {
         ],
         orientation: [
           {
-            width: "100%",
+            width: orientation === 4 ? "90%" : "100%",
             rotate: "5deg",
             transform: "skew(5deg)",
             translate: `-1px 0px`,
@@ -3033,7 +3059,7 @@ const roundCoor = {
       };
     else if (length >= 5)
       return {
-        label: [{ transform: "translateY(-3%) skewY(5deg)" }],
+        label: [{ transform: "translateY(-3%) skewY(10deg)" }],
         design: [{ height: "96%", width: "95%" }],
         orientation: [
           {
@@ -3047,13 +3073,14 @@ const roundCoor = {
     else if (length >= 3)
       return {
         label: [
-          { transform: "translateY(-7%) skewY(20deg)" },
+          { transform: "translateY(-7%) skewY(10deg)" },
           { translate: "-3px 14%" },
         ],
         design: [{ height: "95%" }, {}],
         orientation: [
           {
-            rotate: "5deg",
+            width: orientation === 4 ? "95%" : "100%",
+            rotate: "7deg",
             transform: "skew(5deg)",
             translate: `-1px 0px`,
           },
@@ -3120,7 +3147,7 @@ const roundCoor = {
         label:
           length >= 13 && length <= 15
             ? [{ transform: "translate(-2px, -14px) skewY(5deg)" }]
-            : [{ transform: "translate(-2px, -7px) skewY(5deg)" }],
+            : [{ transform: "translate(-2px, -9px) skewY(5deg)" }],
         design: [
           {
             height: "85%",
@@ -3130,7 +3157,7 @@ const roundCoor = {
         ],
         orientation: [
           {
-            width: "100%",
+            width: orientation === 4 ? "85%" : "100%",
             rotate: "5deg",
             transform: "skew(5deg)",
             translate: `-1px 0px`,
@@ -3144,6 +3171,7 @@ const roundCoor = {
         design: [{ height: "96%", width: "80%" }],
         orientation: [
           {
+            width: orientation === 4 ? "95%" : "100%",
             rotate: "5deg",
             transform: "skew(5deg)",
             translate: `-1px 0px`,
@@ -3157,6 +3185,7 @@ const roundCoor = {
         design: [{ height: "96%", width: "95%" }],
         orientation: [
           {
+            width: orientation === 4 ? "95%" : "100%",
             rotate: "5deg",
             transform: "skew(5deg)",
             translate: `-1px 0px`,
@@ -3173,6 +3202,7 @@ const roundCoor = {
         design: [{ height: "95%" }, {}],
         orientation: [
           {
+            width: orientation === 4 ? "95%" : "100%",
             rotate: "5deg",
             transform: "skew(5deg)",
             translate: `-1px 0px`,
@@ -3223,7 +3253,7 @@ const roundCoor = {
             ],
             orientation: [
               {
-                rotate: "20deg",
+                rotate: orientation === 4 ? "25deg" : "20deg",
                 transform: "skew(15deg)",
                 translate: `-1px 0px`,
               },
