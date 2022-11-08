@@ -6,6 +6,7 @@ import {
   getSvgMask,
   transformMask,
   transformRoundShape,
+  transformCustomShape,
 } from "./helpers/get_coordinates";
 
 const rollDimensions = {
@@ -44,7 +45,9 @@ export const Roll = ({
 
   // transform the circular shape on size adjustment
   const roundTransform = transformRoundShape(width, length, orientation);
-  console.log(roundTransform);
+
+  // transform the circular shape on size adjustment
+  const transformCustomShape = transformRoundShape(width, length, orientation);
 
   useEffect(() => {
     const rollL = rollLengthDOMEL.current.getBoundingClientRect();
@@ -124,7 +127,37 @@ export const Roll = ({
                       ></div>
                     </div>
                   </div>
-                ) : shape === 1 ? ( // squared
+                ) : // custom shape
+                label.isCurved && shape === 3 ? (
+                  <div
+                    key={i}
+                    className={`label label-is-curved ${labelShape}`}
+                    style={{
+                      ...transformCustomShape.addStyles[i],
+                      height: `${labelWidth}px`,
+                    }}
+                  >
+                    <div className={`design-curved`}>
+                      <div
+                        className={`design orientation-${labelOrientation} ${transformCustomShape.image}`}
+                        style={{
+                          clipPath: `url(#svgPath${i})`,
+                        }}
+                      >
+                        <div style={SVGMaskTransform[i]}></div>
+                      </div>
+                    </div>
+                    <svg>
+                      <clipPath id={`svgPath${i}`}>
+                        <path
+                          d={transformCustomShape.path[i]}
+                          stroke='#FA665D'
+                        />
+                      </clipPath>
+                    </svg>
+                  </div>
+                ) : // straight labels
+                shape === 1 ? ( // squared
                   <div
                     key={i}
                     className={`label ${labelShape} ${
@@ -144,7 +177,7 @@ export const Roll = ({
                       ></div>
                     </div>
                   </div>
-                ) : (
+                ) : shape === 2 ? (
                   // round
                   <div
                     key={i}
@@ -152,9 +185,30 @@ export const Roll = ({
                       labelWidth < 30 || labelLength < 30
                         ? "small-" + labelShape
                         : ""
-                    } ${squaredCorners ? "squared-corners" : ""}`}
+                    }`}
                     style={{
                       ...roundTransform.straightLabelStyles,
+                      width: `${labelLength}px`,
+                      height: `${labelWidth}px`,
+                    }}
+                  >
+                    <div className={`label-design`}>
+                      <div
+                        className={`orientation ${labelOrientation} orientation-${labelShape}`}
+                      ></div>
+                    </div>
+                  </div>
+                ) : (
+                  // custom
+                  <div
+                    key={i}
+                    className={`label ${labelShape} ${
+                      labelWidth < 30 || labelLength < 30
+                        ? "small-" + labelShape
+                        : ""
+                    }`}
+                    style={{
+                      ...transformCustomShape.straightLabelStyles,
                       width: `${labelLength}px`,
                       height: `${labelWidth}px`,
                     }}
