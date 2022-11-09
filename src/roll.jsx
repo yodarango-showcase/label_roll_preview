@@ -47,7 +47,12 @@ export const Roll = ({
   const roundTransform = transformRoundShape(width, length, orientation);
 
   // transform the circular shape on size adjustment
-  const transformCustomShape = transformRoundShape(width, length, orientation);
+  const customTransform = transformCustomShape(width, length, orientation);
+
+  // decide whether is round or custom shape
+  const customOrRound = shape === 2 ? roundTransform : customTransform;
+
+  console.log("custom shapee", transformCustomShape);
 
   useEffect(() => {
     const rollL = rollLengthDOMEL.current.getBoundingClientRect();
@@ -106,7 +111,7 @@ export const Roll = ({
                     style={{
                       width: `${labelLength}px`,
                       height: `${labelWidth}px`,
-                      ...roundTransform.label[i],
+                      ...customOrRound.label[i],
                     }}
                   >
                     <div
@@ -114,18 +119,20 @@ export const Roll = ({
                         shape === 3 ? "custom" : ""
                       }`}
                       style={{
+                        clipPath:
+                          shape === 3 ? customOrRound.clipPath[i] : "none",
                         width: "100%",
                         height: "100%",
-                        ...roundTransform.design[i],
+                        ...customOrRound.design[i],
                       }}
                     >
                       <div
                         style={{
                           width: "100%",
                           height: "100%",
-                          ...roundTransform.orientation[i],
+                          ...customOrRound.orientation[i],
                         }}
-                        className={`orientation ${labelOrientation} orientation-round orientation-${roundTransform.image}`}
+                        className={`orientation ${labelOrientation} orientation-round orientation-${customOrRound.image}`}
                       ></div>
                     </div>
                   </div>

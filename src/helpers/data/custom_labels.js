@@ -30,7 +30,7 @@ export const customLabelCoordinates = {
                 ? `${isVertical ? 0 : 5}deg`
                 : "5deg",
             transform: "skew(0deg)",
-            translate: length >= 13 && length <= 15 ? `-1px -3px` : `-1px -3px`,
+            translate: length >= 13 && length <= 15 ? `-10% -3px` : `-1px -3px`,
           },
         ],
         straightLabelStyles: { translate: "-55% 0px" },
@@ -42,9 +42,9 @@ export const customLabelCoordinates = {
         orientation: [
           {
             width: length <= 10 ? "55%" : "35%",
-            rotate: isVertical ? "5deg" : "0deg",
-            transform: isVertical ? "0deg" : "skew(5deg)",
-            translate: `-1px 0px`,
+            rotate: "0deg",
+            transform: isVertical ? "skew(0deg)" : "skew(5deg)",
+            translate: isVertical ? "-10% 1px" : `-1px 1px`,
           },
         ],
         straightLabelStyles: { translate: "-20% 0px" },
@@ -55,10 +55,11 @@ export const customLabelCoordinates = {
         design: [{ height: "96%", width: "95%" }],
         orientation: [
           {
+            backgroundSize: isVertical && "30%",
             width: "65%",
-            rotate: "2deg",
-            transform: "skew(5deg)",
-            translate: `-1px 1px`,
+            rotate: isVertical ? "0deg" : "2deg",
+            transform: isVertical ? "skew(0deg)" : "skew(5deg)",
+            translate: isVertical ? "-3px 1px" : `-1px 1px`,
           },
         ],
         straightLabelStyles: { translate: "-3px 0px" },
@@ -72,12 +73,18 @@ export const customLabelCoordinates = {
         design: [{ height: "95%" }, {}],
         orientation: [
           {
+            backgroundSize: isVertical && "30%",
             width: "70%",
             rotate: "0deg",
             transform: "skew(0deg)",
             translate: `-1px 0px`,
           },
-          { width: "70%", rotate: "3deg", transform: "skew(5deg)" },
+          {
+            backgroundSize: isVertical && "30%",
+            width: "70%",
+            rotate: "3deg",
+            transform: "skew(5deg)",
+          },
         ],
         straightLabelStyles: { translate: "-18% 0px" },
       };
@@ -98,13 +105,19 @@ export const customLabelCoordinates = {
             ],
             orientation: [
               {
-                rotate: "10deg",
-                transform: "skew(5deg)",
+                backgroundSize: isVertical && "20%",
+                rotate: isVertical ? "0deg" : "10deg",
+                transform: isVertical ? "0deg" : "skew(5deg)",
                 translate: `-1px 0px`,
               },
-              { rotate: "5deg", transform: "skew(5deg)" },
-              { rotate: "2deg" },
-              {},
+              {
+                backgroundSize: isVertical && "20%",
+                rotate: isVertical ? "0deg" : "5deg",
+                transform: isVertical ? "skew(0deg)" : "skew(5deg)",
+                translate: `-1px 0px`,
+              },
+              { backgroundSize: isVertical && "20%", rotate: "2deg" },
+              { backgroundSize: isVertical && "20%" },
             ],
             straightLabelStyles: { translate: "-50% 0px" },
           }
@@ -123,16 +136,22 @@ export const customLabelCoordinates = {
             ],
             orientation: [
               {
+                backgroundSize: isVertical && "20%",
                 rotate: "10deg",
                 transform: "skew(5deg)",
                 translate: `-1px 0px`,
               },
               {
-                rotate: isVertical ? "13deg" : "5deg",
+                backgroundSize: isVertical && "20%",
+                rotate: isVertical ? "20deg" : "5deg",
                 transform: "skew(15deg)",
+                translate: "-1px 0px",
               },
-              { rotate: isVertical ? "0deg" : "5deg" },
-              {},
+              {
+                backgroundSize: isVertical && "20%",
+                rotate: isVertical ? "0deg" : "5deg",
+              },
+              { backgroundSize: isVertical && "20%" },
             ],
             straightLabelStyles: { translate: "-90% 0px" },
           };
@@ -1535,7 +1554,12 @@ export const customLabelCoordinates = {
     if (length >= 8)
       return {
         label: [{ transform: "translateY(-1%) skewY(5deg)" }],
-        design: [{ height: "96%", width: "80%" }],
+        design: [
+          {
+            height: "96%",
+            width: "80%",
+          },
+        ],
         orientation: [
           {
             width: orientation === 4 ? "95%" : "100%",
