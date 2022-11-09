@@ -167,13 +167,14 @@ export const Roll = ({
                         : ""
                     }`}
                     style={{
-                      ...roundTransform.straightLabelStyles,
+                      ...customOrRound.straightLabelStyles,
                       width: `${labelLength}px`,
                       height: `${labelWidth}px`,
                     }}
                   >
                     <div className={`label-design ${labelShape}`}>
                       <div
+                        style={customOrRound.straightDesignStyles}
                         className={`orientation ${labelOrientation} orientation-${labelShape}`}
                       ></div>
                     </div>
