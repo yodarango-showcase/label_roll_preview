@@ -4,7 +4,7 @@ $roll-core-color: #bca28b;
 $roll-core-color-shadow: #a89284;
 $roll-material-color: #ffffff;
 $roll-material-color-shadow: #c6c3c1;
-$label-color: #d9d9d9;
+$label-color: #a3abb2;
 
 // wrapper
 .component-wrapper {
@@ -71,10 +71,26 @@ $label-color: #d9d9d9;
         justify-content: flex-start;
         margin: 0 auto 0 0;
       }
+
+      .loading {
+        position: absolute;
+        top: 40%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        color: black;
+        width: 100%;
+        text-align: center;
+      }
     }
 
     .roll_length.min-width {
       top: 10px;
+    }
+
+    .roll_length.min-height {
+      min-height: 100%;
     }
   }
 

@@ -52,7 +52,7 @@ export const Roll = ({
   // decide whether is round or custom shape
   const customOrRound = shape === 2 ? roundTransform : customTransform;
 
-  console.log("custom shapee", transformCustomShape);
+  const noLables = labels.length === 0 || !labels || shape > 3;
 
   useEffect(() => {
     const rollL = rollLengthDOMEL.current.getBoundingClientRect();
@@ -72,115 +72,120 @@ export const Roll = ({
           <div
             ref={rollLengthDOMEL}
             id='roll_length'
-            className={`roll_length ${labelWidth <= 40 && "min-width"}`}
+            className={`roll_length ${labelWidth <= 40 && "min-width"} ${
+              noLables ? "min-height" : ""
+            }`}
             style={{ minWidth: rollDimensions.length }}
           >
+            {shape > 3 && <div className='loading'>Loading...</div>}
             <div className={`label-wrapper`}>
-              {labels.map((label, i) =>
-                label.isCurved && shape === 1 ? ( // squared shape
-                  <div
-                    key={i}
-                    className={`label label-is-curved ${labelShape} ${
-                      labelShape === 3 ? "round" : ""
-                    } ${squaredCorners ? "squared-corners" : ""}`}
-                    style={{
-                      ...SVGMask.addStyles[i],
-                      height: `${labelWidth}px`,
-                    }}
-                  >
-                    <div className={`design-curved`}>
-                      <div
-                        className={`design orientation-${labelOrientation} ${SVGMask.image}`}
-                        style={{
-                          clipPath: `url(#svgPath${i})`,
-                        }}
-                      >
-                        <div style={SVGMaskTransform[i]}></div>
-                      </div>
-                    </div>
-                    <svg>
-                      <clipPath id={`svgPath${i}`}>
-                        <path d={SVGMask.path[i]} stroke='#FA665D' />
-                      </clipPath>
-                    </svg>
-                  </div>
-                ) : label.isCurved && (shape === 2 || shape === 3) ? ( // round shape
-                  <div
-                    key={i}
-                    className={`label label-is-curved round`}
-                    style={{
-                      width: `${labelLength}px`,
-                      height: `${labelWidth}px`,
-                      ...customOrRound.label[i],
-                    }}
-                  >
+              {shape >= 1 &&
+                shape <= 3 &&
+                labels.map((label, i) =>
+                  label.isCurved && shape === 1 ? ( // squared shape
                     <div
-                      className={`design design-curved ${
-                        shape === 3 ? "custom" : ""
-                      }`}
+                      key={i}
+                      className={`label label-is-curved ${labelShape} ${
+                        labelShape === 3 ? "round" : ""
+                      } ${squaredCorners ? "squared-corners" : ""}`}
                       style={{
-                        clipPath:
-                          shape === 3 ? customOrRound.clipPath[i] : "none",
-                        width: "100%",
-                        height: "100%",
-                        ...customOrRound.design[i],
+                        ...SVGMask.addStyles[i],
+                        height: `${labelWidth}px`,
+                      }}
+                    >
+                      <div className={`design-curved`}>
+                        <div
+                          className={`design orientation-${labelOrientation} ${SVGMask.image}`}
+                          style={{
+                            clipPath: `url(#svgPath${i})`,
+                          }}
+                        >
+                          <div style={SVGMaskTransform[i]}></div>
+                        </div>
+                      </div>
+                      <svg>
+                        <clipPath id={`svgPath${i}`}>
+                          <path d={SVGMask.path[i]} stroke='#FA665D' />
+                        </clipPath>
+                      </svg>
+                    </div>
+                  ) : label.isCurved && (shape === 2 || shape === 3) ? ( // round shape
+                    <div
+                      key={i}
+                      className={`label label-is-curved round`}
+                      style={{
+                        width: `${labelLength}px`,
+                        height: `${labelWidth}px`,
+                        ...customOrRound.label[i],
                       }}
                     >
                       <div
+                        className={`design design-curved ${
+                          shape === 3 ? "custom" : ""
+                        }`}
                         style={{
+                          clipPath:
+                            shape === 3 ? customOrRound.clipPath[i] : "none",
                           width: "100%",
                           height: "100%",
-                          ...customOrRound.orientation[i],
+                          ...customOrRound.design[i],
                         }}
-                        className={`orientation ${labelOrientation} orientation-round orientation-${customOrRound.image}`}
-                      ></div>
+                      >
+                        <div
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            ...customOrRound.orientation[i],
+                          }}
+                          className={`orientation ${labelOrientation} orientation-round orientation-${customOrRound.image}`}
+                        ></div>
+                      </div>
                     </div>
-                  </div>
-                ) : // straight labels
-                shape === 1 ? ( // squared
-                  <div
-                    key={i}
-                    className={`label ${labelShape} ${
-                      labelWidth < 30 || labelLength < 30
-                        ? "small-" + labelShape
-                        : ""
-                    } ${squaredCorners ? "squared-corners" : ""}`}
-                    style={{
-                      ...label.addStyles,
-                      width: `${labelLength}px`,
-                      height: `${labelWidth}px`,
-                    }}
-                  >
-                    <div className={`label-design`}>
-                      <div
-                        className={`orientation ${labelOrientation} orientation-${labelShape}`}
-                      ></div>
+                  ) : // straight labels
+                  shape === 1 ? ( // squared
+                    <div
+                      key={i}
+                      className={`label ${labelShape} ${
+                        labelWidth < 30 || labelLength < 30
+                          ? "small-" + labelShape
+                          : ""
+                      } ${squaredCorners ? "squared-corners" : ""}`}
+                      style={{
+                        ...label.addStyles,
+                        width: `${labelLength}px`,
+                        height: `${labelWidth}px`,
+                      }}
+                    >
+                      <div className={`label-design`}>
+                        <div
+                          className={`orientation ${labelOrientation} orientation-${labelShape}`}
+                        ></div>
+                      </div>
                     </div>
-                  </div>
-                ) : (
-                  // round
-                  <div
-                    key={i}
-                    className={`label ${labelShape} ${
-                      labelWidth < 30 || labelLength < 30
-                        ? "small-" + labelShape
-                        : ""
-                    }`}
-                    style={{
-                      ...customOrRound.straightLabelStyles,
-                      width: `${labelLength}px`,
-                      height: `${labelWidth}px`,
-                    }}
-                  >
-                    <div className={`label-design ${labelShape}`}>
-                      <div
-                        style={customOrRound.straightDesignStyles}
-                        className={`orientation ${labelOrientation} orientation-${labelShape}`}
-                      ></div>
+                  ) : (
+                    // round
+                    <div
+                      key={i}
+                      className={`label ${labelShape} ${
+                        labelWidth < 30 || labelLength < 30
+                          ? "small-" + labelShape
+                          : ""
+                      }`}
+                      style={{
+                        ...customOrRound.straightLabelStyles,
+                        width: `${labelLength}px`,
+                        height: `${labelWidth}px`,
+                      }}
+                    >
+                      <div className={`label-design ${labelShape}`}>
+                        <div
+                          style={customOrRound.straightDesignStyles}
+                          className={`orientation ${labelOrientation} orientation-${labelShape}`}
+                        ></div>
+                      </div>
                     </div>
-                  </div>
-                )
-              )}
+                  )
+                )}
             </div>
           </div>
         </div>
