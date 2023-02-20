@@ -75,7 +75,10 @@ export const Roll = ({
             className={`roll_length ${labelWidth <= 40 && "min-width"} ${
               noLables ? "min-height" : ""
             }`}
-            style={{ minWidth: rollDimensions.length }}
+            style={{
+              minWidth: rollDimensions.length,
+              minHeight: "30px",
+            }}
           >
             {shape > 3 && <div className='loading'>Loading...</div>}
             <div className={`label-wrapper`}>
