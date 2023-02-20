@@ -14,3 +14,31 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+* {
+  box-sizing: border-box;
+}
+.main-wrapper {
+  width: 100vw;
+  height: 35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.roll-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  width: 400px;
+  padding-left: 2rem;
+}
+
+.inputs {
+  margin: 3rem auto;
+  display: flex;
+  justify-content: center;
+  height: 2rem;
+}

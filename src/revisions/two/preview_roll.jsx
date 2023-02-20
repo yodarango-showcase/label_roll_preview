@@ -1,20 +1,20 @@
 import { useState, useRef, useEffect } from "react";
-import "./roll.scss";
-import { getDimensions } from "./helpers/get_dimensions";
-import { getOrientation, getShape } from "./helpers/get_options";
+import "./preview_roll.scss";
+import { getDimensions } from "../../helpers/get_dimensions";
+import { getOrientation, getShape } from "../../helpers/get_options";
 import {
   getSvgMask,
   transformMask,
   transformRoundShape,
   transformCustomShape,
-} from "./helpers/get_coordinates";
+} from "../../helpers/get_coordinates";
 
 const rollDimensions = {
   width: 160,
   length: 340,
 };
 
-export const Roll = ({
+export const PreviewRoll2 = ({
   width = 12,
   length = 12,
   shape = 1,
@@ -60,7 +60,7 @@ export const Roll = ({
   }, []);
 
   return (
-    <div className='component-wrapper'>
+    <div className='roll-wrapper version-three'>
       <div
         className={`roll`}
         style={{ height: `${labelWidth}px`, width: rollDimensions.width }}
@@ -77,7 +77,7 @@ export const Roll = ({
             }`}
             style={{
               minWidth: rollDimensions.length,
-              minHeight: "30px",
+              // minHeight: rollDimensions.width,
             }}
           >
             {shape > 3 && <div className='loading'>Loading...</div>}
@@ -194,53 +194,5 @@ export const Roll = ({
         </div>
       </div>
     </div>
-  );
-};
-
-export const RollPreview = () => {
-  const [width, setWidth] = useState();
-  const [length, setLength] = useState();
-  const [or, setOr] = useState();
-  const [shape, setShape] = useState();
-  const [squaredCorners, setsquaredCorners] = useState(true);
-
-  return (
-    <>
-      <div className='inputs'>
-        <input
-          type='text'
-          placeholder='width'
-          onChange={(e) => setWidth(parseInt(e.target.value))}
-        />
-        <input
-          type='text'
-          placeholder='length'
-          onChange={(e) => setLength(parseInt(e.target.value))}
-        />
-        <input
-          type='number'
-          placeholder='orientation'
-          onChange={(e) => setOr(parseFloat(e.target.value))}
-        />
-        <input
-          type='number'
-          placeholder='shape'
-          onChange={(e) => setShape(parseFloat(e.target.value))}
-        />
-        {!squaredCorners && (
-          <button onClick={() => setsquaredCorners(true)}>squared</button>
-        )}
-        {squaredCorners && (
-          <button onClick={() => setsquaredCorners(false)}>round</button>
-        )}
-      </div>
-      <Roll
-        width={width}
-        length={length}
-        orientation={or}
-        shape={shape}
-        squaredCorners={squaredCorners}
-      />
-    </>
   );
 };
