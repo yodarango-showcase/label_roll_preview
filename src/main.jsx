@@ -53,13 +53,7 @@ const App = () => {
 
       <div className='main-wrapper'>
         <PreviewRoll orientation={orientation} width={width} />
-        <PreviewRoll2
-          width={width}
-          length={length}
-          orientation={orientation}
-          shape={shape}
-          squaredCorners={squaredCorners}
-        />
+
         <PreviewRoll3
           width={width}
           length={length}
@@ -67,7 +61,52 @@ const App = () => {
           shape={shape}
           squaredCorners={squaredCorners}
         />
+        <PreviewRoll2
+          width={width}
+          length={length}
+          orientation={orientation}
+          shape={shape}
+          squaredCorners={squaredCorners}
+        />
         <PreviewRoll4 />
+      </div>
+      <div className='desc-wrapper'>
+        <div>
+          <h1 className='version-title'>Version 1</h1>
+          <p className='version-description'>
+            Responsive to roll size from 4" to 12" and label orientation. When
+            sized down in a vertical orientation the curved label does not
+            rotate to the proper angle but this is is a minor change
+          </p>
+        </div>
+        <div>
+          <h1 className='version-title'>Version 2</h1>
+          <p className='version-description'>
+            Second most responsive roll. Responds to corner format, label shape,
+            orientation, label width from 4" - 12", label height from 3" - 17"
+            and it extrapolates the necessary amount of labels to fill the roll.
+            labels.
+          </p>
+        </div>
+        <div>
+          <h1 className='version-title'>Version 3</h1>
+          <p className='version-description'>
+            By far the most responsive of all. Responds to corner format, label
+            shape, orientation, label width, label height and it extrapolates
+            the necessary amount of labels to fill the roll. However, the
+            algorithm that calculated the curvature is not smart enough to make
+            perfectly round labels.
+          </p>
+        </div>
+        <div>
+          <h1 className='version-title'>Version 4</h1>
+          <p className='version-description'>
+            This is the newest design of the roll to implement. Since making the
+            curved labels would be a bigger task, this option was provided as a
+            possible option. The Goal for this design is to give the same
+            flexibility as the version 3 or 2 rolls
+          </p>
+        </div>
       </div>
     </React.Fragment>
   );
