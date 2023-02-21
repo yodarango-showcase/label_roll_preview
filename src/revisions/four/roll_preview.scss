@@ -1,0 +1,33 @@
+.version-four {
+  .roll {
+    width: 250px;
+    position: relative;
+    transform: translateY(100px);
+
+    svg {
+      rotate: 0.75turn;
+
+      .st0 {
+        fill: #d1d3d4;
+      }
+      .st1 {
+        fill: #f3eade;
+      }
+      .st2 {
+        fill: #bca28b;
+      }
+      .st3 {
+        fill: #ad917b;
+      }
+      .st4 {
+        fill: #ffffff;
+        stroke: #d1d3d4;
+        stroke-width: 0.25;
+        stroke-miterlimit: 10;
+      }
+      .st5 {
+        fill: #e6e7e8;
+      }
+    }
+  }
+}

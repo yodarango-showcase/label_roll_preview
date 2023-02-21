@@ -6,7 +6,8 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #162737;
+  /*background-color: #162737;*/
+  background-color: #dcdcdc;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -20,16 +21,16 @@
 }
 .main-wrapper {
   width: 100vw;
-  height: 35rem;
+  height: 350px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
 .roll-wrapper {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: flex-start;
   height: 100%;
   width: 400px;
@@ -37,8 +38,38 @@
 }
 
 .inputs {
+  width: 96%;
   margin: 3rem auto;
   display: flex;
   justify-content: center;
   height: 2rem;
+}
+
+.inputs input,
+.inputs select {
+  background: #e9e9e9;
+  border: none;
+  width: 24%;
+  max-width: 200px;
+  height: 50px;
+  padding: 0 15px;
+  border-radius: 10px;
+  margin-right: 10px;
+  color: #494949;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  outline: none;
+}
+
+.inputs button {
+  background-color: #494949;
+  padding: 0 15px;
+  height: 50px;
+  font-weight: bold;
+  border-radius: 10px;
+  color: #e9e9e9;
+  font-size: 16px;
+  border: none;
+  outline: none;
 }

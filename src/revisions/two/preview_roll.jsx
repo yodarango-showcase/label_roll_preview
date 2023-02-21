@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import "./preview_roll.scss";
-import { getDimensions } from "../../helpers/get_dimensions";
-import { getOrientation, getShape } from "../../helpers/get_options";
+import { getDimensions } from "./helpers/get_dimensions";
+import { getOrientation, getShape } from "./helpers/get_options";
 import {
   getSvgMask,
   transformMask,
   transformRoundShape,
   transformCustomShape,
-} from "../../helpers/get_coordinates";
+} from "./helpers/get_coordinates";
 
 const rollDimensions = {
   width: 160,
@@ -60,7 +60,7 @@ export const PreviewRoll2 = ({
   }, []);
 
   return (
-    <div className='roll-wrapper version-three'>
+    <div className='roll-wrapper version-two'>
       <div
         className={`roll`}
         style={{ height: `${labelWidth}px`, width: rollDimensions.width }}

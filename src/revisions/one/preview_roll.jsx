@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./preview_roll.scss";
 import logo from "../../assets/sttark_label_logo.png";
 
@@ -25,6 +25,8 @@ export const PreviewRoll = ({ orientation = 1, width = 12, art }) => {
   }
 
   if (width <= 3) width = 3;
+  if (width >= 12) width = 12;
+  if (!width) width = 12;
   // function handleValidateSize(e){
   //   const img  =new Image();
   //   img.src = art;
@@ -36,7 +38,7 @@ export const PreviewRoll = ({ orientation = 1, width = 12, art }) => {
   // useEffect(handleValidateSize, [])
 
   return (
-    <div className='roll-wrapper version-two'>
+    <div className='roll-wrapper version-one'>
       <div className='roll' style={{ height: parseInt(width) * 9.08 }}>
         {/*left side part of the roll*/}
         <div className='roll_thickness'>
