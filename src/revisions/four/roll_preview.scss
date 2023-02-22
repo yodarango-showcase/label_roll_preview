@@ -1,33 +1,196 @@
+$roll-border-color: #f3eada;
+$roll-thickness-color: #f3eade;
+$roll-core-color: #bca28b;
+$roll-core-color-shadow: #a89284;
+$roll-material-color: #ffffff;
+$roll-material-color-shadow: #c6c3c1;
+$label-color: #a3abb2;
+
 .version-four {
-  .roll {
-    width: 170px;
-    position: relative;
-    transform: translate(50px, 0px);
+	width: 100vw;
+	height: 60vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-    svg {
-      rotate: 0.75turn;
+	.roll {
+		top: 0;
+		left: 0;
+		margin: 0;
+		position: relative;
 
-      .st0 {
-        fill: #d1d3d4;
-      }
-      .st1 {
-        fill: #f3eade;
-      }
-      .st2 {
-        fill: #bca28b;
-      }
-      .st3 {
-        fill: #ad917b;
-      }
-      .st4 {
-        fill: #ffffff;
-        stroke: #d1d3d4;
-        stroke-width: 0.25;
-        stroke-miterlimit: 10;
-      }
-      .st5 {
-        fill: #e6e7e8;
-      }
-    }
-  }
+		* {
+			box-sizing: border-box;
+		}
+
+		.cylinder {
+			width: 100%;
+			height: 100%;
+			min-height: 30px;
+			background-image: linear-gradient(90deg, $roll-material-color 50%, $roll-material-color-shadow 50%);
+			overflow-x: visible;
+			overflow-y: hidden;
+			border-bottom-left-radius: 60% 30%;
+
+			.folded-roll-length {
+				height: 200%;
+				width: 50px;
+				position: absolute;
+				z-index: 3;
+			}
+
+			.roll_length {
+				top: calc(17.5% + 2px);
+				padding: 4px;
+				padding-left: 0;
+				position: absolute;
+				border-bottom-left-radius: 20% 30%;
+				background-color: $roll-material-color;
+
+				.label-wrapper {
+					height: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: flex-start;
+					column-gap: 5px;
+					margin: 0 auto 0 0;
+
+					.label {
+						background-color: #eae3e3;
+					}
+				}
+
+				.loading {
+					position: absolute;
+					top: 40%;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					margin: auto;
+					color: black;
+					width: 100%;
+					text-align: center;
+				}
+			}
+
+			.roll_length.min-width {
+				top: 10px;
+			}
+
+			.roll_length.min-height {
+				min-height: 100%;
+			}
+		}
+
+		.roll_thickness {
+			z-index: 2;
+			top: -17.5%;
+			left: 0;
+			position: absolute;
+			background-color: $roll-thickness-color;
+			width: 100%;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0px 2px $roll-material-color-shadow;
+			height: 35%;
+			width: 100%;
+
+			/* core */
+			.thickness_core {
+				position: relative;
+				z-index: 4;
+				width: 30%;
+				height: 30%;
+				border-radius: 50%;
+				background-image: linear-gradient(-130deg, $roll-core-color 65%, $roll-core-color-shadow 50%);
+			}
+		}
+		.roll_thickness.min-width {
+			min-height: 20px;
+			top: -10px;
+		}
+	}
+
+	// shapes
+	.roll {
+		.label-wrapper {
+			.square {
+				border-radius: 0.5em;
+
+				.label-design {
+					border-radius: 0.5em;
+				}
+			}
+
+			.small-square {
+				border-radius: 3px;
+				.label-design {
+					border-radius: 3px;
+				}
+			}
+
+			.squared-corners {
+				border-radius: 0;
+
+				.label-design {
+					border-radius: 0;
+				}
+			}
+
+			.round {
+				overflow: hidden;
+
+				.label-design {
+					border-radius: 50%;
+				}
+			}
+
+			.custom {
+				overflow: hidden;
+
+				.label-design {
+					clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+
+					.orientation {
+						background-size: 50%;
+					}
+				}
+			}
+		}
+	}
+
+	// orientation shapes
+	.roll {
+		.label-wrapper {
+			.label {
+				.orientation {
+					width: 100%;
+					height: 100%;
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: contain;
+				}
+				.one {
+					background-image: url("layouts/logo_v.svg");
+					transform: rotate(180deg);
+				}
+				.two {
+					background-image: url("layouts/logo_v.svg");
+				}
+				.three {
+					background-image: url("layouts/logo_h.svg");
+				}
+				.four {
+					background-image: url("layouts/logo_h.svg");
+					transform: rotate(-180deg);
+				}
+				.orientation-custom.one,
+				.orientation-custom.two {
+					background-size: 17%;
+				}
+			}
+		}
+	}
 }
