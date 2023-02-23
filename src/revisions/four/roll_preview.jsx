@@ -1,5 +1,5 @@
 import { getOrientation, getShape } from "./helpers/get_options";
-import { calculateRadius, getDimensions } from "./helpers/get_dimensions";
+import { getDimensions } from "./helpers/get_dimensions";
 import { useState, useRef, useEffect } from "react";
 import curvedLengthLarge from "./assets/curved_length_large.png";
 import "./roll_preview.scss";
@@ -17,10 +17,7 @@ export const PreviewRoll4 = ({ width = 12, length = 12, shape = 1, orientation =
 	let coreSize = length <= 17 ? `${59 - length * 2}%` : "25%";
 
 	// get dimensions
-	const { labelWidth, labelLength, labels } = getDimensions(width, length, rollLength);
-
-	// corner radius
-	const cornerRadius = calculateRadius(squaredCorners, shape, labelWidth, labelLength);
+	const { labelWidth, labelLength, labels, cornerRadius } = getDimensions(width, length, rollLength, squaredCorners, shape);
 
 	// get shape
 	const labelShape = getShape(shape);

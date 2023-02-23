@@ -1,10 +1,11 @@
-export const getDimensions = (width, length, dimensions) => {
+export const getDimensions = (width, length, dimensions, squaredCorners, shape) => {
 	const area = dimensions ? dimensions : 340;
 
 	// dimensions
 	let labelWidth;
 	let labelLength;
 	let labelCount;
+	let cornerRadius;
 
 	// width
 	if (!width) {
@@ -58,29 +59,28 @@ export const getDimensions = (width, length, dimensions) => {
 	//console.log(labelLength, area);
 	labelCount = labelCount > 20 ? 20 : (labelCount <= 2) & (labelLength <= 140) ? 3 : (labelCount <= 2) & (labelLength > 140) ? 2 : labelCount;
 
-	return {
-		labels: [...Array(labelCount)],
-		labelWidth,
-		labelLength,
-	};
-};
-
-export const calculateRadius = (squaredCorners, shape, labelWidth, labelLength) => {
-	if (squaredCorners) {
-		return "0px";
-	}
+	// calculates round corner radius
 
 	if (shape === 1) {
-		if (labelWidth >= 4 && labelLength >= 4) {
-			return `.5em`;
+		if (squaredCorners) {
+			cornerRadius = "0px";
 		} else {
-			return `.3em`;
+			if (length - width > 8 || width - length > 8) {
+				cornerRadius = "0.3em";
+			} else {
+				cornerRadius = "0.5em";
+			}
 		}
+	} else if (shape === 2) {
+		cornerRadius = "50%";
+	} else {
+		cornerRadius = "0px";
 	}
 
-	if (shape === 2) {
-		return "50%";
-	}
-
-	return "0px";
+	return {
+		labels: [...Array(labelCount)],
+		cornerRadius,
+		labelLength,
+		labelWidth,
+	};
 };
