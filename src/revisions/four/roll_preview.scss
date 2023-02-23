@@ -74,7 +74,7 @@ $label-color: #a3abb2;
 					margin: 0 auto 0 0;
 
 					.label {
-						background-color: #eae3e3;
+						background-color: #e3e3e3;
 					}
 				}
 
@@ -92,7 +92,7 @@ $label-color: #a3abb2;
 			}
 
 			.roll_length.min-width {
-				top: calc(46.5% + 10px);
+				//top: calc(46.5% + 10px);
 			}
 
 			.roll_length.min-height {
@@ -168,32 +168,28 @@ $label-color: #a3abb2;
 	// orientation shapes
 	.roll {
 		.label-wrapper {
-			.label {
-				.orientation {
-					width: 100%;
-					height: 100%;
-					background-position: center;
-					background-repeat: no-repeat;
-					background-size: contain;
-				}
-				.one {
-					background-image: url("layouts/logo_v.svg");
-					transform: rotate(180deg);
-				}
-				.two {
-					background-image: url("layouts/logo_v.svg");
-				}
-				.three {
-					background-image: url("layouts/logo_h.svg");
-				}
-				.four {
-					background-image: url("layouts/logo_h.svg");
-					transform: rotate(-180deg);
-				}
-				.orientation-custom.one,
-				.orientation-custom.two {
-					background-size: 17%;
-				}
+			.orientation {
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: 95%;
+				width: 100%;
+				height: 100%;
+			}
+			.orientation.one {
+				background-image: url("assets/1.png");
+			}
+			.orientation.two {
+				background-image: url("assets/2.png");
+			}
+			.orientation.three {
+				background-image: url("assets/3.png");
+			}
+			.orientation.four {
+				background-image: url("assets/4.png");
+			}
+			.orientation-custom.one,
+			.orientation-custom.two {
+				background-size: 30%;
 			}
 		}
 	}
